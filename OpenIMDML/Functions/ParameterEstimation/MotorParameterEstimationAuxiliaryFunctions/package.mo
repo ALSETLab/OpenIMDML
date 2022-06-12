@@ -1,0 +1,3 @@
+within OpenIMDML.Functions.ParameterEstimation;
+package MotorParameterEstimationAuxiliaryFunctions
+end MotorParameterEstimationAuxiliaryFunctions;
