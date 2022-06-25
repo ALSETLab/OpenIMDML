@@ -49,7 +49,7 @@ model MotorTypeIII_VSD_Ramp_StartUp
     annotation (Placement(transformation(extent={{80,80},{140,120}})));
   MultiDomain.Motors.ThreePhase.PSAT.MotorTypeIII Motor3(V_b=23000)
     annotation (Placement(transformation(extent={{20,-50},{0,-30}})));
-  Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC
     aC2DC_and_DC2AC_uninitialized(V_b=23000)
     annotation (Placement(transformation(extent={{-60,-50},{-40,-30}})));
   Modelica.Blocks.Sources.Ramp m_ramp(

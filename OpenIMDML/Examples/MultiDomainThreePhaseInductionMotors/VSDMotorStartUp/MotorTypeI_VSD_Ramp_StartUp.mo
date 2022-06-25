@@ -44,7 +44,7 @@ model MotorTypeI_VSD_Ramp_StartUp
     xT=0.15) annotation (Placement(transformation(extent={{10,40},{30,60}})));
   MultiDomain.Motors.ThreePhase.PSAT.MotorTypeI Motor1(V_b=23000)
     annotation (Placement(transformation(extent={{20,-50},{0,-30}})));
-  Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC
     aC2DC_and_DC2AC_uninitialized(V_b=23000)
     annotation (Placement(transformation(extent={{-60,-50},{-40,-30}})));
   OpenIPSL.Electrical.Loads.PSAT.PQ Load1(V_b=230000, P_0=500000000)

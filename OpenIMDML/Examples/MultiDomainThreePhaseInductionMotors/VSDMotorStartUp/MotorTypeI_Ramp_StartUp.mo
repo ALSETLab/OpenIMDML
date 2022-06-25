@@ -43,7 +43,7 @@ model MotorTypeI_Ramp_StartUp
     xT=0.15) annotation (Placement(transformation(extent={{4,40},{24,60}})));
   MultiDomain.Motors.ThreePhase.PSAT.MotorTypeI Motor1(V_b=23000)
     annotation (Placement(transformation(extent={{20,-50},{0,-30}})));
-  Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC
     aC2DC_and_DC2AC_uninitialized(V_b=23000)
     annotation (Placement(transformation(extent={{-60,-50},{-40,-30}})));
   Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller
