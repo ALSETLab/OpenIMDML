@@ -34,13 +34,15 @@ model VoltsHertz_Controller
   Modelica.Blocks.Math.Gain gain(k=Kp)
     annotation (Placement(transformation(extent={{-48,-52},{-28,-32}})));
   Modelica.Blocks.Continuous.Integrator integrator(k=Ki,
-    initType=Modelica.Blocks.Types.Init.NoInit,          y_start=0)
+    initType=Modelica.Blocks.Types.Init.InitialState,
+    y_start=0.1*(2*Modelica.Constants.pi*SysData.fn))
     annotation (Placement(transformation(extent={{-48,-84},{-28,-64}})));
   Modelica.Blocks.Math.Add add1(k1=+1)
     annotation (Placement(transformation(extent={{-18,-68},{2,-48}})));
   Modelica.Blocks.Math.Add add2(k1=+1)
     annotation (Placement(transformation(extent={{16,-36},{36,-16}})));
-  Modelica.Blocks.Interfaces.RealOutput we
+  Modelica.Blocks.Interfaces.RealOutput we(start=0.01*2*Modelica.Constants.pi*
+        SysData.fn)
                "Connector of Real output signal"
     annotation (Placement(transformation(extent={{100,-60},{140,-20}}),
         iconTransformation(extent={{100,-60},{140,-20}})));
@@ -55,7 +57,7 @@ model VoltsHertz_Controller
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={46,120})));
-    Real Kf= 1/(2*pi*fn) "Gain value multiplied with input signal"
+    Real Kf= gain2.y/(2*pi*fn) "Gain value multiplied with input signal"
     annotation (Dialog(group="Control Parameters"));
   parameter Real Kp=5 "Gain value multiplied with input signal"
     annotation (Dialog(group="Control Parameters"));
@@ -84,12 +86,15 @@ model VoltsHertz_Controller
     annotation (Placement(transformation(extent={{-52,48},{-32,68}})));
   Modelica.Blocks.Math.Division division
     annotation (Placement(transformation(extent={{-14,42},{6,62}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder(T=50, y_start=0.01)
-    annotation (Placement(transformation(extent={{44,42},{64,62}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=Kf)
     annotation (Placement(transformation(extent={{-88,20},{-68,40}})));
   Modelica.Blocks.Math.Product product1
     annotation (Placement(transformation(extent={{-52,14},{-32,34}})));
+  Modelica.Blocks.Continuous.FirstOrder firstOrder(
+    T=0.1,
+    initType=Modelica.Blocks.Types.Init.InitialState,
+    y_start=0.1)
+    annotation (Placement(transformation(extent={{48,42},{68,62}})));
 equation
   connect(motor_speed, Speed_Sensor.u) annotation (Line(points={{-110,-20},{-90,
           -20}},               color={0,0,127}));
@@ -131,23 +136,24 @@ equation
   connect(integrator.u, add.y) annotation (Line(points={{-50,-74},{-56,
           -74},{-56,-58},{-67,-58}},
                            color={0,0,127}));
-  connect(limiter1.y, firstOrder.u)
-    annotation (Line(points={{35,52},{42,52}}, color={0,0,127}));
-  connect(firstOrder.y, m) annotation (Line(points={{65,52},{70,52},{70,80},{46,
-          80},{46,120}},         color={0,0,127}));
   connect(realExpression.y, product1.u1)
     annotation (Line(points={{-67,30},{-54,30}}, color={0,0,127}));
   connect(gain1.y, product1.u2) annotation (Line(points={{19,10},{-66,10},{-66,18},
           {-54,18}}, color={0,0,127}));
   connect(product1.y, division.u1) annotation (Line(points={{-31,24},{-22,24},{-22,
           58},{-16,58}}, color={0,0,127}));
+  connect(limiter1.y, firstOrder.u) annotation (Line(points={{35,52},{46,52}},
+                           color={0,0,127}));
+  connect(firstOrder.y, m) annotation (Line(points={{69,52},{72,52},{72,78},{46,
+          78},{46,120}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {80,100}}),                                         graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={28,108,200}),        Text(
-          extent={{-40,40},{20,-40}},
+          extent={{-80,82},{80,-78}},
           lineColor={28,108,200},
-          textString="V/f")}),                                   Diagram(
+          textString=" V/f
+Control")}),                                                     Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{80,100}})));
 end VoltsHertz_Controller;

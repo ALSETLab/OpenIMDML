@@ -1,5 +1,5 @@
 within OpenIMDML.Controls.VariableSpeedDrive.Power_Electronics;
-model AC2DC_and_DC2AC "Phasor based Voltage Source Converter model."
+model AC2DC_and_DC2AC2 "Phasor based Voltage Source Converter model."
    extends OpenIPSL.Electrical.Essentials.pfComponent(
     final enabledisplayPF=false,
     final enablefn=false,
@@ -27,13 +27,13 @@ model AC2DC_and_DC2AC "Phasor based Voltage Source Converter model."
             {-64,-4}})));
   Modelica.Electrical.Analog.Basic.Resistor Resistor(R=Rdc)
     annotation (Placement(transformation(extent={{-42,-10},{-22,10}})));
-  Modelica.Electrical.Analog.Basic.Inductor Inductor(i(start=Il0, fixed=true),
-                                                     L=Ldc)
+  Modelica.Electrical.Analog.Basic.Inductor Inductor(i(start=Modelica.Constants.eps,
+        fixed=true),                                 L=Ldc)
     annotation (Placement(transformation(extent={{-16,-10},{4,10}})));
   Modelica.Electrical.Analog.Ideal.IdealOpeningSwitch switch(Ron=1e-5, Goff=1e-5)
     annotation (Placement(transformation(extent={{10,-10},{30,10}})));
-  Modelica.Electrical.Analog.Basic.Capacitor Capacitor(v(start=Vc0, fixed=true),
-                                                                     C=Cdc)
+  Modelica.Electrical.Analog.Basic.Capacitor Capacitor(v(start=Modelica.Constants.eps,
+        fixed=true),                                                 C=Cdc)
                                                                annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -180,4 +180,4 @@ equation
           lineColor={0,0,255},
           pattern=LinePattern.Dash,
           textString="DC Link Variables")}));
-end AC2DC_and_DC2AC;
+end AC2DC_and_DC2AC2;

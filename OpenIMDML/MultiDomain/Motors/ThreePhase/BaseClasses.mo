@@ -9,8 +9,8 @@ package BaseClasses
       final enabledisplayPF=false,
       final enablefn=false,
       final enableV_b=false,
-      final enableangle_0=true,
-      final enablev_0=true,
+      final enableangle_0=false,
+      final enablev_0=false,
       final enableQ_0=false,
       final enableP_0=false,
       final enableS_b=true);

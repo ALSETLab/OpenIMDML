@@ -1,18 +1,8 @@
 within OpenIMDML.NonMultiDomain.Motors.SinglePhase;
 model SPIM
   "This model is the steady-state circuit model of the single phase induction motor model."
-  OpenIPSL.Interfaces.PwPin p
-    annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
 
-    extends OpenIPSL.Electrical.Essentials.pfComponent(
-    final enabledisplayPF=false,
-    final enablefn=false,
-    final enableV_b=false,
-    final enableangle_0=true,
-    final enablev_0=true,
-    final enableQ_0=true,
-    final enableP_0=true,
-    final enableS_b=true);
+  extends OpenIMDML.NonMultiDomain.Motors.SinglePhase.BaseClasses.BaseSPIM_DPIM;
 
     parameter OpenIPSL.Types.PerUnit R1 "Stator winding resistor";
     parameter OpenIPSL.Types.PerUnit R2 "Rotor winding resistor";
@@ -39,18 +29,20 @@ model SPIM
     OpenIPSL.Types.PerUnit Pc;
     OpenIPSL.Types.PerUnit Qc;
 
-protected
-  parameter OpenIPSL.Types.PerUnit vr0=v_0*cos(angle_0);
-  parameter OpenIPSL.Types.PerUnit vi0=v_0*sin(angle_0);
-  parameter OpenIPSL.Types.PerUnit s0 = 0.1;
-  parameter OpenIPSL.Types.PerUnit ir0=(P_0/S_b*vr0 + Q_0/S_b*vi0)/(vr0^2 + vi0^2);
-  parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
+    parameter Boolean Sup = true "Start up control" annotation (Dialog(group="Machine parameters"));
+
+//protected
   parameter Real A = a + b + c;
   parameter Real B = -b - 2*c;
   parameter Real C = c;
+  parameter OpenIPSL.Types.PerUnit vr0=v_0*cos(angle_0);
+  parameter OpenIPSL.Types.PerUnit vi0=v_0*sin(angle_0);
+  parameter OpenIPSL.Types.PerUnit ir0=(P_0/S_b*vr0 + Q_0/S_b*vi0)/(vr0^2 + vi0^2);
+  parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
+  parameter OpenIPSL.Types.PerUnit s0 = if Sup == true then (1- Modelica.Constants.eps) else (2*ii0*R2^2*Xm)/(2*ir0*R2*Xm^2 - 2*ii0*R2^2*Xm);
 
 initial equation
-  der(s) = 0;
+  //der(s) = 0;
 
 equation
 
@@ -73,18 +65,6 @@ equation
   Te = P/(1-s);
   Tm = A + B*s + C*s^2;
   der(s) = (Tm - Te)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Rectangle(
-          extent={{-100,100},{100,-100}},
-          lineColor={0,0,0}),
-        Text(
-          extent={{-100,-60},{100,-100}},
-          lineColor={28,108,200},
-          textString="%name"),             Text(
-          extent={{-50,50},{50,-50}},
-          lineColor={0,0,0},
-          textString="M"),                Ellipse(
-          fillColor={255,255,255},
-          extent={{-56,-56},{55.932,56}})}),                     Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end SPIM;

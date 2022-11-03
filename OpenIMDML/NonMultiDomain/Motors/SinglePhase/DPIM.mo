@@ -1,18 +1,8 @@
 within OpenIMDML.NonMultiDomain.Motors.SinglePhase;
 model DPIM
-  "This model is the steady-state circuit model of the single phase induction motor model initialized by a split-phase auxiliary circuit."
-  OpenIPSL.Interfaces.PwPin p
-    annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+  "This model is the steady-state circuit model of the single phase induction motor model initialized by either a split-phase auxiliary circuit or a capacitor-start auxiliary circuit."
 
-    extends OpenIPSL.Electrical.Essentials.pfComponent(
-    final enabledisplayPF=false,
-    final enablefn=false,
-    final enableV_b=false,
-    final enableangle_0=true,
-    final enablev_0=true,
-    final enableQ_0=true,
-    final enableP_0=true,
-    final enableS_b=true);
+extends OpenIMDML.NonMultiDomain.Motors.SinglePhase.BaseClasses.BaseSPIM_DPIM;
 
   parameter Integer init "Initialization Method: (1) Split-Phase Motor, (2) Capacitor-Start Motor" annotation (choices(choice=1, choice=2));
   parameter Real switch_open_speed = 0.2 "Auxiliary winding cut-off speed";
@@ -159,18 +149,6 @@ equation
   Tm = A + B*s + C*s^2;
 
   der(s) = (Tm - Pc)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Rectangle(
-          extent={{-100,100},{100,-100}},
-          lineColor={0,0,0}),
-        Text(
-          extent={{-100,-62},{100,-102}},
-          lineColor={28,108,200},
-          textString="%name"),             Text(
-          extent={{-50,50},{50,-50}},
-          lineColor={0,0,0},
-          textString="M"),                Ellipse(
-          fillColor={255,255,255},
-          extent={{-56,-56},{55.932,56}})}),                     Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end DPIM;

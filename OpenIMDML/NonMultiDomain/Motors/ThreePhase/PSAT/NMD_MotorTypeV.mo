@@ -1,7 +1,9 @@
-within OpenIMDML.MultiDomain.Motors.ThreePhase.PSAT;
-model MotorTypeV
-  extends BaseClasses.BaseMultiDomainMotor;
+within OpenIMDML.NonMultiDomain.Motors.ThreePhase.PSAT;
+model NMD_MotorTypeV "Non Multi-Domain Type V Three-Phase Induction Motor Model."
+  extends
+    OpenIMDML.NonMultiDomain.Motors.ThreePhase.BaseClasses.BaseNonMultiDomainMotor;
 
+  // Parameter Set
   parameter OpenIPSL.Types.PerUnit Rs=0 "Stator resistance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit Xs=0.0759 "Stator reactance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit R1=0.0085 "1st cage rotor resistance" annotation (Dialog(group="Machine parameters"));
@@ -9,7 +11,11 @@ model MotorTypeV
   parameter OpenIPSL.Types.PerUnit R2=0 "1st cage rotor resistance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit X2=0 "1st cage rotor reactance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit Xm=3.1241 "Magnetizing reactance" annotation (Dialog(group="Machine parameters"));
+  parameter OpenIPSL.Types.PerUnit a = 1 "1st coefficient of load torque" annotation (Dialog(group="Machine parameters"));
+  parameter OpenIPSL.Types.PerUnit b = 1 "2nd coefficient of load torque" annotation (Dialog(group="Machine parameters"));
+  parameter OpenIPSL.Types.PerUnit c = 1 "3rd coefficient of load torque" annotation (Dialog(group="Machine parameters"));
 
+  // Variable Set
   OpenIPSL.Types.PerUnit epr;
   OpenIPSL.Types.PerUnit epm;
   OpenIPSL.Types.PerUnit eppr;
@@ -19,9 +25,12 @@ model MotorTypeV
   OpenIPSL.Types.PerUnit Xpp;
   OpenIPSL.Types.PerUnit Tp0;
   OpenIPSL.Types.PerUnit Tpp0;
-
   OpenIPSL.Types.PerUnit Te_motor;
   OpenIPSL.Types.PerUnit Te_sys;
+  OpenIPSL.Types.PerUnit TL;
+  Real alpha;
+  Real beta;
+  Real gamma;
 
 equation
 
@@ -43,15 +52,18 @@ equation
   der(eppm) =   w_b*s*(epr - eppr) + der(epm) - (epm - eppr + (Xp - Xpp)*Ir)/Tpp0;
 
   //Mechanical Slip Equation
-  der(s) = (Tmech_pu_motor - Te_motor)/(2*H);
+  der(s) = (TL - Te_motor)/(2*H);
 
   //Electromagnetic torque equation in system and machine base
   Te_sys = Te_motor*CoB;
   Te_motor = eppr*Ir + eppm*Ii;
 
+  //Load Torque Coefficient Equations
+  alpha = a + b + c;
+  beta = -b - 2*c;
+  gamma = c;
 
+  //Mechanical Torque Equation
+  TL = alpha + beta*s + gamma*s^2;
 
-
-
-
-end MotorTypeV;
+end NMD_MotorTypeV;
