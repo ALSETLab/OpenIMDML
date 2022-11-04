@@ -33,7 +33,6 @@ package MultiDomainExamples
         R2=0.05,
         X1=0.01,
         X2=0.01,
-        Sup=false,
         Xm=0.1)
              annotation (Placement(transformation(extent={{38,-10},{18,10}})));
       OpenIPSL.Electrical.Events.PwFault Fault(

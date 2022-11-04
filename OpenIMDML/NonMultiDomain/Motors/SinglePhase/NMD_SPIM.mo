@@ -4,7 +4,7 @@ model NMD_SPIM "This model is the steady-state circuit model of the non multi-do
   extends
     OpenIMDML.NonMultiDomain.Motors.SinglePhase.BaseClasses.BaseNonMultiDomainSinglePhase;
 
-    parameter Boolean Sup = true "True: Start-up process, False: Steady-state condition" annotation (Dialog(group="Motor Setup"));
+    //parameter Boolean Sup = true "True: Start-up process, False: Steady-state condition" annotation (Dialog(group="Motor Setup"));
 
     parameter OpenIPSL.Types.PerUnit R1 "Stator winding resistor" annotation (Dialog(group="Machine parameters"));
     parameter OpenIPSL.Types.PerUnit R2 "Rotor winding resistor" annotation (Dialog(group="Machine parameters"));
@@ -44,14 +44,10 @@ protected
   parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
   OpenIPSL.Types.PerUnit sm  "Induction motor slip for calculation when dividing by s";
   parameter Real CoB = M_b/S_b;
-  parameter OpenIPSL.Types.PerUnit s0 = if Sup == true then (1- Modelica.Constants.eps) else (2*ii0*R2^2*Xm)/(2*ir0*R2*Xm^2 - 2*ii0*R2^2*Xm);
+  parameter OpenIPSL.Types.PerUnit s0 = (2*ii0*R2^2*Xm)/(2*ir0*R2*Xm^2 - 2*ii0*R2^2*Xm);
 
 initial equation
-  if Sup == true then
-    s = 1- Modelica.Constants.eps;
-    else
   der(s) = 0;
-  end if;
 
 equation
 
@@ -78,7 +74,7 @@ equation
   P_AGB = I^2*0.5*RB;
   P     = P_AGF - P_AGB;
 
-  Te = P/(1 - sm);
+  Te = P;
   Tm = A + B*s + C*s^2;
   der(s) = (Tm - Te)/(2*H);
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

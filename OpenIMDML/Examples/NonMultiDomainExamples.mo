@@ -22,8 +22,8 @@ package NonMultiDomainExamples
                 {80,50}})));
       OpenIMDML.NonMultiDomain.Motors.SinglePhase.NMD_SPIM SPIM(
         V_b=230,
-        P_0=1000,
-        Q_0=5000,
+        P_0=40000,
+        Q_0=40000,
         v_0=1,
         angle_0=0,
         R1=0.001,
@@ -32,10 +32,9 @@ package NonMultiDomainExamples
         X2=0.01,
         Xm=0.1,
         H=0.1,
-        a=0.05,
+        a=0.01,
         b=0.02,
-        c=0.01,
-        Sup=false)
+        c=0.01)
         annotation (Placement(transformation(extent={{80,-10},{60,10}})));
       OpenIPSL.Electrical.Events.PwFault Fault(
         R=0.1,

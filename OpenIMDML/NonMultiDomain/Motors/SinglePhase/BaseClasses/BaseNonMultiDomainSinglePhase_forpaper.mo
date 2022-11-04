@@ -18,11 +18,11 @@ partial model BaseNonMultiDomainSinglePhase_forpaper
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                                            Text(
-          extent={{-50,50},{50,-50}},
+          extent={{-50,44},{50,-56}},
           lineColor={0,0,0},
           textString="M"),                Ellipse(
           fillColor={255,255,255},
-          extent={{-56,-56},{55.932,56}}),
+          extent={{-56,-56},{56,56}}),
           Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,0}),

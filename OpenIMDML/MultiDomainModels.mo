@@ -124,14 +124,11 @@ package MultiDomainModels
         parameter OpenIPSL.Types.PerUnit vi0=v_0*sin(angle_0);
         parameter OpenIPSL.Types.PerUnit ir0=(P_0/S_b*vr0 + Q_0/S_b*vi0)/(vr0^2 + vi0^2);
         parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
+        parameter OpenIPSL.Types.PerUnit w0 = w_b;
         OpenIPSL.Types.PerUnit sm  "Induction motor slip for calculation when dividing by s";
 
       initial equation
-        if Sup == true then
-          s = 1- Modelica.Constants.eps;
-          else
         der(s) = 0;
-        end if;
 
       equation
 
@@ -146,6 +143,7 @@ package MultiDomainModels
         //Slip for calculations
         sm = s;
 
+        //Forward and Reverse Impedance Calculations
         RF = (-X2*Xm*R2/sm + R2*Xm*(X2 + Xm)/sm)/((R2/sm)^2 + (X2 + Xm)^2);
         XF = ((R2/sm)^2*Xm + X2*Xm*(X2 + Xm))/((R2/sm)^2 + (X2 + Xm)^2);
         RB = (-X2*Xm*R2/(2-sm) + R2*Xm*(X2 + Xm)/(2-sm))/((R2/(2-sm))^2 + (X2 + Xm)^2);
@@ -158,7 +156,7 @@ package MultiDomainModels
         P_AGB = I^2*0.5*RB;
         P     = P_AGF - P_AGB;
 
-        Te = P/(1-sm);
+        Te = P;
         der(s) = (Tmech_pu_motor - Te)/(2*H);
         annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                 Rectangle(
@@ -183,6 +181,8 @@ package MultiDomainModels
           OpenIMDML.MultiDomainModels.Motors.SinglePhase.BaseClasses.BaseMultiDomainSinglePhase(
             Rotor_Inertia(w(fixed=false, start=w0)));
 
+        parameter Boolean Sup = true "True: Start-up process, False: Steady-state condition" annotation (Dialog(group="Motor Setup"));
+
         parameter Integer init "Initialization Method: (1) Split-Phase Motor, (2) Capacitor-Start Motor" annotation (choices(choice=1, choice=2));
         parameter Real switch_open_speed = 0.2 "Auxiliary winding cut-off speed" annotation (Dialog(group="Machine parameters"));
         parameter Modelica.Units.SI.Inductance Lmainr "Mutual-inductance of the main winding" annotation (Dialog(group="Machine parameters"));
@@ -194,6 +194,8 @@ package MultiDomainModels
         parameter Modelica.Units.SI.Resistance Rr "Resistance of the rotor winding" annotation (Dialog(group="Machine parameters"));
         parameter Modelica.Units.SI.Resistance Raux "Resistance of the auxiliary winding" annotation (Dialog(group="Machine parameters"));
         parameter Modelica.Units.SI.Capacitance Cc "Capacitance of the capacitor-start configuration" annotation (Dialog(group="Machine parameters", enable=(init == 2)));
+
+
 
         OpenIPSL.Types.PerUnit Pc;
         OpenIPSL.Types.PerUnit Qc;
@@ -243,6 +245,7 @@ package MultiDomainModels
         parameter OpenIPSL.Types.PerUnit vi0=v_0*sin(angle_0);
         parameter OpenIPSL.Types.PerUnit ir0=(P_0/S_b*vr0 + Q_0/S_b*vi0)/(vr0^2 + vi0^2);
         parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
+        parameter Modelica.Units.SI.AngularVelocity w0 = if Sup == true then Modelica.Constants.eps else w_b;
         Modelica.Units.SI.Impedance Z_b=V_b^2/S_b;
         Modelica.Units.SI.Current I_b=S_b/V_b;
         OpenIPSL.Types.PerUnit sm  "Induction motor slip for calculation when dividing by s";
@@ -325,8 +328,7 @@ package MultiDomainModels
 
             Modelica.Blocks.Sources.RealExpression Rotor_Speed(y=nr)
             annotation (Placement(transformation(extent={{70,-10},{50,10}})));
-          Modelica.Mechanics.Rotational.Components.Inertia Rotor_Inertia(J=J_load, w(fixed=
-                  true, start=w0))
+          Modelica.Mechanics.Rotational.Components.Inertia Rotor_Inertia(J=J_load)
             annotation (Placement(transformation(extent={{-40,-10},{-60,10}})));
           Modelica.Mechanics.Rotational.Interfaces.Flange_b flange annotation (
               Placement(transformation(extent={{-110,-10},{-90,10}}),
@@ -365,7 +367,6 @@ package MultiDomainModels
           import OpenIPSL.NonElectrical.Functions.SE;
           import Modelica.Constants.eps;
 
-          parameter Boolean Sup = true "True: Start-up process, False: Steady-state condition" annotation (Dialog(group="Motor Setup"));
           parameter Real N = 1 "Number of pair of Poles"
                                                         annotation (Dialog(group="Machine parameters"));
           parameter Modelica.Units.SI.Time H = 0.4 "Inertia constant"
@@ -387,7 +388,6 @@ package MultiDomainModels
           parameter Modelica.Units.SI.Inertia J_load = 2*H*M_b/((2*pi*fn/N)^2);
           parameter Modelica.Units.SI.AngularVelocity w_b=2*pi*fn/N "Base freq in rad/s";
           parameter Real CoB = M_b/S_b;
-          parameter Modelica.Units.SI.AngularVelocity w0 = if Sup == true then Modelica.Constants.eps else w_b;
         equation
 
           //Rotor speed equation
@@ -520,11 +520,11 @@ package MultiDomainModels
                   Rectangle(
                   extent={{-100,100},{100,-100}},
                   lineColor={0,0,0}),              Text(
-                  extent={{-50,50},{50,-50}},
+                  extent={{-50,44},{50,-56}},
                   lineColor={0,0,0},
                   textString="M"),                Ellipse(
                   fillColor={255,255,255},
-                  extent={{-56,-56},{55.932,56}}),
+                  extent={{-56,-56},{56,56}}),
                 Text(
                   extent={{-176,20},{-116,-20}},
                   textColor={28,108,200},
@@ -542,7 +542,15 @@ package MultiDomainModels
 Single-Phase"), Text(
                   extent={{-90,90},{-30,50}},
                   textColor={0,140,72},
-                  textString="MD")}),                                    Diagram(
+                  textString="MD"),
+                Text(
+                  extent={{46,-138},{76,-178}},
+                  textColor={28,108,200},
+                  textString="wr"),
+                Text(
+                  extent={{-124,-84},{10,-234}},
+                  textColor={28,108,200},
+                  textString="mech_torque")}),                           Diagram(
                 coordinateSystem(preserveAspectRatio=false)));
         end BaseMultiDomainSinglePhase_forpaper;
       end BaseClasses;
