@@ -48,11 +48,6 @@ package Sandbox
       annotation (Placement(transformation(extent={{-20,12},{0,32}})));
     inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000, fn=60)
       annotation (Placement(transformation(extent={{80,80},{140,120}})));
-    MultiDomainModels.Motors.ThreePhase.PSAT.MotorTypeIII_different Motor3(
-      V_b=23000,
-      Ctrl=false,
-      Rs=0)
-      annotation (Placement(transformation(extent={{20,-50},{0,-30}})));
     Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC vsd(V_b=23000)
       annotation (Placement(transformation(extent={{-60,-50},{-40,-30}})));
     Modelica.Blocks.Sources.RealExpression Torque3(y=-(0.1*(15/100)*(Motor3.s) + 0.5

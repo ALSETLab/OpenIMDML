@@ -1,7 +1,7 @@
 within OpenIMDML.NonMultiDomain.Motors.ThreePhase.PSAT;
 model NMD_MotorTypeIII "Non Multi-Domain Type III Three-Phase Induction Motor Model."
   extends
-    OpenIMDML.NonMultiDomain.Motors.ThreePhase.BaseClasses.BaseNonMultiDomainMotor;
+    OpenIMDML.NonMultiDomain.Motors.ThreePhase.BaseClasses.BaseNonMultiDomainThreePhase;
 
   // Parameter Set
   parameter OpenIPSL.Types.PerUnit Rs=0 "Stator resistance" annotation (Dialog(group="Machine parameters"));

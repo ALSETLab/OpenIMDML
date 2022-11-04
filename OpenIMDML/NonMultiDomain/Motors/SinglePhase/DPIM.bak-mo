@@ -2,7 +2,7 @@ within OpenIMDML.NonMultiDomain.Motors.SinglePhase;
 model DPIM
   "This model is the steady-state circuit model of the single phase induction motor model initialized by either a split-phase auxiliary circuit or a capacitor-start auxiliary circuit."
 
-extends OpenIMDML.NonMultiDomain.Motors.SinglePhase.BaseClasses.BaseSPIM_DPIM;
+extends OpenIMDML.NonMultiDomain.Motors.SinglePhase.BaseClasses.BaseNonMultiDomainSinglePhase;
 
   parameter Integer init "Initialization Method: (1) Split-Phase Motor, (2) Capacitor-Start Motor" annotation (choices(choice=1, choice=2));
   parameter Real switch_open_speed = 0.2 "Auxiliary winding cut-off speed";
@@ -80,8 +80,7 @@ protected
   parameter OpenIPSL.Types.PerUnit vi0=v_0*sin(angle_0);
   parameter OpenIPSL.Types.PerUnit ir0=(P_0/S_b*vr0 + Q_0/S_b*vi0)/(vr0^2 + vi0^2);
   parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
-  parameter Modelica.Units.SI.AngularVelocity we=2*Modelica.Constants.pi
-      *fn;
+  parameter Modelica.Units.SI.AngularVelocity we=2*Modelica.Constants.pi*fn;
   parameter Real A = a + b + c;
   parameter Real B = -b - 2*c;
   parameter Real C = c;

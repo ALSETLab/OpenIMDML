@@ -1,8 +1,10 @@
 within OpenIMDML.NonMultiDomain.Motors.SinglePhase;
 package BaseClasses
   extends Modelica.Icons.BasesPackage;
-  model BaseSPIM_DPIM "Base class model for the single-phase and dual-phase induction motor models"
+  model BaseNonMultiDomainSinglePhase "Base class model for the single-phase and dual-phase non multi-domain induction motor models."
 
+    parameter OpenIPSL.Types.ApparentPower M_b = SysData.S_b "Machine base power"
+                                                                                 annotation (Dialog(group="Power flow data"));
     extends OpenIPSL.Electrical.Essentials.pfComponent(
       final enabledisplayPF=false,
       final enablefn=false,
@@ -14,7 +16,7 @@ package BaseClasses
       final enableS_b=true);
 
     OpenIPSL.Interfaces.PwPin p
-      annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+      annotation (Placement(transformation(extent={{90,-10},{110,10}})));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Text(
             extent={{-100,-60},{100,-100}},
@@ -28,5 +30,5 @@ package BaseClasses
             Rectangle(
             extent={{-100,100},{100,-100}},
             lineColor={0,0,0})}), Diagram(coordinateSystem(preserveAspectRatio=false)));
-  end BaseSPIM_DPIM;
+  end BaseNonMultiDomainSinglePhase;
 end BaseClasses;

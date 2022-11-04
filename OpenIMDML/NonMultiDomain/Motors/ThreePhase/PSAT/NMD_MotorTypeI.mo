@@ -1,7 +1,7 @@
 within OpenIMDML.NonMultiDomain.Motors.ThreePhase.PSAT;
 model NMD_MotorTypeI "Non Multi-Domain Type I Three-Phase Induction Motor Model."
   extends
-    OpenIMDML.NonMultiDomain.Motors.ThreePhase.BaseClasses.BaseNonMultiDomainMotor;
+    OpenIMDML.NonMultiDomain.Motors.ThreePhase.BaseClasses.BaseNonMultiDomainThreePhase;
 
   // Parameter Set
   parameter OpenIPSL.Types.PerUnit Xs=0.0759 "Stator reactance" annotation (Dialog(group="Machine parameters"));
@@ -22,7 +22,7 @@ model NMD_MotorTypeI "Non Multi-Domain Type I Three-Phase Induction Motor Model.
   Real beta;
   Real gamma;
 
-//protected
+protected
   parameter Real S0 = R1/w_b;
   parameter Real W0 = -s0*w_b + w_b;
   parameter Real s0 = if Sup == true then (1 - Modelica.Constants.eps) else S0;
