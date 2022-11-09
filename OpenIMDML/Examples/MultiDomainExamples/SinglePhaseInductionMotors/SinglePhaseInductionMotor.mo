@@ -13,7 +13,7 @@ model SinglePhaseInductionMotor
     R=2.50000E-3,
     X=2.50000E-3)
     annotation (Placement(transformation(extent={{-42,6},{-22,26}})));
-  inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=100000000) annotation (Placement(transformation(extent={{40,60},
+  inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=100000)    annotation (Placement(transformation(extent={{40,60},
             {80,80}})));
   OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_SPIM SPIM(
     M_b(displayUnit="V.A") = 3500,
@@ -29,12 +29,7 @@ model SinglePhaseInductionMotor
     X1=0.01,
     X2=0.01,
     Xm=0.1)
-         annotation (Placement(transformation(extent={{38,-10},{18,10}})));
-  OpenIPSL.Electrical.Events.PwFault Fault(
-    R=0.1,
-    X=0.1,
-    t1=100,
-    t2=101) annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
+         annotation (Placement(transformation(extent={{34,-10},{14,10}})));
   OpenIPSL.Electrical.Branches.PwLine Line1(
     G=0,
     B=0,
@@ -48,16 +43,28 @@ model SinglePhaseInductionMotor
     X=0.5*2.50000E-3)
     annotation (Placement(transformation(extent={{-30,-26},{-10,-6}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
-    annotation (Placement(transformation(extent={{50,-10},{70,10}})));
+    annotation (Placement(transformation(extent={{44,-10},{64,10}})));
   Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.01)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={90,0})));
+        origin={104,0})));
   Modelica.Mechanics.Rotational.Sources.Torque torque1
     annotation (Placement(transformation(extent={{80,-50},{100,-30}})));
-  Modelica.Blocks.Sources.RealExpression Torque1(y=-0.0001)
+  Modelica.Blocks.Sources.Ramp           Torque1(
+    height=-10,
+    duration=3.9,
+    offset=-1e-4,
+    startTime=0.1)
     annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
+  OpenIPSL.Electrical.Events.PwFault Fault(
+    R=0.01,
+    X=0.01,
+    t1=8,
+    t2=8.01)
+            annotation (Placement(transformation(extent={{-24,-50},{-4,-30}})));
+  Modelica.Mechanics.Rotational.Components.SpringDamper springDamper(c=0.5, d=
+        0.5) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
 equation
   connect(gENCLS.p, inf_bus.p)
     annotation (Line(points={{-80,0},{-66,0}}, color={0,0,255}));
@@ -66,7 +73,7 @@ equation
   connect(inf_bus.p, Line.p) annotation (Line(points={{-66,0},{-60,0},{-60,16},
           {-41,16}},color={0,0,255}));
   connect(load_bus.p, SPIM.p)
-    annotation (Line(points={{4,0},{18,0}},  color={0,0,255}));
+    annotation (Line(points={{4,0},{14,0}},  color={0,0,255}));
   connect(Line1.p, Line.p) annotation (Line(points={{-57,-16},{-60,-16},{-60,16},
           {-41,16}},color={0,0,255}));
   connect(Line1.n, Line2.p)
@@ -75,20 +82,22 @@ equation
   connect(Line2.n, load_bus.p) annotation (Line(points={{-11,-16},{-8,-16},{-8,
           0},{4,0}},
                    color={0,0,255}));
-  connect(Fault.p, Line2.p) annotation (Line(points={{-21.6667,-40},{-34,-40},{
-          -34,-16},{-29,-16}},
-                          color={0,0,255}));
-  connect(torqueSensor1.flange_b,load_inertia1. flange_a)
-    annotation (Line(points={{70,0},{80,0}},     color={0,0,0}));
   connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{100,-40},
-          {110,-40},{110,0},{100,0}},      color={0,0,0}));
+          {120,-40},{120,0},{114,0}},      color={0,0,0}));
   connect(Torque1.y,torque1. tau)
     annotation (Line(points={{61,-40},{78,-40}}, color={0,0,127}));
   connect(SPIM.flange, torqueSensor1.flange_a)
-    annotation (Line(points={{38,0},{50,0}}, color={0,0,0}));
-  connect(torqueSensor1.tau, SPIM.mech_torque) annotation (Line(points={{52,-11},
-          {52,-20},{34,-20},{34,-12}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,
+    annotation (Line(points={{34,0},{44,0}}, color={0,0,0}));
+  connect(torqueSensor1.tau, SPIM.mech_torque) annotation (Line(points={{46,-11},
+          {46,-18},{30,-18},{30,-12}}, color={0,0,127}));
+  connect(Fault.p, Line2.p) annotation (Line(points={{-25.6667,-40},{-34,-40},{
+          -34,-16},{-29,-16}}, color={0,0,255}));
+  connect(load_inertia1.flange_a, springDamper.flange_b)
+    annotation (Line(points={{94,0},{90,0}}, color={0,0,0}));
+  connect(springDamper.flange_a, torqueSensor1.flange_b)
+    annotation (Line(points={{70,0},{64,0}}, color={0,0,0}));
+  annotation ( preferredView = "info",
+              Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,
             -100},{120,100}})),                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,
             100}})),
