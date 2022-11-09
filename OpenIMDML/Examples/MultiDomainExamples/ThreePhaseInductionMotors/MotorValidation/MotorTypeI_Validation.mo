@@ -51,7 +51,8 @@ model MotorTypeI_Validation
         SysData.fn))
                 annotation (Placement(transformation(extent={{20,-46},{40,
             -26}})));
-  MultiDomainModels.Motors.ThreePhase.PSAT.MotorTypeI Motor1(V_b=23000)
+  MultiDomainModels.Motors.ThreePhase.PSAT.MotorTypeI Motor1(V_b=23000, Sup=
+        false)
     annotation (Placement(transformation(extent={{68,-10},{48,10}})));
 equation
   connect(inf1.p,bus1_mt1. p)
