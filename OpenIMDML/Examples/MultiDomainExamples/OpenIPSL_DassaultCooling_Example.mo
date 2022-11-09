@@ -93,7 +93,7 @@ package OpenIPSL_DassaultCooling_Example
       Sup=true,
       redeclare OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT.MotorTypeV
         motor) annotation (Placement(transformation(extent={{-30,54},{-10,74}})));
-    OpenIPSL.Electrical.Loads.PSAT.PQ Load(V_b=230000, P_0=500000000)
+    OpenIPSL.Electrical.Loads.PSAT.PQ Load(V_b=230000, P_0=0)
       annotation (Placement(transformation(extent={{-90,24},{-70,44}})));
     Modelica.Blocks.Sources.Ramp ramp(
       startTime=10,
@@ -102,7 +102,7 @@ package OpenIPSL_DassaultCooling_Example
       duration=100)
                    annotation (Placement(transformation(extent={{-58,12},{-38,
               32}})));
-    inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000, fn=60)
+    inner OpenIPSL.Electrical.SystemBase SysData(S_b=5000,      fn=60)
       annotation (Placement(transformation(extent={{-190,110},{-150,130}})));
     Cooling.Sources.LiquidPressureBoundary inlet1(
       redeclare package Medium = Medium,
