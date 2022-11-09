@@ -24,7 +24,7 @@ equation
   Pmotor = (if Ctrl == false then P_motor else P_motor/(we_fix.y/w_b));
 
   //Rotor impedance
-  Re = R1/s;
+  Re = R1/max(s,Modelica.Constants.eps);
   Xe = (if Ctrl == false then Xs + X1 else (we_fix.y/w_b)*(Xs + X1));
 
   //Magnetization Impedance
