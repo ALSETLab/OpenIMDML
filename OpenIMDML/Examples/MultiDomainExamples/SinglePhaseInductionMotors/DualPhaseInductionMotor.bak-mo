@@ -13,10 +13,10 @@ model DualPhaseInductionMotor
     R=2.50000E-3,
     X=2.50000E-3)
     annotation (Placement(transformation(extent={{-42,6},{-22,26}})));
-  inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=100000000) annotation (Placement(transformation(extent={{40,60},
+  inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=10000)     annotation (Placement(transformation(extent={{40,60},
             {80,80}})));
-  OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_DPIM DPIM(
-    M_b(displayUnit="V.A") = 3500,
+  OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_DPIM_2 DPIM(
+    M_b(displayUnit="V.A") = 5000,
     V_b=230,
     P_0=1000,
     Q_0=5000,
@@ -24,23 +24,25 @@ model DualPhaseInductionMotor
     angle_0=0,
     N=1,
     H=0.1,
-    init=1,
-    Sup=false,
+    init=2,
+    Sup=true,
+    switch_open_speed=0.1,
     Lmainr=0.000588,
-    Lmain=0.0806,
+    Lmain=0.086,
     Lauxr=0.000909,
     Laux=0.196,
     Lr=0.0000047,
     Rmain=0.58,
     Rr=0.0000376,
     Raux=3.37,
-    Cc=0.001)
-         annotation (Placement(transformation(extent={{38,-10},{18,10}})));
+    Cc=0.000035)
+    annotation (Placement(transformation(extent={{40,-10},{20,10}})));
   OpenIPSL.Electrical.Events.PwFault Fault(
     R=0.01,
     X=0.01,
-    t1=5,
-    t2=5.1) annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
+    t1=8,
+    t2=8.01)
+            annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
   OpenIPSL.Electrical.Branches.PwLine Line1(
     G=0,
     B=0,
@@ -55,14 +57,18 @@ model DualPhaseInductionMotor
     annotation (Placement(transformation(extent={{-30,-26},{-10,-6}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
     annotation (Placement(transformation(extent={{50,-10},{70,10}})));
-  Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.001)
+  Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.01)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={90,0})));
   Modelica.Mechanics.Rotational.Sources.Torque torque1(useSupport=false)
     annotation (Placement(transformation(extent={{80,-50},{100,-30}})));
-  Modelica.Blocks.Sources.RealExpression Torque1(y=-0.0002)
+  Modelica.Blocks.Sources.Ramp           Torque2(
+    height=0,
+    duration=3.9,
+    offset=-150,
+    startTime=0)
     annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
 equation
   connect(gENCLS.p, inf_bus.p)
@@ -72,7 +78,7 @@ equation
   connect(inf_bus.p, Line.p) annotation (Line(points={{-66,0},{-60,0},{-60,16},{
           -41,16}}, color={0,0,255}));
   connect(load_bus.p,DPIM. p)
-    annotation (Line(points={{4,0},{18,0}},  color={0,0,255}));
+    annotation (Line(points={{4,0},{20,0}},  color={0,0,255}));
   connect(Line1.p, Line.p) annotation (Line(points={{-57,-16},{-60,-16},{-60,16},
           {-41,16}},color={0,0,255}));
   connect(Line1.n, Line2.p)
@@ -87,17 +93,17 @@ equation
     annotation (Line(points={{70,0},{80,0}},     color={0,0,0}));
   connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{100,-40},
           {110,-40},{110,0},{100,0}},      color={0,0,0}));
-  connect(Torque1.y,torque1. tau)
-    annotation (Line(points={{61,-40},{78,-40}}, color={0,0,127}));
   connect(DPIM.flange, torqueSensor1.flange_a)
-    annotation (Line(points={{38,0},{50,0}}, color={0,0,0}));
+    annotation (Line(points={{40,0},{50,0}}, color={0,0,0}));
   connect(torqueSensor1.tau,DPIM. mech_torque) annotation (Line(points={{52,-11},
-          {52,-20},{34,-20},{34,-12}}, color={0,0,127}));
+          {52,-20},{36,-20},{36,-12}}, color={0,0,127}));
+  connect(Torque2.y, torque1.tau)
+    annotation (Line(points={{61,-40},{78,-40}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},
             {120,100}})),                                        Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(
-      StopTime=5,
-      __Dymola_NumberOfIntervals=5000,
+      StopTime=3,
+      __Dymola_NumberOfIntervals=50000,
       __Dymola_Algorithm="Dassl"));
 end DualPhaseInductionMotor;

@@ -217,12 +217,24 @@ package OpenIPSL_DassaultCooling_Example
             -90},{78,-50},{67.8,-50}}, color={255,127,36}));
     connect(pump1.port_b, pipe1.port_a)
       annotation (Line(points={{8,-90},{28,-90}}, color={255,127,36}));
-    annotation (experiment(StopTime=5000),
+    annotation (preferredView = "info",experiment(StopTime=5000),
                                          Documentation(info="<html>
 <p>A mechanical pump is connected to a short pipe and a tank. The pump speed is zero at t=0. All components are initialized
 with m_flow= 0. The input of the pump driving flange is ramped up after 10s, the pump starts to fill the tank. 
 At the end of the simulation, the hydrostatic pressure at the bottom of the tank reaches the maximum pressure difference
 of the pump at the given speed. The tank level can be kept, but no further filling is possible. </p>
+
+<p>The top model has a multi-domain all-in-one motor that drives the mechanical pump, while the bottom model represents speed and torque trough a ramp component.</p>
+<<p>The idea behind the PumpFeedingTankWithMultiDomainMotor is to show the capabilities of the multi-domain motor, replicating the same expected response are the
+model without any motor.</p>
+<p>Simulate the system for 5000 seconds. Variables of interest and comparison are:</p>
+<ul>
+<li><code>pipe.port_a.m_flow vs pipe1.port_a.m_flow</code></li>
+<li><code>tank.H vs tank1.H</code></li>
+<li><code>motor.motor.wr</code></li>
+<li><code>motor.motor.P</code></li>
+<li><code>motor.motor.Q</code></li>
+</ul>
 </html>"),      Icon(coordinateSystem(preserveAspectRatio=false, extent={{-200,
               -140},{200,140}})),                                  Diagram(coordinateSystem(preserveAspectRatio=false, extent={
               {-200,-140},{200,140}}), graphics={Text(
@@ -233,7 +245,6 @@ of the pump at the given speed. The tank level can be kept, but no further filli
             extent={{-56,220},{196,28}},
             textColor={0,140,72},
             textStyle={TextStyle.Bold},
-            textString=
-                "Electrical System and Motor OpenIMDML + Cooling Library driven load")}),                                __3dsJenkins(ignore_pedantic_check=true));
+            textString="Electrical System and Motor (OpenIMDML) + Load (Dassault Cooling Library)")}),                   __3dsJenkins(ignore_pedantic_check=true));
   end PumpFeedingTankWithMultiDomainMotor;
 end OpenIPSL_DassaultCooling_Example;

@@ -13,7 +13,7 @@ model SinglePhaseInductionMotor
     R=2.50000E-3,
     X=2.50000E-3)
     annotation (Placement(transformation(extent={{-42,6},{-22,26}})));
-  inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=100000)    annotation (Placement(transformation(extent={{40,60},
+  inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=100000000) annotation (Placement(transformation(extent={{40,60},
             {80,80}})));
   OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_SPIM SPIM(
     M_b(displayUnit="V.A") = 3500,
@@ -44,7 +44,7 @@ model SinglePhaseInductionMotor
     annotation (Placement(transformation(extent={{-30,-26},{-10,-6}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
     annotation (Placement(transformation(extent={{44,-10},{64,10}})));
-  Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.01)
+  Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.1)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -54,7 +54,7 @@ model SinglePhaseInductionMotor
   Modelica.Blocks.Sources.Ramp           Torque1(
     height=-10,
     duration=3.9,
-    offset=-1e-4,
+    offset=-0.5,
     startTime=0.1)
     annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
   OpenIPSL.Electrical.Events.PwFault Fault(
@@ -102,7 +102,7 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,
             100}})),
     experiment(
-      StopTime=5,
+      StopTime=10,
       __Dymola_NumberOfIntervals=5000,
       __Dymola_Algorithm="Dassl"));
 end SinglePhaseInductionMotor;

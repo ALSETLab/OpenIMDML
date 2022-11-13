@@ -8,4 +8,6 @@ package VSDMotorStartUp
 
 
 
+annotation (Documentation(info="<html>
+</html>"));
 end VSDMotorStartUp;

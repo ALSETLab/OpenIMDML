@@ -26,6 +26,7 @@ partial model BaseMultiDomainSinglePhase "Base class model for the single-phase 
          OpenIPSL.Interfaces.PwPin p
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
+
     parameter OpenIPSL.Types.ApparentPower M_b = 15e6 "Machine base power"
                                                                           annotation (Dialog(group="Power flow data"));
     extends OpenIPSL.Electrical.Essentials.pfComponent(
@@ -38,9 +39,16 @@ partial model BaseMultiDomainSinglePhase "Base class model for the single-phase 
     final enableP_0=false,
     final enableS_b=true);
 
-  import Modelica.Constants.pi;
+  import Modelica.ComplexMath.j;
   import OpenIPSL.NonElectrical.Functions.SE;
+  import Modelica.Constants.pi;
   import Modelica.Constants.eps;
+  import Complex;
+  import Modelica.ComplexMath.arg;
+  import Modelica.ComplexMath.real;
+  import Modelica.ComplexMath.imag;
+  import Modelica.ComplexMath.conj;
+  import Modelica.Blocks.Interfaces.*;
 
   parameter Real N = 1 "Number of pair of Poles"
                                                 annotation (Dialog(group="Machine parameters"));
@@ -51,6 +59,7 @@ partial model BaseMultiDomainSinglePhase "Base class model for the single-phase 
   Modelica.Units.SI.AngularVelocity ns;
   OpenIPSL.Types.PerUnit s;
   Modelica.Units.SI.Torque T_b;
+  Modelica.Units.SI.Torque T_bm;
   OpenIPSL.Types.PerUnit Tmech_pu_sys;
   OpenIPSL.Types.PerUnit Tmech_pu_motor;
 
@@ -71,10 +80,13 @@ equation
 
   //Conversion from SI torqur to p.u. torque
   Tmech_pu_sys = mech_torque/T_b;
-  Tmech_pu_motor = Tmech_pu_sys/CoB;
+  Tmech_pu_motor = Tmech_pu_sys/T_bm;
 
   //Torque System base
   T_b = S_b/w_b;
+
+  //Torque Machine Base
+  T_bm = M_b/w_b;
 
   connect(Rotor_Inertia.flange_b,flange)
     annotation (Line(points={{-60,0},{-100,0}}, color={0,0,0}));

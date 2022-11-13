@@ -3,8 +3,7 @@ model MD_SPIM
   "This model is the steady-state circuit model of the single phase induction motor model."
 
   extends
-    OpenIMDML.MultiDomainModels.Motors.SinglePhase.BaseClasses.BaseMultiDomainSinglePhase(
-      Rotor_Inertia(w(fixed=false, start=w0)));
+    OpenIMDML.MultiDomainModels.Motors.SinglePhase.BaseClasses.BaseMultiDomainSinglePhase;
 
     parameter OpenIPSL.Types.PerUnit R1 "Stator winding resistor" annotation (Dialog(group="Machine parameters"));
     parameter OpenIPSL.Types.PerUnit R2 "Rotor winding resistor" annotation (Dialog(group="Machine parameters"));
@@ -21,22 +20,24 @@ model MD_SPIM
     OpenIPSL.Types.PerUnit Ii "Imaginary component of the consumed current in Machine Base";
     OpenIPSL.Types.PerUnit P_AGF "Air Gap Power for forward magnetic field";
     OpenIPSL.Types.PerUnit P_AGB "Air Gap Power for reverse field";
-    OpenIPSL.Types.PerUnit P "Net air gap power in single-phase induction motor";
+    OpenIPSL.Types.PerUnit Pc "Net air gap power in single-phase induction motor";
     //OpenIPSL.Types.PerUnit Q "Reactive Power consumed by the single phase induction motor model";
     OpenIPSL.Types.PerUnit Te "Electrical Torque";
-    OpenIPSL.Types.PerUnit Pc;
-    OpenIPSL.Types.PerUnit Qc;
+    OpenIPSL.Types.PerUnit P;
+    OpenIPSL.Types.PerUnit Q;
 
 protected
   parameter OpenIPSL.Types.PerUnit vr0=v_0*cos(angle_0);
   parameter OpenIPSL.Types.PerUnit vi0=v_0*sin(angle_0);
   parameter OpenIPSL.Types.PerUnit ir0=(P_0/S_b*vr0 + Q_0/S_b*vi0)/(vr0^2 + vi0^2);
   parameter OpenIPSL.Types.PerUnit ii0=(P_0/S_b*vi0 - Q_0/S_b*vr0)/(vr0^2 + vi0^2);
-  parameter OpenIPSL.Types.PerUnit w0 = w_b;
-  OpenIPSL.Types.PerUnit sm  "Induction motor slip for calculation when dividing by s";
+  //parameter Modelica.Units.SI.AngularVelocity w0 = w_b;
+  parameter OpenIPSL.Types.PerUnit s0 = Modelica.Constants.eps;
+  OpenIPSL.Types.PerUnit sm(fixed=false, start= s0)   "Induction motor slip for calculation when dividing by s";
 
 initial equation
   der(s) = 0;
+
 
 equation
 
@@ -45,11 +46,12 @@ equation
   I = sqrt(Ir^2 + Ii^2);
 
   //Active and Reactive Power Consumption in the system base
-  Pc = p.vr*p.ir + p.vi*p.ii;
-  Qc = (-p.vr*p.ii) + p.vi*p.ir;
+  P = p.vr*p.ir + p.vi*p.ii;
+  Q = (-p.vr*p.ii) + p.vi*p.ir;
 
   //Slip for calculations
-  sm = s;
+  sm = max(s, Modelica.Constants.eps);
+  //sm = s;
 
   //Forward and Reverse Impedance Calculations
   RF = (-X2*Xm*R2/sm + R2*Xm*(X2 + Xm)/sm)/((R2/sm)^2 + (X2 + Xm)^2);
@@ -62,11 +64,13 @@ equation
 
   P_AGF = I^2*0.5*RF;
   P_AGB = I^2*0.5*RB;
-  P     = P_AGF - P_AGB;
+  Pc     = P_AGF - P_AGB;
 
-  Te = P;
+  Te = Pc;
   der(s) = (Tmech_pu_motor - Te)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+
+
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,0}),

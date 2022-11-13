@@ -13,6 +13,11 @@ model VoltsHertz_Controller
 
    parameter Real f_max = 80 "Maximum input voltage frequency" annotation (Dialog(group="VSD project specifics"));
    parameter Real f_min = 40 "Minimum input voltage frequency" annotation (Dialog(group="VSD project specifics"));
+   parameter Real VSDstart = 0.1 "VSD starting point" annotation (Dialog(group="VSD project specifics"));
+
+
+
+
   Modelica.Blocks.Interfaces.RealInput motor_speed annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
@@ -23,7 +28,7 @@ model VoltsHertz_Controller
         rotation=180,
         origin={120,40})));
   OpenIPSL.NonElectrical.Continuous.SimpleLag Speed_Sensor(K=1, T=Tr,
-    y_start=0)
+    y_start=VSDstart*(2*Modelica.Constants.pi*SysData.fn))
     annotation (Placement(transformation(extent={{-88,-30},{-68,-10}})));
   parameter OpenIPSL.Types.Time Tr=0.01 "Lag time constant"
     annotation (Dialog(group="Control Parameters"));
@@ -35,7 +40,7 @@ model VoltsHertz_Controller
     annotation (Placement(transformation(extent={{-48,-52},{-28,-32}})));
   Modelica.Blocks.Continuous.Integrator integrator(k=Ki,
     initType=Modelica.Blocks.Types.Init.InitialState,
-    y_start=0.1*(2*Modelica.Constants.pi*SysData.fn))
+    y_start=VSDstart*(2*Modelica.Constants.pi*SysData.fn))
     annotation (Placement(transformation(extent={{-48,-84},{-28,-64}})));
   Modelica.Blocks.Math.Add add1(k1=+1)
     annotation (Placement(transformation(extent={{-18,-68},{2,-48}})));
@@ -46,7 +51,7 @@ model VoltsHertz_Controller
                "Connector of Real output signal"
     annotation (Placement(transformation(extent={{100,-60},{140,-20}}),
         iconTransformation(extent={{100,-60},{140,-20}})));
-  Modelica.Blocks.Math.Gain gain1(k=2*sqrt(2))
+  Modelica.Blocks.Math.Gain gain1(k=1)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={30,10})));
@@ -57,7 +62,7 @@ model VoltsHertz_Controller
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={46,120})));
-    Real Kf= gain2.y/(2*pi*fn) "Gain value multiplied with input signal"
+    Real Kf= 1/(2*pi*fn) "Gain value multiplied with input signal"
     annotation (Dialog(group="Control Parameters"));
   parameter Real Kp=5 "Gain value multiplied with input signal"
     annotation (Dialog(group="Control Parameters"));
@@ -84,8 +89,6 @@ model VoltsHertz_Controller
         origin={24,52})));
   Modelica.Blocks.Math.Gain gain2(k=1/V_b)
     annotation (Placement(transformation(extent={{-52,48},{-32,68}})));
-  Modelica.Blocks.Math.Division division
-    annotation (Placement(transformation(extent={{-14,42},{6,62}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=Kf)
     annotation (Placement(transformation(extent={{-88,20},{-68,40}})));
   Modelica.Blocks.Math.Product product1
@@ -93,7 +96,7 @@ model VoltsHertz_Controller
   Modelica.Blocks.Continuous.FirstOrder firstOrder(
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState,
-    y_start=0.1)
+    y_start=VSDstart)
     annotation (Placement(transformation(extent={{48,42},{68,62}})));
 equation
   connect(motor_speed, Speed_Sensor.u) annotation (Line(points={{-110,-20},{-90,
@@ -120,10 +123,6 @@ equation
           {-120,0}},   color={0,0,127}));
   connect(Vc, gain2.u) annotation (Line(points={{-46,120},{-46,74},{-66,74},{-66,
           58},{-54,58}},          color={0,0,127}));
-  connect(gain2.y, division.u2) annotation (Line(points={{-31,58},{-24,
-          58},{-24,46},{-16,46}}, color={0,0,127}));
-  connect(division.y, limiter1.u)
-    annotation (Line(points={{7,52},{12,52}}, color={0,0,127}));
   connect(gain1.u, we) annotation (Line(points={{42,10},{72,10},{72,-40},{120,-40}},
                                                            color={0,0,
           127}));
@@ -140,12 +139,12 @@ equation
     annotation (Line(points={{-67,30},{-54,30}}, color={0,0,127}));
   connect(gain1.y, product1.u2) annotation (Line(points={{19,10},{-66,10},{-66,18},
           {-54,18}}, color={0,0,127}));
-  connect(product1.y, division.u1) annotation (Line(points={{-31,24},{-22,24},{-22,
-          58},{-16,58}}, color={0,0,127}));
   connect(limiter1.y, firstOrder.u) annotation (Line(points={{35,52},{46,52}},
                            color={0,0,127}));
   connect(firstOrder.y, m) annotation (Line(points={{69,52},{72,52},{72,78},{46,
           78},{46,120}}, color={0,0,127}));
+  connect(product1.y, limiter1.u) annotation (Line(points={{-31,24},{-4,24},{-4,
+          52},{12,52}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {80,100}}),                                         graphics={
         Rectangle(

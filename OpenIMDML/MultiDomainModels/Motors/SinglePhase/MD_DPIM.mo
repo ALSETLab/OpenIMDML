@@ -8,7 +8,7 @@ extends
 
   parameter Boolean Sup = true "True: Start-up process, False: Steady-state condition" annotation (Dialog(group="Motor Setup"));
 
-  parameter Integer init "Initialization Method: (1) Split-Phase Motor, (2) Capacitor-Start Motor" annotation (choices(choice=1, choice=2));
+  parameter Integer init "Initialization Method: (1) Split-Phase Motor, (2) Capacitor-Start Motor" annotation (Dialog(group="Motor Setup"), choices(choice=1, choice=2));
   parameter Real switch_open_speed = 0.2 "Auxiliary winding cut-off speed" annotation (Dialog(group="Machine parameters"));
   parameter Modelica.Units.SI.Inductance Lmainr "Mutual-inductance of the main winding" annotation (Dialog(group="Machine parameters"));
   parameter Modelica.Units.SI.Inductance Lmain "Self-inductance of the magnetizing branch" annotation (Dialog(group="Machine parameters"));
@@ -20,13 +20,16 @@ extends
   parameter Modelica.Units.SI.Resistance Raux "Resistance of the auxiliary winding" annotation (Dialog(group="Machine parameters"));
   parameter Modelica.Units.SI.Capacitance Cc "Capacitance of the capacitor-start configuration" annotation (Dialog(group="Machine parameters", enable=(init == 2)));
 
-  OpenIPSL.Types.PerUnit Pc;
-  OpenIPSL.Types.PerUnit Qc;
+  Modelica.Units.SI.Reactance Xmain;
+  Modelica.Units.SI.Reactance Xaux;
+  OpenIPSL.Types.PerUnit P;
+  OpenIPSL.Types.PerUnit Q;
   OpenIPSL.Types.PerUnit s;
   OpenIPSL.Types.PerUnit Te1 "First Component of the Electrical Torque";
   OpenIPSL.Types.PerUnit Te2 "Second Component of the Electrical Torque";
   OpenIPSL.Types.PerUnit Te "Total Electrical Torque";
-  Modelica.Units.SI.Power P;
+  Modelica.Units.SI.ActivePower Pc;
+  Modelica.Units.SI.ReactivePower Qc;
 
     //Modelica.SIunits.Torque Tele;
   Modelica.Units.SI.Current Iaux_real;
@@ -82,6 +85,10 @@ initial equation
 
 equation
 
+  //SI Reactance of the Main Winding of the Dual Phase Induction Motor
+  Xmain = w_b*Lmain;
+  Xaux = w_b*Laux;
+
   //Slip for calculations
   sm = s;
 
@@ -132,13 +139,15 @@ equation
   p.ir = Itotal_real/I_b;
   p.ii = Itotal_imag/I_b;
 
-  Pc = p.vr*p.ir + p.vi*p.ii;
-  Qc = (-p.vr*p.ii) + p.vi*p.ir;
-  P = Pc*S_b;
+  P = p.vr*p.ir + p.vi*p.ii;
+  Q = (-p.vr*p.ii) + p.vi*p.ir;
+  Pc = P*S_b;
+  Qc = Q*S_b;
 
-  Te1 = ((Lmainr^2*(Imain_real^2 + Imain_imag^2) + Lauxr^2*(Iaux_real^2 + Iaux_imag^2))*KminusK_real)/T_b;
-  Te2 = (2*Lmainr*Lauxr*KplusK_real*(Imain_real*Iaux_imag - Imain_imag*Iaux_real))/T_b;
-  Te  =  N*Te1 + Te2;
+
+  Te1 = ((Lmainr^2*(Imain_real^2 + Imain_imag^2) + Lauxr^2*(Iaux_real^2 + Iaux_imag^2))*KminusK_real)/T_bm;
+  Te2 = (2*Lmainr*Lauxr*KplusK_real*(Imain_real*Iaux_imag - Imain_imag*Iaux_real))/T_bm;
+  Te  =  N*(Te1 + Te2);
 
   der(s) = (Tmech_pu_motor - Te)/(2*H);
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

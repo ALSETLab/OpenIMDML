@@ -95,8 +95,8 @@ equation
     annotation (Line(points={{-61,-60},{-22,-60}}, color={0,0,127}));
   connect(gain1.u, gain.u) annotation (Line(points={{-22,-90},{-40,-90},{
           -40,-60},{-22,-60}}, color={0,0,127}));
-  connect(gain.y, aC2DC_and_DC2AC.m_input) annotation (Line(points={{1,-60},
-          {60.5455,-60},{60.5455,38}},      color={0,0,127}));
+  connect(gain.y, aC2DC_and_DC2AC.m_input) annotation (Line(points={{1,-60},{
+          60.5455,-60},{60.5455,38}},       color={0,0,127}));
   connect(gain1.y, Motor1.we) annotation (Line(points={{1,-90},{82,-90},{
           82,38}}, color={0,0,127}));
   connect(Torque1.y, torque1.tau)
