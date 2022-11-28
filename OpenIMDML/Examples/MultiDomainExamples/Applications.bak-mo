@@ -1,9 +1,8 @@
 within OpenIMDML.Examples.MultiDomainExamples;
-package OpenIPSL_DassaultCooling_Example
+package Applications
   extends Modelica.Icons.ExamplesPackage;
 
-  model PumpFeedingTankWithMultiDomainMotor
-    "A tank is filled by a mechanical pump"
+  model PumpFeedingTankWithMultiDomainMotor "A tank is filled by a mechanical pump (UPDATED)"
     extends DymolaModels.Icons.Basic.Example;
     package Medium = Cooling.Media.Liquids.EthyleneGlycol20;
     Cooling.Sources.LiquidPressureBoundary inlet(
@@ -238,13 +237,17 @@ model without any motor.</p>
 </html>"),      Icon(coordinateSystem(preserveAspectRatio=false, extent={{-200,
               -140},{200,140}})),                                  Diagram(coordinateSystem(preserveAspectRatio=false, extent={
               {-200,-140},{200,140}}), graphics={Text(
-            extent={{78,12},{192,-44}},
+            extent={{80,20},{200,-40}},
             textColor={28,108,200},
             textString="Example from Cooling Library",
             textStyle={TextStyle.Bold}), Text(
-            extent={{-56,220},{196,28}},
+            extent={{-68,220},{192,20}},
             textColor={0,140,72},
             textStyle={TextStyle.Bold},
-            textString="Electrical System and Motor (OpenIMDML) + Load (Dassault Cooling Library)")}),                   __3dsJenkins(ignore_pedantic_check=true));
+            textString="Electrical System and Motor (OpenIMDML) + Load (Dassault Cooling Library)"),
+          Line(
+            points={{-200,0},{200,0}},
+            color={28,108,200},
+            thickness=0.5)}),                                                                                            __3dsJenkins(ignore_pedantic_check=true));
   end PumpFeedingTankWithMultiDomainMotor;
-end OpenIPSL_DassaultCooling_Example;
+end Applications;

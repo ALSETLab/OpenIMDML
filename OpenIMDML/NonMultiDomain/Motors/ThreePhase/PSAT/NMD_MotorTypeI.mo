@@ -60,4 +60,5 @@ equation
   //Mechanical Torque Equation
   TL = alpha + beta*s + gamma*s^2;
 
+  annotation(preferredView = "info");
 end NMD_MotorTypeI;

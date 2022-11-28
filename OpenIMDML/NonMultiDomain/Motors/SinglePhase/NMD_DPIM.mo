@@ -144,10 +144,10 @@ equation
 
   Te1 = ((Lmainr^2*(Imain_real^2 + Imain_imag^2) + Lauxr^2*(Iaux_real^2 + Iaux_imag^2))*KminusK_real)/Tb;
   Te2 = (2*Lmainr*Lauxr*KplusK_real*(Imain_real*Iaux_imag - Imain_imag*Iaux_real))/Tb;
-  Te = (poles/2)*Te1 + Te2;
+  Te = (poles/2)*(Te1 + Te2);
   Tm = A + B*s + C*s^2;
 
   der(s) = (Tm - Pc)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end NMD_DPIM;

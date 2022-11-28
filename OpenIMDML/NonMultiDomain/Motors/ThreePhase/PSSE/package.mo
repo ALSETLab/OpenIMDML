@@ -1,3 +1,3 @@
 within OpenIMDML.NonMultiDomain.Motors.ThreePhase;
-package PSSE
+package PSSE "PSSE-Based non multi-domain three-phase induction motor models"
 end PSSE;

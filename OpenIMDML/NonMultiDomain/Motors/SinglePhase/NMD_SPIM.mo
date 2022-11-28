@@ -77,6 +77,6 @@ equation
   Te = P;
   Tm = A + B*s + C*s^2;
   der(s) = (Tm - Te)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end NMD_SPIM;

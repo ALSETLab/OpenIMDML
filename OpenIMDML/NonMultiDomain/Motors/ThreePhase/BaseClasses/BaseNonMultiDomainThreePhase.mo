@@ -1,5 +1,5 @@
 within OpenIMDML.NonMultiDomain.Motors.ThreePhase.BaseClasses;
-partial model BaseNonMultiDomainThreePhase
+partial model BaseNonMultiDomainThreePhase "Base class model for the non multi-domain three-phase induction motor models."
 
   parameter OpenIPSL.Types.ApparentPower M_b = 15e6 "Machine base power"
                                                                         annotation (Dialog(group="Power flow data"));
@@ -115,7 +115,7 @@ equation
   ns = w_sync/N;
   nr = (1-s)*ns;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
                                           Ellipse(
           fillColor={255,255,255},

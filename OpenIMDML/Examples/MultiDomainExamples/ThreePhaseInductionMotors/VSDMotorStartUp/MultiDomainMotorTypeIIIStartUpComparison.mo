@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.MultiDomainExamples.ThreePhaseInductionMotors.VSDMotorStartUp;
-model MultiDomainMotorTypeIIIStartUpComparison
+model MultiDomainMotorTypeIIIStartUpComparison "Validation example for the variable speed drive driven type III motor"
   extends Modelica.Icons.Example;
   extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
   Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,

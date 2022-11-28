@@ -1,6 +1,6 @@
-within OpenIMDML.NonMultiDomain.Motors.ThreePhase.PSSE;
-model NMD_CIM6 "Non Multi-Domain PSSE CIM6 Three-Phase Induction Motor Model."
-  extends BaseClasses.BaseNonMultiDomainThreePhase;
+within OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSSE;
+model CIM5_CIM6 "Multi-Domain CIM5/6 Three-Phase Induction Motor Model."
+  extends BaseClasses.BaseMultiDomainThreePhase;
   import Modelica.Constants.eps;
   import OpenIPSL.NonElectrical.Functions.SE;
 
@@ -19,18 +19,10 @@ model NMD_CIM6 "Non Multi-Domain PSSE CIM6 Three-Phase Induction Motor Model."
   parameter OpenIPSL.Types.PerUnit E2=1.2 "Second Saturation Voltage Value"
                                                                            annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit SE2 = 0.6 "Saturation Factor at E2" annotation (Dialog(group="Machine parameters"));
-  parameter Modelica.Units.SI.Time H = 0.4 "Inertia constant" annotation (Dialog(group="Machine parameters"));
-  parameter Real T_nom = 1 "Load torque at 1 pu speed" annotation (Dialog(group="Machine parameters"));
-
-  parameter Real A = 1 "Load Torque Coefficient D" annotation (Dialog(group="Machine parameters"));
-  parameter Real B = 1 "Load Torque Coefficient D" annotation (Dialog(group="Machine parameters"));
-  parameter Real D = 1 "Load Torque Coefficient D" annotation (Dialog(group="Machine parameters"));
-  parameter Real E = 1 "Load Torque Coefficient D" annotation (Dialog(group="Machine parameters"));
-  parameter Real C0 = 1 "Load Torque Coefficient D" annotation (Dialog(group="Machine parameters"));
+  parameter Modelica.Units.SI.Time H = 0.4 "Inertia constant";
 
   OpenIPSL.Types.PerUnit Te_motor;
   OpenIPSL.Types.PerUnit Te_sys;
-  OpenIPSL.Types.PerUnit TL;
 
   OpenIPSL.Types.PerUnit Epr;
   OpenIPSL.Types.PerUnit Epi;
@@ -148,14 +140,11 @@ equation
 
   // Mechanical Equation
   s = (1 - Omegar);
-  der(s) = (TL - Te_motor)/(2*H);
+  der(s) = (Tmech_pu_motor - Te_motor)/(2*H);
 
   //Electromagnetic torque equation in system and machine base
   Te_sys = Te_motor*CoB;
   Te_motor = Eppr*Ir + Eppi*Ii;
 
-  //Mechanical Torque Equation
-  TL = T_nom*(A*Omegar^2 + B*Omegar + C0 + D*Omegar^E);
-
     annotation (preferredView = "info",Dialog(group="Machine parameters"));
-end NMD_CIM6;
+end CIM5_CIM6;

@@ -152,5 +152,5 @@ equation
   //Mechanical Torque Equation
   TL = T_nom*(1 - s)^D;
 
-    annotation (Dialog(group="Machine parameters"));
+    annotation (preferredView = "info",Dialog(group="Machine parameters"));
 end NMD_CIM5;

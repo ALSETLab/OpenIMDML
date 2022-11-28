@@ -1,3 +1,3 @@
 within OpenIMDML;
-package MultiDomainModels
+package MultiDomainModels "Multi-domain motor models"
 end MultiDomainModels;

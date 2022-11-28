@@ -150,6 +150,6 @@ equation
   Te  =  N*(Te1 + Te2);
 
   der(s) = (Tmech_pu_motor - Te)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end MD_DPIM;

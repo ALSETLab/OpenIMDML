@@ -34,4 +34,5 @@ equation
   s = (1 - Omegar);
   der(s) = (Tmech_pu_motor - Pmotor)/(2*H);
 
+  annotation(preferredView = "info");
 end MotorTypeI;

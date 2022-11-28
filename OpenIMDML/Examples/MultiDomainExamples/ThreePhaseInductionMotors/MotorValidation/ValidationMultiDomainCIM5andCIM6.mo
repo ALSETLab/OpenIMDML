@@ -1,5 +1,5 @@
 ﻿within OpenIMDML.Examples.MultiDomainExamples.ThreePhaseInductionMotors.MotorValidation;
-model ValidationMultiDomainCIM5andCIM6
+model ValidationMultiDomainCIM5andCIM6 "Multi-Domain validation example for the CIM family motor model"
   extends Modelica.Icons.Example;
   extends OpenIMDML.Examples.BaseClasses.ValidationPartial2;
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensorCIM5
@@ -26,8 +26,8 @@ equation
           {142,-40},{142,0},{132,0}},                   color={0,0,0}));
   connect(TorqueCIM5.y,torqueCIM5. tau)
     annotation (Line(points={{93,-40},{110,-40}},    color={0,0,127}));
-  connect(torqueSensorCIM5.tau, CIM.mech_torque) annotation (Line(points={{84,-11},
-          {84,-20},{64,-20},{64,-12}}, color={0,0,127}));
+  connect(torqueSensorCIM5.tau, CIM.mech_torque) annotation (Line(points={{84,
+          -11},{84,-20},{64,-20},{64,-12}}, color={0,0,127}));
   connect(SSCIM.y, CIM.we)
     annotation (Line(points={{41,-36},{58,-36},{58,-12}}, color={0,0,127}));
   connect(CIM.flange, torqueSensorCIM5.flange_a)

@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.MultiDomainExamples.SinglePhaseInductionMotors;
-model MultiDomainDPIM
+model MultiDomainDPIM "Multi-Domain validation example for the dual-phase induction motor (DPIM) model"
   extends Modelica.Icons.Example;
   extends OpenIMDML.Examples.BaseClasses.ValidationPartial1;
   OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_DPIM_2 DPIM(
@@ -38,8 +38,8 @@ model MultiDomainDPIM
   Modelica.Mechanics.Rotational.Components.SpringDamper springDamper(c=0.5, d=
         0.5) annotation (Placement(transformation(extent={{52,-10},{72,10}})));
 equation
-  connect(torque.flange, load_inertia.flange_b) annotation (Line(points={{80,
-          -50},{106,-50},{106,0},{100,0}}, color={0,0,0}));
+  connect(torque.flange, load_inertia.flange_b) annotation (Line(points={{80,-50},
+          {106,-50},{106,0},{100,0}}, color={0,0,0}));
   connect(DPIM.flange, torqueSensor.flange_a)
     annotation (Line(points={{20,0},{24,0}}, color={0,0,0}));
   connect(torqueSensor.tau, DPIM.mech_torque) annotation (Line(points={{26,-11},

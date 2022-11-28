@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.MultiDomainExamples.ThreePhaseInductionMotors.VSDMotorStartUp;
-model MultiDomainMotorTypeIStartUpComparison
+model MultiDomainMotorTypeIStartUpComparison "Validation example for the variable speed drive driven type I motor"
   extends Modelica.Icons.Example;
   extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1

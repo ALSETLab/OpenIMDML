@@ -11,20 +11,24 @@ circuit parameters using only the motor nameplate data."
   import Modelica.ComplexMath.imag;
   import Modelica.ComplexMath.j;
   import Modelica.ComplexMath.abs;
+  import OpenIMDML.Functions.ParameterEstimation.MotorParameterEstimationAuxiliaryFunctions.MotorParameterEstimationGaussSeidel;
+  import OpenIMDML.Functions.ParameterEstimation.MotorParameterEstimationAuxiliaryFunctions.NEMALetterCode;
+  import OpenIMDML.Functions.ParameterEstimation.MotorParameterEstimationAuxiliaryFunctions.NEMADesignClass;
+  import OpenIMDML.Functions.ParameterEstimation.MotorParameterEstimationAuxiliaryFunctions.mean2numbers;
 
   // Inputs
-  input Real Php "Rated Output HorsePower";
-  input Real eff "Full Load Efficiency";
-  input Real PF "Full Load Power Factor";
-  input Real f "System Electrical Frequency";
-  input Integer N "Number of Poles";
-  input Real Nr "Full Load Speed";
-  input String NEMACode "NEMA Code Letter";
-  input String NEMADesign "Nema Design Class";
-  input Real VRated "Rated Terminal Voltage";
+  input Real Php = 15 "Rated Output HorsePower";
+  input Real eff = 0.917 "Full Load Efficiency";
+  input Real PF = 0.77 "Full Load Power Factor";
+  input Real f = 60 "System Electrical Frequency";
+  input Integer N = 6 "Number of Poles";
+  input Real Nr = 1180 "Full Load Speed";
+  input String NEMACode = "F" "NEMA Code Letter";
+  input String NEMADesign = "B" "Nema Design Class";
+  input Real VRated = 230 "Rated Terminal Voltage";
 
   // Variables
-//protected
+protected
    Complex I1;
    Real Pout "Rated Output HorsePower";
    Real Pin;
@@ -34,12 +38,17 @@ circuit parameters using only the motor nameplate data."
    Real Ns;
    Real s;
    Real ILR;
-   output Real Pmech;
-   output Real Pstray;
-   output Real Pcore;
+   //output Real Pmech;
+   //output Real Pstray;
+   //output Real Pcore;
+   Real Pmech;
+   Real Pstray;
+   Real Pcore;
    Real Pconv;
-   output Real PAG;
-   output Real PSCL;
+   //output Real PAG;
+   //output Real PSCL;
+   Real PAG;
+   Real PSCL;
    Real PRCL;
    Real I1mag;
    Real R1;

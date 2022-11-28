@@ -5,7 +5,7 @@ partial model ValidationPartial1
   extends Modelica.Icons.Example;
   OpenIPSL.Electrical.Buses.Bus inf_bus(V_b=230)
     annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
-  OpenIPSL.Electrical.Machines.PSSE.GENCLS gENCLS(V_b=230)
+  OpenIPSL.Electrical.Machines.PSSE.GENCLS gENCLS(V_b=230, X_d=0)
     annotation (Placement(transformation(extent={{-114,-10},{-94,10}})));
   OpenIPSL.Electrical.Buses.Bus load_bus(V_b=230)
     annotation (Placement(transformation(extent={{-26,-10},{-6,10}})));

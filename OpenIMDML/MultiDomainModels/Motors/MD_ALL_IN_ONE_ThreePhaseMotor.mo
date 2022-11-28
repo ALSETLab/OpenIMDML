@@ -67,7 +67,7 @@ equation
     annotation (Line(points={{0,-12},{0,-120}}, color={0,0,127}));
   connect(motor.mech_torque, mech_torque) annotation (Line(points={{6,-12},{6,-96},
           {60,-96},{60,-120}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(
           extent={{-90,100},{90,60}},
           textColor={0,140,72},

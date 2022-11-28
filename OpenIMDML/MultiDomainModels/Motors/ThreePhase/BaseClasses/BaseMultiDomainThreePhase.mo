@@ -156,7 +156,7 @@ equation
   //Torque System base
   T_b = S_b/w_b;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
                                           Ellipse(
           fillColor={255,255,255},

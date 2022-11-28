@@ -28,7 +28,7 @@ model VoltsHertz_Controller
         rotation=180,
         origin={120,40})));
   OpenIPSL.NonElectrical.Continuous.SimpleLag Speed_Sensor(K=1, T=Tr,
-    y_start=VSDstart*(2*Modelica.Constants.pi*SysData.fn))
+    y_start=Modelica.Constants.eps)
     annotation (Placement(transformation(extent={{-88,-30},{-68,-10}})));
   parameter OpenIPSL.Types.Time Tr=0.01 "Lag time constant"
     annotation (Dialog(group="Control Parameters"));
@@ -94,7 +94,7 @@ model VoltsHertz_Controller
   Modelica.Blocks.Math.Product product1
     annotation (Placement(transformation(extent={{-52,14},{-32,34}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(
-    T=0.1,
+    T=0.01,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=VSDstart)
     annotation (Placement(transformation(extent={{48,42},{68,62}})));
@@ -145,7 +145,7 @@ equation
           78},{46,120}}, color={0,0,127}));
   connect(product1.y, limiter1.u) annotation (Line(points={{-31,24},{-4,24},{-4,
           52},{12,52}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+  annotation (preferredView = "info", Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {80,100}}),                                         graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

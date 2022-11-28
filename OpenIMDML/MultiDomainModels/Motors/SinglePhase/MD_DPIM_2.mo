@@ -128,6 +128,6 @@ equation
   Te  =  (N/T_bm)*real(Te_pre);
 
   der(s) = (Tmech_pu_motor - Pmotorbase)/(2*H);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end MD_DPIM_2;

@@ -25,8 +25,8 @@ partial model BaseMultiDomainSinglePhase_forpaper
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={-60,-120})));
-         OpenIPSL.Interfaces.PwPin p
-    annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+         OpenIPSL.Interfaces.PwPin pwpin
+    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
     parameter OpenIPSL.Types.ApparentPower M_b = 15e6 "Machine base power"
                                                                           annotation (Dialog(group="Power flow data"));
@@ -125,5 +125,8 @@ Single-Phase"),
           extent={{-124,-84},{10,-234}},
           textColor={28,108,200},
           textString="mech_torque")}),                           Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false), graphics={Rectangle(
+          extent={{-100,100},{100,-100}},
+          lineColor={28,108,200},
+          lineThickness=0.5)}));
 end BaseMultiDomainSinglePhase_forpaper;

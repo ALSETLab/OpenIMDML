@@ -5,7 +5,8 @@ model ValidationPartial2 "Partial model 2 for validation purposes"
     V_b=16000,
     v_0=1.05,
     M_b=600000000,
-    H=0)
+    H=0,
+    X_d=0)
     annotation (Placement(transformation(extent={{-154,-10},{-134,10}})));
   OpenIPSL.Electrical.Buses.Bus bus1_mt1(V_b=16000, v_0=1.05)
     annotation (Placement(transformation(extent={{-130,-10},{-110,10}})));

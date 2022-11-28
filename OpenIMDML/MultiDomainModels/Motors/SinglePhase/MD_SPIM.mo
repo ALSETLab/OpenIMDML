@@ -70,7 +70,7 @@ equation
   der(s) = (Tmech_pu_motor - Te)/(2*H);
 
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,0}),

@@ -51,7 +51,7 @@ model MotorTypeIII_Validation
             -26}})));
   inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000, fn=60)
     annotation (Placement(transformation(extent={{80,40},{140,80}})));
-  MultiDomainModels.Motors.ThreePhase.PSAT.MotorTypeIII Motor3(V_b=23000)
+  MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000)
     annotation (Placement(transformation(extent={{68,-10},{48,10}})));
 equation
   connect(inf3.p,bus1_mt3. p)

@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.MultiDomainExamples.SinglePhaseInductionMotors;
-model MultiDomainSPIM
+model MultiDomainSPIM "Multi-Domain validation example for the single-phase induction motor (SPIM) model"
   extends Modelica.Icons.Example;
   extends OpenIMDML.Examples.BaseClasses.ValidationPartial1;
   OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_SPIM SPIM(
@@ -35,8 +35,8 @@ model MultiDomainSPIM
   Modelica.Mechanics.Rotational.Components.SpringDamper springDamper(c=0.5, d=0.5)
              annotation (Placement(transformation(extent={{52,-10},{72,10}})));
 equation
-  connect(torque.flange, load_inertia.flange_b) annotation (Line(points={{80,
-          -50},{106,-50},{106,0},{100,0}}, color={0,0,0}));
+  connect(torque.flange, load_inertia.flange_b) annotation (Line(points={{80,-50},
+          {106,-50},{106,0},{100,0}}, color={0,0,0}));
   connect(VariableTorque.y, torque.tau)
     annotation (Line(points={{41,-50},{58,-50}}, color={0,0,127}));
   connect(SPIM.flange, torqueSensor.flange_a)
@@ -50,10 +50,9 @@ equation
   connect(load_bus.p, SPIM.p)
     annotation (Line(points={{-16,0},{0,0}}, color={0,0,255}));
   annotation ( preferredView = "info",
-              Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,
-            -100},{120,100}})),                                  Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,
-            100}})),
+              Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},
+            {120,100}})),                                        Diagram(
+        coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(
       StopTime=10,
       __Dymola_NumberOfIntervals=5000,

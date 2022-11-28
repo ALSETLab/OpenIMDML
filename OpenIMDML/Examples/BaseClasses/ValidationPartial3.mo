@@ -5,7 +5,8 @@ model ValidationPartial3 "Partial model 2 for validation purposes"
     V_b=16000,
     v_0=1.05,
     M_b=600000000,
-    H=0)
+    H=0,
+    X_d=0)
     annotation (Placement(transformation(extent={{-154,40},{-134,60}})));
   OpenIPSL.Electrical.Buses.Bus bus1_mt1(V_b=16000, v_0=1.05)
     annotation (Placement(transformation(extent={{-130,40},{-110,60}})));
@@ -34,12 +35,13 @@ model ValidationPartial3 "Partial model 2 for validation purposes"
   OpenIPSL.Electrical.Loads.PSAT.PQ Load1(V_b=230000, P_0=500000000)
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000, fn=60)
-    annotation (Placement(transformation(extent={{100,80},{140,100}})));
+    annotation (Placement(transformation(extent={{96,80},{150,104}})));
   OpenIPSL.Electrical.Machines.PSSE.GENCLS inf2(
     V_b=16000,
     v_0=1.05,
     M_b=600000000,
-    H=0)
+    H=0,
+    X_d=0)
     annotation (Placement(transformation(extent={{-154,-60},{-134,-40}})));
   OpenIPSL.Electrical.Buses.Bus bus1_mt2(V_b=16000, v_0=1.05)
     annotation (Placement(transformation(extent={{-130,-60},{-110,-40}})));

@@ -1,9 +1,10 @@
 within OpenIMDML.Examples.NonMultiDomainExamples.SinglePhaseInductionMotors;
 model DualPhaseInductionMotor
   extends Modelica.Icons.Example;
-  extends OpenIMDML.Examples.BaseClasses.ValidationPartial1;
+  extends OpenIMDML.Examples.BaseClasses.ValidationPartial1(SysData(S_b=1000000));
 
   OpenIMDML.NonMultiDomain.Motors.SinglePhase.NMD_DPIM DPIM(
+    M_b=15000000,
     V_b=230,
     init=2,
     switch_open_speed=0.2,
@@ -16,8 +17,8 @@ model DualPhaseInductionMotor
     Rr=0.0000376,
     Raux=3.37,
     Cc(displayUnit="F") = 0.001,
-    H=0.00005,
-    a=0.000039,
+    H=0.005,
+    a=0.0039,
     b=0,
     c=0) annotation (Placement(transformation(extent={{40,-10},{20,10}})));
 equation

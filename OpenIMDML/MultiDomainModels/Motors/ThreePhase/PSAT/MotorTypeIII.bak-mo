@@ -39,4 +39,5 @@ equation
   Te_sys = Te_motor*CoB;
   Te_motor = (if Ctrl == false then (epr*Ir + epm*Ii) else (epr*Ir + epm*Ii)/(we_fix.y/w_b));
 
+  annotation(preferredView = "info");
 end MotorTypeIII;

@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.MultiDomainExamples.ThreePhaseInductionMotors.MotorValidation;
-model ValidationMultiDomainTypeI
+model ValidationMultiDomainTypeI "Multi-Domain validation example for the Type I motor model"
   extends Modelica.Icons.Example;
   extends OpenIMDML.Examples.BaseClasses.ValidationPartial2;
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1

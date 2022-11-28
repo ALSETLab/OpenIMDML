@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.MultiDomainExamples;
-package ThreePhaseInductionMotors
+package ThreePhaseInductionMotors "Simple systems to test out the multi-domain three-phase motor models"
   extends Modelica.Icons.ExamplesPackage;
 
 end ThreePhaseInductionMotors;

@@ -1,5 +1,5 @@
 within OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSSE;
-model CIM5_CIM6 "Multi-Domain CIM5/6 Three-Phase Induction Motor Model."
+model MD_CIM "Multi-Domain CIM5/6 Three-Phase Induction Motor Model."
   extends BaseClasses.BaseMultiDomainThreePhase;
   import Modelica.Constants.eps;
   import OpenIPSL.NonElectrical.Functions.SE;
@@ -146,5 +146,5 @@ equation
   Te_sys = Te_motor*CoB;
   Te_motor = Eppr*Ir + Eppi*Ii;
 
-    annotation (Dialog(group="Machine parameters"));
-end CIM5_CIM6;
+    annotation (preferredView = "info",Dialog(group="Machine parameters"));
+end MD_CIM;
