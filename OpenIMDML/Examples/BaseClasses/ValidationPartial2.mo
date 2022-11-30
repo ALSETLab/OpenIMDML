@@ -54,8 +54,8 @@ equation
                                              color={0,0,255}));
   connect(tf2_mt1.n,bus4_mt1. p)
     annotation (Line(points={{11,0},{20,0}},   color={0,0,255}));
-  connect(Load1.p,bus3_mt1. p)
-    annotation (Line(points={{-30,-20},{-30,0},{-20,0}},color={0,0,255}));
+  connect(Load1.p, bus3_mt1.p) annotation (Line(points={{-30,-20},{-30,
+          1.77636e-15},{-28,1.77636e-15},{-28,0},{-20,0}}, color={0,0,255}));
   annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},
             {160,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-160,-100},{160,100}})),

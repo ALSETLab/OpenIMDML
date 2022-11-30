@@ -107,7 +107,7 @@ protected
   parameter OpenIPSL.Types.PerUnit ii0_sys = CoB*ii0 "Initial imaginary current in system base";
   parameter Real CoB = M_b/S_b;
   parameter Real s0 = 1 - eps;
-  parameter Real w0 = if Sup == true then eps else 2*Modelica.Constants.pi*SysData.fn;
+  parameter Real w0 = if Sup == true then 100*eps else 2*Modelica.Constants.pi*SysData.fn;
 
 equation
   connect(Rotor_Inertia.flange_b,flange)
