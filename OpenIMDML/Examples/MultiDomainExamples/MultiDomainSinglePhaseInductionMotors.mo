@@ -5,7 +5,7 @@ package MultiDomainSinglePhaseInductionMotors
 
   model MultiDomainSPIM "Multi-Domain validation example for the single-phase induction motor (SPIM) model"
     extends Modelica.Icons.Example;
-    extends OpenIMDML.Examples.BaseClasses.ValidationPartial1;
+    extends OpenIMDML.Examples.BaseClasses.ValidationPartial4;
     OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_SPIM SPIM(
       M_b(displayUnit="V.A") = 3500,
       V_b=230,
@@ -22,7 +22,7 @@ package MultiDomainSinglePhaseInductionMotors
       Xm=0.1)
            annotation (Placement(transformation(extent={{20,-10},{0,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor
-      annotation (Placement(transformation(extent={{24,-10},{44,10}})));
+      annotation (Placement(transformation(extent={{30,-10},{50,10}})));
     Modelica.Mechanics.Rotational.Components.Inertia load_inertia(J=0.1)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
@@ -31,28 +31,24 @@ package MultiDomainSinglePhaseInductionMotors
     Modelica.Mechanics.Rotational.Sources.Torque torque
       annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
     Modelica.Blocks.Sources.Ramp VariableTorque(
-      height=-10,
-      duration=3.9,
-      offset=-0.01,
-      startTime=0.1)
+      height=-1500,
+      duration=3,
+      offset=-100,
+      startTime=1)
       annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
-    Modelica.Mechanics.Rotational.Components.SpringDamper springDamper(c=0.5, d=0.5)
-               annotation (Placement(transformation(extent={{52,-10},{72,10}})));
   equation
     connect(torque.flange, load_inertia.flange_b) annotation (Line(points={{80,-50},
             {106,-50},{106,0},{100,0}}, color={0,0,0}));
     connect(VariableTorque.y, torque.tau)
       annotation (Line(points={{41,-50},{58,-50}}, color={0,0,127}));
     connect(SPIM.flange, torqueSensor.flange_a)
-      annotation (Line(points={{20,0},{24,0}}, color={0,0,0}));
-    connect(torqueSensor.tau, SPIM.mech_torque) annotation (Line(points={{26,-11},
-            {26,-20},{16,-20},{16,-12}}, color={0,0,127}));
-    connect(load_inertia.flange_a, springDamper.flange_b)
-      annotation (Line(points={{80,0},{72,0}}, color={0,0,0}));
-    connect(springDamper.flange_a, torqueSensor.flange_b)
-      annotation (Line(points={{52,0},{44,0}}, color={0,0,0}));
+      annotation (Line(points={{20,0},{30,0}}, color={0,0,0}));
+    connect(torqueSensor.tau, SPIM.mech_torque) annotation (Line(points={{32,-11},
+            {32,-20},{16,-20},{16,-12}}, color={0,0,127}));
     connect(load_bus.p, SPIM.p)
-      annotation (Line(points={{-16,0},{0,0}}, color={0,0,255}));
+      annotation (Line(points={{-20,0},{0,0}}, color={0,0,255}));
+    connect(torqueSensor.flange_b, load_inertia.flange_a)
+      annotation (Line(points={{50,0},{80,0}}, color={0,0,0}));
     annotation ( preferredView = "info",
                 Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},
               {120,100}})),                                        Diagram(
@@ -78,9 +74,9 @@ package MultiDomainSinglePhaseInductionMotors
 
   model MultiDomainDPIM "Multi-Domain validation example for the dual-phase induction motor (DPIM) model"
     extends Modelica.Icons.Example;
-    extends OpenIMDML.Examples.BaseClasses.ValidationPartial1;
-    OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_DPIM_2 DPIM(
-      M_b(displayUnit="V.A") = 5000,
+    extends OpenIMDML.Examples.BaseClasses.ValidationPartial4;
+    OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_DPIM DPIM(
+      M_b(displayUnit="V.A") = 3500,
       V_b=230,
       P_0=1000,
       Q_0=5000,
@@ -99,42 +95,42 @@ package MultiDomainSinglePhaseInductionMotors
       Rmain=0.58,
       Rr=0.0000376,
       Raux=3.37,
-      Cc=0.000035)
+      Cc=0.0003)
       annotation (Placement(transformation(extent={{20,-10},{0,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor
-      annotation (Placement(transformation(extent={{24,-10},{44,10}})));
-    Modelica.Mechanics.Rotational.Components.Inertia load_inertia(J=0.01)
+      annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+    Modelica.Mechanics.Rotational.Components.Inertia load_inertia(J=0.1)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={90,0})));
     Modelica.Mechanics.Rotational.Sources.Torque torque(useSupport=false)
       annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
-    Modelica.Blocks.Sources.Constant ConstantTorque(k=-150)
+    Modelica.Blocks.Sources.Ramp VariableTorque(
+      height=-1500,
+      duration=3,
+      offset=-100,
+      startTime=1)
       annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
-    Modelica.Mechanics.Rotational.Components.SpringDamper springDamper(c=0.5, d=
-          0.5) annotation (Placement(transformation(extent={{52,-10},{72,10}})));
   equation
     connect(torque.flange, load_inertia.flange_b) annotation (Line(points={{80,-50},
             {106,-50},{106,0},{100,0}}, color={0,0,0}));
     connect(DPIM.flange, torqueSensor.flange_a)
-      annotation (Line(points={{20,0},{24,0}}, color={0,0,0}));
-    connect(torqueSensor.tau, DPIM.mech_torque) annotation (Line(points={{26,-11},
-            {26,-20},{16,-20},{16,-12}}, color={0,0,127}));
-    connect(ConstantTorque.y, torque.tau)
-      annotation (Line(points={{41,-50},{58,-50}}, color={0,0,127}));
+      annotation (Line(points={{20,0},{30,0}}, color={0,0,0}));
+    connect(torqueSensor.tau, DPIM.mech_torque) annotation (Line(points={{32,-11},
+            {32,-20},{16,-20},{16,-12}}, color={0,0,127}));
     connect(load_bus.p, DPIM.p)
-      annotation (Line(points={{-16,0},{0,0}}, color={0,0,255}));
-    connect(torqueSensor.flange_b, springDamper.flange_a)
-      annotation (Line(points={{44,0},{52,0}}, color={0,0,0}));
-    connect(springDamper.flange_b, load_inertia.flange_a)
-      annotation (Line(points={{72,0},{80,0}}, color={0,0,0}));
+      annotation (Line(points={{-20,0},{0,0}}, color={0,0,255}));
+    connect(torqueSensor.flange_b, load_inertia.flange_a)
+      annotation (Line(points={{50,0},{80,0}}, color={0,0,0}));
+    connect(VariableTorque.y, torque.tau)
+      annotation (Line(points={{41,-50},{58,-50}}, color={0,0,127}));
     annotation (preferredView = "info",
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},
               {120,100}})),                                        Diagram(
           coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
       experiment(
-        StopTime=3,
+        StopTime=5,
         __Dymola_NumberOfIntervals=50000,
         __Dymola_Algorithm="Dassl"),
       Documentation(info="<html>

@@ -21,9 +21,9 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       use_powerCharacteristic=false,
       redeclare function powerCharacteristic =
           Modelica.Fluid.Machines.BaseClasses.PumpCharacteristics.quadraticPower,
-
       V=5)
       annotation (Placement(transformation(extent={{60,-50},{80,-30}})));
+
     Modelica.Fluid.Pipes.StaticPipe pipe(
       allowFlowReversal=true,
       length=500,
@@ -51,14 +51,15 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       M_b=10000,
       Sup=true,
       Ctrl=false,
+      H=0.4,
       redeclare
         OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeI motor(
           R1=0.08))
       annotation (Placement(transformation(extent={{30,-10},{50,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
       annotation (Placement(transformation(extent={{56,-10},{76,10}})));
-    Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=2, w(fixed
-          =false, start=0.0001))
+    Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.5, w(
+          fixed=false, start=0.0001))
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
@@ -66,8 +67,8 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
     inner Modelica.Fluid.System system(
       T_ambient=323.15,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      m_flow_start=0)                annotation (Placement(transformation(extent={{70,60},
-              {90,80}})));
+      m_flow_start=0)                annotation (Placement(transformation(extent={{-88,40},
+              {-68,60}})));
     Modelica.Blocks.Sources.Ramp valveClosing(
       height=-0.9,
       duration=1,
@@ -84,7 +85,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       t1=35,
       t2=35.3,
       R=0.05,
-      X=0.05) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
+      X=0.05) annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
   equation
     connect(bus4_mt1.p, motor.pwpin)
       annotation (Line(points={{20,0},{30,0}}, color={0,0,255}));
@@ -106,9 +107,12 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       annotation (Line(points={{80,-40},{86,-40}}, color={0,127,255}));
     connect(valveClosing.y, clogged_pipe.opening)
       annotation (Line(points={{81,-80},{96,-80},{96,-48}}, color={0,0,127}));
-    connect(fault.p, tf1_mt1.n) annotation (Line(points={{-81.6667,50},{-90,50},
-            {-90,0},{-89,0}}, color={0,0,255}));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-          coordinateSystem(preserveAspectRatio=false)));
+    connect(fault.p, tf1_mt1.n) annotation (Line(points={{-81.6667,-40},{-90,
+            -40},{-90,0},{-89,0}},
+                              color={0,0,255}));
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,
+              -100},{160,80}})),                                   Diagram(
+          coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,
+              80}})));
   end TankExample;
 end MultiDomainApplications;

@@ -4,11 +4,9 @@ Library using Modelica"
 
 annotation (preferredView = "info",uses(
     Modelica(version="4.0.0"),
-    OpenIPSL(version="2.0.0-beta.1"),
+    OpenIPSL(version="3.1.0-dev"),
     Complex(version="4.0.0"),
-    Modelon(version="4.0"),
-    DymolaModels(version="1.5.0"),
-    Cooling(version="1.4.4")), Icon(graphics={
+    DymolaModels(version="1.5.0")), Icon(graphics={
       Rectangle(
         extent={{-100,100},{100,-100}},
         lineColor={238,46,47},

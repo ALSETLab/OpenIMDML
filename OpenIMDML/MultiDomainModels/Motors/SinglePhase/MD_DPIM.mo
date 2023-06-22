@@ -24,6 +24,8 @@ extends
   Modelica.Units.SI.Reactance Xaux;
   OpenIPSL.Types.PerUnit P;
   OpenIPSL.Types.PerUnit Q;
+  OpenIPSL.Types.PerUnit Pmb;
+  OpenIPSL.Types.PerUnit Qmb;
   OpenIPSL.Types.PerUnit s;
   OpenIPSL.Types.PerUnit Te1 "First Component of the Electrical Torque";
   OpenIPSL.Types.PerUnit Te2 "Second Component of the Electrical Torque";
@@ -141,6 +143,9 @@ equation
 
   P = p.vr*p.ir + p.vi*p.ii;
   Q = (-p.vr*p.ii) + p.vi*p.ir;
+
+  Pmb = P/CoB;
+  Qmb = Q/CoB;
   Pc = P*S_b;
   Qc = Q*S_b;
 
@@ -149,7 +154,7 @@ equation
   Te2 = (2*Lmainr*Lauxr*KplusK_real*(Imain_real*Iaux_imag - Imain_imag*Iaux_real))/T_bm;
   Te  =  N*(Te1 + Te2);
 
-  der(s) = (Tmech_pu_motor - Te)/(2*H);
+  der(s) = (Tmech_pu_motor - Pmb)/(2*H);
   annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end MD_DPIM;

@@ -52,7 +52,7 @@ package NonMultiDomainSinglePhaseInductionMotors "Simple systems to test out the
     OpenIMDML.NonMultiDomain.Motors.SinglePhase.NMD_DPIM DPIM(
       M_b=15000000,
       V_b=230,
-      init=2,
+      init=1,
       switch_open_speed=0.2,
       Lmainr=0.000588,
       Lmain=0.0806,

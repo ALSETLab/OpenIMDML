@@ -108,6 +108,10 @@ protected
   parameter Real CoB = M_b/S_b;
   parameter Real s0 = 1 - eps;
   parameter Real w0 = if Sup == true then 100*eps else 2*Modelica.Constants.pi*SysData.fn;
+  parameter OpenIPSL.Types.PerUnit epm0 = 0;
+  parameter OpenIPSL.Types.PerUnit eppm0 = 0;
+  parameter OpenIPSL.Types.PerUnit eppr0 = 0;
+  parameter OpenIPSL.Types.PerUnit epr0 = 0;
 
 equation
   connect(Rotor_Inertia.flange_b,flange)

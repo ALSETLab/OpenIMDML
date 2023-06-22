@@ -326,6 +326,7 @@ The all-in-one induction motor model contains a replaceable model, which is the 
     model MultiDomainMotorTypeIStartUpComparison "Validation example for the variable speed drive driven type I motor"
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
+      parameter Real Ro = 0.1;
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{92,40},{112,60}})));
       Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=1)
@@ -348,7 +349,7 @@ The all-in-one induction motor model contains a replaceable model, which is the 
         Ki=1) annotation (Placement(transformation(extent={{28,-10},{46,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
         height=0.9*(2*Modelica.Constants.pi*SysData.fn),
-        duration=40,
+        duration=5,
         offset=0.1*(2*Modelica.Constants.pi*SysData.fn))
         annotation (Placement(transformation(extent={{-6,-10},{14,10}})));
       Modelica.Blocks.Sources.RealExpression TorqueEquation(y=-(0.1*(15/100)*(
@@ -441,6 +442,7 @@ The user can compare both startup currents in one example and confirm that the s
     model MultiDomainMotorTypeIIIStartUpComparison "Validation example for the variable speed drive driven type III motor"
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
+      parameter Real Ro = 0.1;
       Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
           v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
       Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
@@ -558,6 +560,7 @@ The user can compare both startup currents in one example and confirm that the s
     model MultiDomainMotorTypeVStartUpComparison "Validation example for the variable speed drive driven type V motor"
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
+      parameter Real Ro = 0.1;
       Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
           v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
       Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
@@ -674,13 +677,14 @@ The user can compare both startup currents in one example and confirm that the s
     model MultiDomainMotorCIMStartUpComparison "Validation example for the variable speed drive driven CIM motor"
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
+      parameter Real Ro = 0.1;
       Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
           v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
       Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
-        VSDstart=0.01,
+        VSDstart=0.1,
         Kp=0.1,
         Ki=0.01)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
@@ -697,9 +701,9 @@ The user can compare both startup currents in one example and confirm that the s
             CIMVSD.s) + 0.5*(15/100)*(1 - CIMVSD.s)^2)*CIMVSD.T_b)
         annotation (Placement(transformation(extent={{88,-10},{108,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
-        height=0.99*(2*Modelica.Constants.pi*SysData.fn),
+        height=0.9*(2*Modelica.Constants.pi*SysData.fn),
         duration=5,
-        offset=0.01*(2*Modelica.Constants.pi*SysData.fn))
+        offset=0.1*(2*Modelica.Constants.pi*SysData.fn))
         annotation (Placement(transformation(extent={{-6,-10},{14,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
@@ -778,21 +782,17 @@ The user can compare both startup currents in one example and confirm that the s
           __Dymola_NumberOfIntervals=5000,
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
-<p>The example MultiDomainMotorTypeCIMStartUpComparison contains two separate systems meant for comparison. The top system is a multi-domain three-phase type V induction motor model controlled by a Variable Speed Drive while the bottom system is the same example but with no VSD controller.
-The purpose of this example is to compare the startup current magnitude of both systems and to point out one of the major benefits of using a VSD in the startup process. Starting an induction motor from a halt condition
-generates a peak starting current in the motor which is detrimental to the stability of the electrical system and to the magnitization coils of the machine itself. 
-The user can compare both startup currents in one example and confirm that the startup current magnitude in the VSD example is substantially smaller in comparison to the non VSD example.</p>
- 
-<p>The Volts/Hertz scalar variable speed drive model is based on paper <i>Del Rosso, A. D., Mariano Anello, and E. Spittle. \"Stability Assessment of Isolated Power Systems with Large Induction Motor Drives.\" 2006 IEEE/PES Transmission & Distribution Conference and Exposition: Latin America. IEEE, 2006. </i><\\p>
+<p>The example MultiDomainMotorTypeCIMStartUpComparison contains two separate systems meant for comparison. The top system is a multi-domain three-phase type V induction motor model controlled by a Variable Speed Drive while the bottom system is the same example but with no VSD controller. The purpose of this example is to compare the startup current magnitude of both systems and to point out one of the major benefits of using a VSD in the startup process. Starting an induction motor from a halt condition generates a peak starting current in the motor which is detrimental to the stability of the electrical system and to the magnitization coils of the machine itself. The user can compare both startup currents in one example and confirm that the startup current magnitude in the VSD example is substantially smaller in comparison to the non VSD example. </p>
+<p>The Volts/Hertz scalar variable speed drive model is based on paper <i>Del Rosso, A. D., Mariano Anello, and E. Spittle. &quot;Stability Assessment of Isolated Power Systems with Large Induction Motor Drives.&quot; 2006 IEEE/PES Transmission &amp; Distribution Conference and Exposition: Latin America. IEEE, 2006. </i></p>
 <p>Simulate the system for 50 seconds. Variables of interest and comparison are:</p>
 <ul>
-<li><code>CIM.Imag vs CIM_with_VSD.Imag</code></li>
-<li><code>CIM.s vs CIM_with_VSD.s</code></li>
-<li><code>CIM.wr vs CIM_with_VSD.wr</code></li>
-<li><code>CIM.P vs CIM_with_VSD.P</code></li>
-<li><code>CIM.Q vs CIM_with_VSD.Q</code></li>
-<li><code>VfController.m</code></li>
-<li><code>VfController.we</code></li>
+<li><span style=\"font-family: Courier New;\">CIM.Imag vs CIMVSD.Imag</span></li>
+<li><span style=\"font-family: Courier New;\">CIM.s vs CIMVSD.s</span></li>
+<li><span style=\"font-family: Courier New;\">CIM.wr vs CIMVSD.wr</span></li>
+<li><span style=\"font-family: Courier New;\">CIM.P vs CIMVSD.P</span></li>
+<li><span style=\"font-family: Courier New;\">CIM.Q vs CIMVSD.Q</span></li>
+<li><span style=\"font-family: Courier New;\">VfController.m</span></li>
+<li><span style=\"font-family: Courier New;\">VfController.we</span></li>
 </ul>
 </html>"));
     end MultiDomainMotorCIMStartUpComparison;
@@ -802,6 +802,7 @@ The user can compare both startup currents in one example and confirm that the s
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3(inf2(X_d=0), inf1(
             X_d=0));
+      parameter Real Ro = 0.1;
 
       OpenIPSL.Types.PerUnit TorqVSD;
       OpenIPSL.Types.PerUnit Torq;
@@ -812,7 +813,7 @@ The user can compare both startup currents in one example and confirm that the s
         V_b=23000,
         f_max=60,
         f_min=0,
-        VSDstart=0.001)
+        VSDstart=0.1)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{92,40},{112,60}})));
@@ -826,9 +827,9 @@ The user can compare both startup currents in one example and confirm that the s
       Modelica.Blocks.Sources.RealExpression TorqueEquation1(y=TorqVSD)
         annotation (Placement(transformation(extent={{80,-10},{100,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
-        height=(2*Modelica.Constants.pi*SysData.fn),
-        duration=40,
-        offset=0.001*(2*Modelica.Constants.pi*SysData.fn))
+        height=0.9*(2*Modelica.Constants.pi*SysData.fn),
+        duration=5,
+        offset=0.1*(2*Modelica.Constants.pi*SysData.fn))
         annotation (Placement(transformation(extent={{-6,-10},{14,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor2
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
@@ -901,21 +902,17 @@ The user can compare both startup currents in one example and confirm that the s
           __Dymola_NumberOfIntervals=5000,
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
-<p>The example MultiDomainMotorTypeCIMStartUpComparison contains two separate systems meant for comparison. The top system is a multi-domain three-phase type V induction motor model controlled by a Variable Speed Drive while the bottom system is the same example but with no VSD controller.
-The purpose of this example is to compare the startup current magnitude of both systems and to point out one of the major benefits of using a VSD in the startup process. Starting an induction motor from a halt condition
-generates a peak starting current in the motor which is detrimental to the stability of the electrical system and to the magnitization coils of the machine itself. 
-The user can compare both startup currents in one example and confirm that the startup current magnitude in the VSD example is substantially smaller in comparison to the non VSD example.</p>
- 
-<p>The Volts/Hertz scalar variable speed drive model is based on paper <i>Del Rosso, A. D., Mariano Anello, and E. Spittle. \"Stability Assessment of Isolated Power Systems with Large Induction Motor Drives.\" 2006 IEEE/PES Transmission & Distribution Conference and Exposition: Latin America. IEEE, 2006. </i><\\p>
+<p>The example MultiDomainMotorStartUpComparison contains two separate systems meant for comparison. The top system is an ALL-IN-ONE multi-domain induction motor model controlled by a Variable Speed Drive while the bottom system is the same example but with no VSD controller. The purpose of this example is to compare the startup current magnitude of both systems and to point out one of the major benefits of using a VSD in the startup process. Starting an induction motor from a halt condition generates a peak starting current in the motor which is detrimental to the stability of the electrical system and to the magnitization coils of the machine itself. The user can compare both startup currents in one example and confirm that the startup current magnitude in the VSD example is substantially smaller in comparison to the non VSD example. </p>
+<p>The Volts/Hertz scalar variable speed drive model is based on paper <i>Del Rosso, A. D., Mariano Anello, and E. Spittle. &quot;Stability Assessment of Isolated Power Systems with Large Induction Motor Drives.&quot; 2006 IEEE/PES Transmission &amp; Distribution Conference and Exposition: Latin America. IEEE, 2006. </i></p>
 <p>Simulate the system for 50 seconds. Variables of interest and comparison are:</p>
 <ul>
-<li><code>CIM.Imag vs CIM_with_VSD.Imag</code></li>
-<li><code>CIM.s vs CIM_with_VSD.s</code></li>
-<li><code>CIM.wr vs CIM_with_VSD.wr</code></li>
-<li><code>CIM.P vs CIM_with_VSD.P</code></li>
-<li><code>CIM.Q vs CIM_with_VSD.Q</code></li>
-<li><code>VfController.m</code></li>
-<li><code>VfController.we</code></li>
+<li><span style=\"font-family: Courier New;\">motor.motor.Imag vs motorVSD.motor.Imag</span></li>
+<li><span style=\"font-family: Courier New;\">motor.motor.s vs motorVSD.motor.s</span></li>
+<li><span style=\"font-family: Courier New;\">motor.motor.wr vs motorVSD.motor.wr</span></li>
+<li><span style=\"font-family: Courier New;\">motor.motor.P vs motorVSD.motor.P</span></li>
+<li><span style=\"font-family: Courier New;\">motor.motor.Q vs motorVSD.motor.Q</span></li>
+<li><span style=\"font-family: Courier New;\">VfController.m</span></li>
+<li><span style=\"font-family: Courier New;\">VfController.we</span></li>
 </ul>
 </html>"));
     end MultiDomainMotorStartUpComparison;
@@ -1005,6 +1002,8 @@ Check equation section.")}));
       extends BaseClasses.ValidationPartial2;
       parameter Real v_start = 0.1;
       parameter Real f_start = 0.1;
+      Real Torq;
+
 
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{94,-10},{114,10}})));
@@ -1019,8 +1018,7 @@ Check equation section.")}));
         annotation (Placement(transformation(extent={{82,-10},{62,10}})));
       Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
           v_0=1) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
-      Modelica.Blocks.Sources.RealExpression TorqueEquation(y=-(0.1*(15/100)*(
-            Motor3VSD.s) + 0.5*(15/100)*(1 - Motor3VSD.s)^2)*Motor3VSD.T_b)
+      Modelica.Blocks.Sources.RealExpression TorqueEquation(y=Torq)
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
       Modelica.Blocks.Sources.RealExpression SVR(y=v_start)
         annotation (Placement(transformation(extent={{0,-40},{20,-20}})));
@@ -1029,6 +1027,11 @@ Check equation section.")}));
       Modelica.Blocks.Math.Gain gain(k=2*Modelica.Constants.pi*SysData.fn)
         annotation (Placement(transformation(extent={{32,-56},{44,-44}})));
     equation
+
+      Torq = -0.4*Motor3VSD.wr^2;
+      //Torq = -(0.1*(15/100)*(Motor3VSD.s) + 0.5*(15/100)*(1 - Motor3VSD.s)^2)*Motor3VSD.T_b;
+
+
 
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
         annotation (Line(points={{114,0},{122,0}},   color={0,0,0}));
@@ -1052,12 +1055,25 @@ Check equation section.")}));
         annotation (Line(points={{21,-50},{30.8,-50}}, color={0,0,127}));
       connect(gain.y, Motor3VSD.we)
         annotation (Line(points={{44.6,-50},{72,-50},{72,-12}}, color={0,0,127}));
+      annotation (Diagram(graphics={
+            Line(
+              points={{66,-72},{88,-56}},
+              color={28,108,200},
+              arrow={Arrow.None,Arrow.Filled}),
+            Rectangle(extent={{38,-72},{94,-92}}, lineColor={28,108,200}),
+            Text(
+              extent={{40,-72},{92,-92}},
+              textColor={28,108,200},
+              textString="Mechanical Torque emulates
+a fan or blower-type load.
+Check equation section.")}));
     end VariableVoltageFrequencyMotorTypeIII;
 
     model VariableVoltageFrequencyMotorTypeV
       extends BaseClasses.ValidationPartial2;
       parameter Real v_start = 0.1;
       parameter Real f_start = 0.1;
+      Real Torq;
 
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{94,-10},{114,10}})));
@@ -1083,6 +1099,9 @@ Check equation section.")}));
         annotation (Placement(transformation(extent={{32,-56},{44,-44}})));
     equation
 
+      Torq = -0.4*Motor5VSD.wr^2;
+      //Torq = -(0.1*(15/100)*(Motor5VSD.s) + 0.5*(15/100)*(1 - Motor5VSD.s)^2)*Motor5VSD.T_b;
+
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
         annotation (Line(points={{114,0},{122,0}},   color={0,0,0}));
       connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{142,-50},
@@ -1105,6 +1124,18 @@ Check equation section.")}));
         annotation (Line(points={{21,-50},{30.8,-50}}, color={0,0,127}));
       connect(gain.y, Motor5VSD.we)
         annotation (Line(points={{44.6,-50},{72,-50},{72,-12}}, color={0,0,127}));
+      annotation (Diagram(graphics={
+            Line(
+              points={{66,-72},{88,-56}},
+              color={28,108,200},
+              arrow={Arrow.None,Arrow.Filled}),
+            Rectangle(extent={{38,-72},{94,-92}}, lineColor={28,108,200}),
+            Text(
+              extent={{40,-72},{92,-92}},
+              textColor={28,108,200},
+              textString="Mechanical Torque emulates
+a fan or blower-type load.
+Check equation section.")}));
     end VariableVoltageFrequencyMotorTypeV;
   end MultiDomainControllableMotor;
 end MultiDomainThreePhaseInductionMotors;
