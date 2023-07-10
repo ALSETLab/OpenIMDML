@@ -27,6 +27,24 @@ model NMD_MotorTypeIII "Non Multi-Domain Type III Three-Phase Induction Motor Mo
   Real beta;
   Real gamma;
 
+protected
+  parameter Real S0 = R1/w_b;
+  parameter Real W0 = -s0*w_b + w_b;
+  parameter Real s0 = if Sup == true then (1 - Modelica.Constants.eps) else S0;
+  parameter Real w_start = if Sup == true then Modelica.Constants.eps else W0;
+
+initial equation
+  if Sup == false then
+    der(s) = Modelica.Constants.eps;
+    der(epm) = Modelica.Constants.eps;
+    der(epr) = Modelica.Constants.eps;
+
+  else
+    s = 1 - Modelica.Constants.eps;
+    der(epm) = 0;
+
+  end if;
+
 equation
 
   //Rotor impedance based on controllable model

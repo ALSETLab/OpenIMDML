@@ -87,7 +87,8 @@ The three-phase induction motor type I is based on the non multi-domain model fr
             SysData.fn))
                     annotation (Placement(transformation(extent={{20,-46},{40,
                 -26}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000)
+      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000,
+          Sup=false)
         annotation (Placement(transformation(extent={{68,-10},{48,10}})));
     equation
       connect(torqueSensor3.flange_b,load_inertia3. flange_a)

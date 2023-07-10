@@ -1,7 +1,7 @@
 within OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT;
 model MD_MotorTypeIII
   "Multi-Domain Type III Three-Phase Induction Motor Model."
-  extends BaseClasses.BaseMultiDomainThreePhase;
+  extends BaseClasses.BaseMultiDomainThreePhase(Rotor_Inertia(w(fixed=false)));
 
   parameter OpenIPSL.Types.PerUnit Rs=0 "Stator resistance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit Xs=0.0759 "Stator reactance" annotation (Dialog(group="Machine parameters"));
