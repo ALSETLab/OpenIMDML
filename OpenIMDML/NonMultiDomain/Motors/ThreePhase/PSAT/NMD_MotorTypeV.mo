@@ -34,11 +34,7 @@ model NMD_MotorTypeV "Non Multi-Domain Type V Three-Phase Induction Motor Model.
 
 initial equation
   if Sup == false then
-    der(s) = 0;
-    der(epm) = Modelica.Constants.eps;
-    der(epr) = Modelica.Constants.eps;
-    der(eppm) = Modelica.Constants.eps;
-    der(eppr) = Modelica.Constants.eps;
+    s = Modelica.Constants.eps;
 
   else
     s = (1 - Modelica.Constants.eps);

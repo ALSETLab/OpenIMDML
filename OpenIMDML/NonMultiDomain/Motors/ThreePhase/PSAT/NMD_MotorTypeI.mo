@@ -30,9 +30,9 @@ protected
 
 initial equation
   if Sup == false then
-    der(s) = 0;
+    der(s) = Modelica.Constants.eps;
   else
-    s = s0;
+    s = 1 - Modelica.Constants.eps;
   end if;
 
 equation
