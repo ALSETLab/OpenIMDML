@@ -38,7 +38,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
     Modelica.Fluid.Vessels.OpenTank reservoir(
       T_start=Modelica.Units.Conversions.from_degC(20),
       use_portsData=true,
-      crossArea=5,
+      crossArea=1,
       level_start=0,
       height=5,
       portsData={Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter=
@@ -53,13 +53,12 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       Ctrl=false,
       H=0.4,
       redeclare
-        OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeI motor(
-          R1=0.08))
+        OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII
+        motor)
       annotation (Placement(transformation(extent={{30,-10},{50,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
       annotation (Placement(transformation(extent={{56,-10},{76,10}})));
-    Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.5, w(
-          fixed=false, start=0.0001))
+    Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.5)
       annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
@@ -113,6 +112,24 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,
               -100},{160,80}})),                                   Diagram(
           coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,
-              80}})));
+              80}})),
+      experiment(
+        StopTime=10,
+        __Dymola_NumberOfIntervals=10000,
+        __Dymola_Algorithm="Dassl"),
+      Documentation(info="<html>
+<p>The TankExample displays a simple test case where the multi-domain motor model typeI is being used to drive a pump that fills the reservoir.</p>
+<p>A restriction in the water flow through the piping system emulates a clogged pipe, which is reflected in the water volume and level in the reservoir component. The clogging of the pipe starts at t=25 s. </p>
+<p>Simulate the system for 100 seconds. Variables of interest and comparison are:</p>
+<ul>
+<li><span style=\"font-family: Courier New;\">Motor1.Imag</span></li>
+<li><span style=\"font-family: Courier New;\">Motor1.s</span></li>
+<li><span style=\"font-family: Courier New;\">Motor1.wr</span></li>
+<li><span style=\"font-family: Courier New;\">Motor1.P</span></li>
+<li><span style=\"font-family: Courier New;\">Motor1.Q</span></li>
+<li><span style=\"font-family: Courier New;\">reservoir.level</span></li>
+<li><span style=\"font-family: Courier New;\">reservoir.V</span></li>
+</ul>
+</html>"));
   end TankExample;
 end MultiDomainApplications;

@@ -11,7 +11,7 @@ package NonMultiDomainThreePhaseInductionMotors "Simple systems to test out the 
       Modelica.Blocks.Sources.RealExpression SS1(y = 2*Modelica.Constants.pi*(SysData.fn + 10)) annotation (
         Placement(transformation(extent = {{40, -46}, {60, -26}})));
       NonMultiDomain.Motors.ThreePhase.PSAT.NMD_MotorTypeI Motor1(N = 1,
-        Sup= false,
+        Sup=true,
         V_b=23000,                                                                                 a = 0.1, b = 0.1, c = 0.1) annotation (
         Placement(transformation(extent = {{100, -10}, {80, 10}})));
     equation
@@ -80,7 +80,7 @@ a different load torque profile because the mechanical torque equations do not m
       Modelica.Blocks.Sources.RealExpression SS5(y = 2*Modelica.Constants.pi*(SysData.fn)) annotation (
         Placement(transformation(extent = {{40, -46}, {60, -26}})));
       NonMultiDomain.Motors.ThreePhase.PSAT.NMD_MotorTypeV Motor5(
-        Sup= false,
+        Sup=true,
         V_b=23000,                                                                          a = 0.1, b = 0.1, c = 0.1) annotation (
         Placement(transformation(extent = {{100, -10}, {80, 10}})));
     equation
@@ -113,7 +113,7 @@ a different load torque profile because the mechanical torque equations do not m
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial2(bus2_mt1(v_0 = 1.031491, angle_0 = -0.11763519158442), bus3_mt1(v_0 = 1.026884, angle_0 = -0.21022037054666), Load1(v_0 = 1.026884, angle_0 = -0.21022037054666), bus4_mt1(v_0 = 1.026884, angle_0 = -0.21022037054666));
       Modelica.Blocks.Sources.RealExpression SSCIM5(y = 2*Modelica.Constants.pi*(SysData.fn)) annotation (
         Placement(transformation(extent = {{40, -46}, {60, -26}})));
-      NonMultiDomain.Motors.ThreePhase.PSSE.NMD_CIM5 CIM5(Mtype = 2, Sup = false, T_nom = 0.5, V_b = 23000) annotation (
+      NonMultiDomain.Motors.ThreePhase.PSSE.NMD_CIM5 CIM5(Mtype = 1, Sup = true, T_nom = 0.5, V_b = 23000) annotation (
         Placement(transformation(extent = {{100, -10}, {80, 10}})));
     equation
       connect(SSCIM5.y, CIM5.we) annotation (

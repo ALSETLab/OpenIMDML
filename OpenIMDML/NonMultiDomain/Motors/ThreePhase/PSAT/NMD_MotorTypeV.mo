@@ -38,6 +38,10 @@ initial equation
 
   else
     s = (1 - Modelica.Constants.eps);
+    epm=0;
+    epr=0;
+    eppm=0;
+    eppr=0;
 
   end if;
 

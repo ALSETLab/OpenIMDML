@@ -9,14 +9,25 @@ model MD_MotorTypeIII
   parameter OpenIPSL.Types.PerUnit X1=0.0759 "1st cage rotor reactance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit Xm=3.1241 "Magnetizing reactance" annotation (Dialog(group="Machine parameters"));
 
-  OpenIPSL.Types.PerUnit epr(start = epr0, fixed=false);
-  OpenIPSL.Types.PerUnit epm(start = epm0, fixed=false);
+  OpenIPSL.Types.PerUnit epr;
+  OpenIPSL.Types.PerUnit epm;
   OpenIPSL.Types.PerUnit X0;
   OpenIPSL.Types.PerUnit Xp;
   OpenIPSL.Types.Time Tp0;
 
   OpenIPSL.Types.PerUnit Te_motor;
   OpenIPSL.Types.PerUnit Te_sys;
+
+initial equation
+  if Sup == false then
+    der(epm) = Modelica.Constants.eps;
+    der(epr) = Modelica.Constants.eps;
+
+  else
+    der(epm) = 0;
+
+  end if;
+
 
 equation
 

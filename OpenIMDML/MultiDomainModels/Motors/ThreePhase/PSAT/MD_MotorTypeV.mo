@@ -10,10 +10,14 @@ model MD_MotorTypeV "Multi-Domain Type V Three-Phase Induction Motor Model."
   parameter OpenIPSL.Types.PerUnit X2=0 "1st cage rotor reactance" annotation (Dialog(group="Machine parameters"));
   parameter OpenIPSL.Types.PerUnit Xm=3.1241 "Magnetizing reactance" annotation (Dialog(group="Machine parameters"));
 
-  OpenIPSL.Types.PerUnit epr(start = epr0, fixed=false);
-  OpenIPSL.Types.PerUnit epm(start = epm0, fixed=false);
-  OpenIPSL.Types.PerUnit eppr(start = eppr0, fixed=false);
-  OpenIPSL.Types.PerUnit eppm(start = eppm0, fixed=false);
+  //OpenIPSL.Types.PerUnit epr(start = epr0, fixed=false);
+  //OpenIPSL.Types.PerUnit epm(start = epm0, fixed=false);
+  //OpenIPSL.Types.PerUnit eppr(start = eppr0, fixed=false);
+  //OpenIPSL.Types.PerUnit eppm(start = eppm0, fixed=false);
+  OpenIPSL.Types.PerUnit epr;
+  OpenIPSL.Types.PerUnit epm;
+  OpenIPSL.Types.PerUnit eppr;
+  OpenIPSL.Types.PerUnit eppm;
   OpenIPSL.Types.PerUnit X0;
   OpenIPSL.Types.PerUnit Xp;
   OpenIPSL.Types.PerUnit Xpp;
@@ -22,6 +26,19 @@ model MD_MotorTypeV "Multi-Domain Type V Three-Phase Induction Motor Model."
 
   OpenIPSL.Types.PerUnit Te_motor;
   OpenIPSL.Types.PerUnit Te_sys;
+
+initial equation
+  if Sup == false then
+    s = Modelica.Constants.eps;
+
+  else
+    s = (1 - Modelica.Constants.eps);
+    epm=0;
+    epr=0;
+    eppm=0;
+    eppr=0;
+
+  end if;
 
 equation
 

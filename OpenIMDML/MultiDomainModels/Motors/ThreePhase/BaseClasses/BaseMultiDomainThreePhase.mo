@@ -28,7 +28,7 @@ partial model BaseMultiDomainThreePhase
   OpenIPSL.Types.PerUnit v "Bus voltage magnitude";
   OpenIPSL.Types.Angle anglev " Bus voltage angle";
   OpenIPSL.Types.Angle delta " Bus voltage angle";
-  OpenIPSL.Types.PerUnit s(start = s0);
+  OpenIPSL.Types.PerUnit s;
   OpenIPSL.Types.PerUnit P;
   OpenIPSL.Types.PerUnit Q;
   Modelica.Units.SI.AngularVelocity nr;
@@ -47,8 +47,7 @@ partial model BaseMultiDomainThreePhase
 
   Modelica.Blocks.Sources.RealExpression Rotor_Speed(y=nr)
     annotation (Placement(transformation(extent={{70,-10},{50,10}})));
-  Modelica.Mechanics.Rotational.Components.Inertia Rotor_Inertia(J=J_load, w(fixed=
-          true, start=w0))
+  Modelica.Mechanics.Rotational.Components.Inertia Rotor_Inertia(J=J_load)
     annotation (Placement(transformation(extent={{-40,-10},{-60,10}})));
   Modelica.Blocks.Math.Gain we_fix(k=1)
     annotation (Placement(transformation(extent={{70,-90},{80,-80}})));
@@ -108,10 +107,17 @@ protected
   parameter Real CoB = M_b/S_b;
   parameter Real s0 = 1 - eps;
   parameter Real w0 = if Sup == true then 100*eps else 2*Modelica.Constants.pi*SysData.fn;
-  parameter OpenIPSL.Types.PerUnit epm0 = 0;
-  parameter OpenIPSL.Types.PerUnit eppm0 = 0;
-  parameter OpenIPSL.Types.PerUnit eppr0 = 0;
-  parameter OpenIPSL.Types.PerUnit epr0 = 0;
+  //parameter OpenIPSL.Types.PerUnit epm0 = 0;
+  //parameter OpenIPSL.Types.PerUnit eppm0 = 0;
+  //parameter OpenIPSL.Types.PerUnit eppr0 = 0;
+  //parameter OpenIPSL.Types.PerUnit epr0 = 0;
+
+initial equation
+  if Sup == false then
+    der(s) = Modelica.Constants.eps;
+else
+    s = 1 - Modelica.Constants.eps;
+end if;
 
 equation
   connect(Rotor_Inertia.flange_b,flange)

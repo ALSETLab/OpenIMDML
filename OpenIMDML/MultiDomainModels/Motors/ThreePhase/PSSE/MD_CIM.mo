@@ -78,6 +78,20 @@ model MD_CIM "Multi-Domain CIM5/6 Three-Phase Induction Motor Model."
   Modelica.Units.SI.Time Tp0;
   Modelica.Units.SI.Time Tpp0;
 
+
+initial equation
+  if Sup == false then
+    der(Ekr) = 0;
+    der(Eki) = 0;
+    der(Epr) = 0;
+    der(Epi) = 0;
+
+  else
+    s = (1 - Modelica.Constants.eps);
+
+  end if;
+
+
 equation
 
   // Frequency dependent circuit impedances

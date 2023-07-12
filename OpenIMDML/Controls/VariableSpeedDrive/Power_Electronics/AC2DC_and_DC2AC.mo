@@ -107,7 +107,7 @@ protected
 
   Modelica.Blocks.Sources.RealExpression Capacitor_Voltage(y=Capacitor.v)
     annotation (Placement(transformation(extent={{-84,-84},{-64,-64}})));
-initial equation
+//initial equation
   //der(Resistor.i) = 0;
   //der(Capacitor.v) = 0;
 
