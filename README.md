@@ -1,4 +1,4 @@
-# OpenIMDML - Open Instance Multi-Domain Motor Library
+OpenIMDML - Open Instance Multi-Domain Motor Library
 =========================================
 
 
