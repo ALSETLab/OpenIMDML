@@ -2,7 +2,7 @@ within OpenIMDML.Examples.MultiDomainExamples;
 package MultiDomainApplications "Coupling OpenIMDML + other library examples"
   extends Modelica.Icons.ExamplesPackage;
 
-  model TankExample
+  model TankExample "Motor filling a tank example"
     extends BaseClasses.ValidationPartial2;
     Modelica.Fluid.Sources.FixedBoundary SOURCE(
       p=system.p_ambient,
@@ -47,15 +47,13 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
           Modelica.Media.Water.ConstantPropertyLiquidWater,
       nPorts=1)
       annotation (Placement(transformation(extent={{120,0},{152,32}})));
-    MultiDomainModels.Motors.MD_ALL_IN_ONE_ThreePhaseMotor motor(
+    MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motor(
       M_b=10000,
       Sup=true,
       Ctrl=false,
       H=0.4,
-      redeclare
-        OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII
-        motor)
-      annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+      redeclare OpenIMDML.MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII
+        motor) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
       annotation (Placement(transformation(extent={{56,-10},{76,10}})));
     Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.5)

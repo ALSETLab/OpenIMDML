@@ -26,8 +26,8 @@ package MultiDomainThreePhaseInductionMotors
       Modelica.Blocks.Sources.RealExpression SS1(y=2*Modelica.Constants.pi*(
             SysData.fn))
                     annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1(V_b=23000,
-          Sup=false)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1(V_b=23000, Sup=
+            false)
         annotation (Placement(transformation(extent={{68,-10},{48,10}})));
     equation
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
@@ -88,8 +88,8 @@ The three-phase induction motor type I is based on the non multi-domain model fr
             SysData.fn))
                     annotation (Placement(transformation(extent={{20,-46},{40,
                 -26}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000,
-          Sup=false)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000, Sup=
+            false)
         annotation (Placement(transformation(extent={{68,-10},{48,10}})));
     equation
       connect(torqueSensor3.flange_b,load_inertia3. flange_a)
@@ -149,8 +149,8 @@ The three-phase induction motor type III is based on the non multi-domain model 
       Modelica.Blocks.Sources.RealExpression SS5(y=2*Modelica.Constants.pi*(
             SysData.fn))
         annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5(V_b=23000,
-          Sup=false)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5(V_b=23000, Sup=
+            false)
         annotation (Placement(transformation(extent={{68,-10},{48,10}})));
     equation
       connect(torqueSensor5.flange_b,load_inertia5. flange_a)
@@ -210,7 +210,7 @@ The three-phase induction motor type V is based on the non multi-domain model fr
       Modelica.Blocks.Sources.RealExpression SSCIM(y=2*Modelica.Constants.pi*(
             SysData.fn))
         annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
-      MultiDomainModels.Motors.ThreePhase.PSSE.MD_CIM CIM(V_b=23000, Sup=true)
+      MultiDomain.Motors.ThreePhase.PSSE.MD_CIM CIM(V_b=23000, Sup=true)
         annotation (Placement(transformation(extent={{68,-10},{48,10}})));
     equation
       connect(torqueSensorCIM5.flange_b,load_inertiaCIM5. flange_a)
@@ -272,10 +272,9 @@ The three-phase induction motor CIM5orCIM6 is based on the non multi-domain mode
         annotation (Placement(transformation(extent={{72,-50},{92,-30}})));
       Modelica.Blocks.Sources.RealExpression Synchronous_Speed(y=sync_speed)
         annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
-      MultiDomainModels.Motors.MD_ALL_IN_ONE_ThreePhaseMotor motor(M_b=15000000,
+      MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motor(M_b=15000000,
           redeclare
-          OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII
-          motor)
+          OpenIMDML.MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII motor)
         annotation (Placement(transformation(extent={{48,-10},{68,10}})));
     equation
 
@@ -339,16 +338,17 @@ The all-in-one induction motor model contains a replaceable model, which is the 
             origin={130,50})));
       Modelica.Mechanics.Rotational.Sources.Torque torque1
         annotation (Placement(transformation(extent={{120,-10},{140,10}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1VSD(V_b=23000,
-          Sup=true)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1VSD(V_b=23000, Sup
+          =true)
         annotation (Placement(transformation(extent={{80,40},{60,60}})));
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
-      Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        annotation (Placement(transformation(extent={{28,40},{48,60}})));
+      Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
+        VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
-        VSDstart=0.1,
         Kp=1,
         Ki=1) annotation (Placement(transformation(extent={{28,-10},{46,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
@@ -373,8 +373,8 @@ The all-in-one induction motor model contains a replaceable model, which is the 
         annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
       Modelica.Blocks.Sources.RealExpression SS1(y=2*Modelica.Constants.pi*(SysData.fn))
                     annotation (Placement(transformation(extent={{20,-86},{40,-66}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1(V_b=23000,
-          Sup=true)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1(V_b=23000, Sup=
+            true)
         annotation (Placement(transformation(extent={{80,-60},{60,-40}})));
     equation
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
@@ -448,17 +448,17 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
       parameter Real Ro = 0.1;
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
-      Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        annotation (Placement(transformation(extent={{28,40},{48,60}})));
+      Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
+        VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
-        VSDstart=0.1,
         Kp=2,
-        Ki=1)
-        annotation (Placement(transformation(extent={{28,-10},{46,10}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3VSD(V_b=23000)
+        Ki=1) annotation (Placement(transformation(extent={{28,-10},{46,10}})));
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3VSD(V_b=23000)
         annotation (Placement(transformation(extent={{80,40},{60,60}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor3
         annotation (Placement(transformation(extent={{92,40},{112,60}})));
@@ -489,7 +489,7 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       Modelica.Blocks.Sources.RealExpression Torque_Equation(y=-(0.1*(15/100)*(
             Motor3.s) + 0.5*(15/100)*(1 - Motor3.s)^2)*Motor3.T_b)
         annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3(V_b=23000)
         annotation (Placement(transformation(extent={{80,-60},{60,-40}})));
       Modelica.Blocks.Sources.RealExpression SS3(y=2*Modelica.Constants.pi*(SysData.fn))
                     annotation (Placement(transformation(extent={{20,-86},{40,-66}})));
@@ -566,13 +566,16 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
       parameter Real Ro = 0.1;
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
-      Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(
+        V_b=23000,
+        v_0=1,
+        m0=0.1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
+      Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
+        VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
-        VSDstart=1,
         Kp=1,
         Ki=0.01)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
@@ -589,9 +592,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
             Motor5VSD.s) + 0.5*(15/100)*(1 - Motor5VSD.s)^2)*Motor5VSD.T_b)
         annotation (Placement(transformation(extent={{88,-10},{108,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
-        height=0*(2*Modelica.Constants.pi*SysData.fn),
+        height=0.9*(2*Modelica.Constants.pi*SysData.fn),
         duration=5,
-        offset=1*(2*Modelica.Constants.pi*SysData.fn))
+        offset=0.1*(2*Modelica.Constants.pi*SysData.fn))
         annotation (Placement(transformation(extent={{-6,-10},{14,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
@@ -607,9 +610,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
         annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
       Modelica.Blocks.Sources.RealExpression SS3(y=2*Modelica.Constants.pi*(SysData.fn))
                     annotation (Placement(transformation(extent={{20,-86},{40,-66}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5VSD(V_b=23000)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5VSD(V_b=23000)
         annotation (Placement(transformation(extent={{80,40},{60,60}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5(V_b=23000)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5(V_b=23000)
         annotation (Placement(transformation(extent={{80,-60},{60,-40}})));
     equation
       connect(AC2DC_and_DC2AC.Vc, VfController.Vc)
@@ -683,13 +686,14 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
       parameter Real Ro = 0.1;
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
-      Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        annotation (Placement(transformation(extent={{28,40},{48,60}})));
+      Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
+        VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
-        VSDstart=1,
         Kp=0.1,
         Ki=0.01)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
@@ -706,9 +710,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
             CIMVSD.s) + 0.5*(15/100)*(1 - CIMVSD.s)^2)*CIMVSD.T_b)
         annotation (Placement(transformation(extent={{88,-10},{108,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
-        height=0*(2*Modelica.Constants.pi*SysData.fn),
+        height=0.9*(2*Modelica.Constants.pi*SysData.fn),
         duration=5,
-        offset=1*(2*Modelica.Constants.pi*SysData.fn))
+        offset=0.1*(2*Modelica.Constants.pi*SysData.fn))
         annotation (Placement(transformation(extent={{-6,-10},{14,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
@@ -724,14 +728,14 @@ The all-in-one induction motor model contains a replaceable model, which is the 
         annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
       Modelica.Blocks.Sources.RealExpression SS3(y=2*Modelica.Constants.pi*(SysData.fn))
                     annotation (Placement(transformation(extent={{20,-86},{40,-66}})));
-      MultiDomainModels.Motors.ThreePhase.PSSE.MD_CIM CIMVSD(
+      MultiDomain.Motors.ThreePhase.PSSE.MD_CIM CIMVSD(
         V_b=23000,
         Mtype=2,
         E1=1,
         SE1=1,
         E2=1,
         SE2=1) annotation (Placement(transformation(extent={{80,40},{60,60}})));
-      MultiDomainModels.Motors.ThreePhase.PSSE.MD_CIM CIM(
+      MultiDomain.Motors.ThreePhase.PSSE.MD_CIM CIM(
         V_b=23000,
         E1=1,
         SE1=1,
@@ -816,13 +820,14 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       OpenIPSL.Types.PerUnit TorqVSD;
       OpenIPSL.Types.PerUnit Torq;
       Modelica.Units.SI.AngularVelocity sync_speed;
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{28,40},{48,60}})));
-      Controls.VariableSpeedDrive.Controls.VoltsHertz_Controller VfController(
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        annotation (Placement(transformation(extent={{28,40},{48,60}})));
+      Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
+        VfController(
         V_b=23000,
         f_max=60,
-        f_min=0,
-        VSDstart=1)
+        f_min=0)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{92,40},{112,60}})));
@@ -853,13 +858,11 @@ The all-in-one induction motor model contains a replaceable model, which is the 
         annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
       Modelica.Blocks.Sources.RealExpression Synchronous_Speed(y=sync_speed)
         annotation (Placement(transformation(extent={{20,-86},{40,-66}})));
-      MultiDomainModels.Motors.MD_ALL_IN_ONE_ThreePhaseMotor motorVSD(M_b=
-            15000000, redeclare
-          OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSSE.MD_CIM motor)
+      MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motorVSD(M_b=15000000,
+          redeclare OpenIMDML.MultiDomain.Motors.ThreePhase.PSSE.MD_CIM motor)
         annotation (Placement(transformation(extent={{60,40},{80,60}})));
-      MultiDomainModels.Motors.MD_ALL_IN_ONE_ThreePhaseMotor motor(M_b=15000000,
-          redeclare OpenIMDML.MultiDomainModels.Motors.ThreePhase.PSSE.MD_CIM
-          motor)
+      MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motor(M_b=15000000,
+          redeclare OpenIMDML.MultiDomain.Motors.ThreePhase.PSSE.MD_CIM motor)
         annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
     equation
 
@@ -935,10 +938,10 @@ The all-in-one induction motor model contains a replaceable model, which is the 
 </html>"));
   end MultiDomainThreePhaseMotorVSDStartup;
 
-  package MultiDomainControllableMotor
+  package MultiDomainControllableMotor "Simple systems to test out uncoupled voltage and frequency control of the variable speed drive model"
     extends Modelica.Icons.ExamplesPackage;
 
-    model VariableVoltageFrequencyMotorTypeI
+    model VariableVoltageFrequencyMotorTypeI "Uncoupled voltage and frequency example for motor type I"
       extends BaseClasses.ValidationPartial2;
       parameter Real v_start = 0.1;
       parameter Real f_start = 0.1;
@@ -954,11 +957,15 @@ The all-in-one induction motor model contains a replaceable model, which is the 
             origin={132,0})));
       Modelica.Mechanics.Rotational.Sources.Torque torque1
         annotation (Placement(transformation(extent={{122,-60},{142,-40}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1VSD(V_b=23000,
-          R1=0.08)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1VSD(V_b=23000, R1=
+            0.08)
         annotation (Placement(transformation(extent={{82,-10},{62,10}})));
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(
+        V_b=23000,
+        v_0=1,
+        m0=v_start)
+        annotation (Placement(transformation(extent={{30,-10},{50,10}})));
       Modelica.Blocks.Sources.RealExpression TorqueEquation(y=Torq)
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
       Modelica.Blocks.Sources.RealExpression SVR(y=v_start)
@@ -1024,7 +1031,7 @@ Check equation section.")}),
 </html>"));
     end VariableVoltageFrequencyMotorTypeI;
 
-    model VariableVoltageFrequencyMotorTypeIII
+    model VariableVoltageFrequencyMotorTypeIII "Uncoupled voltage and frequency example for motor type III"
       extends BaseClasses.ValidationPartial2;
       parameter Real v_start = 0.1;
       parameter Real f_start = 0.1;
@@ -1040,10 +1047,14 @@ Check equation section.")}),
             origin={132,0})));
       Modelica.Mechanics.Rotational.Sources.Torque torque1
         annotation (Placement(transformation(extent={{122,-60},{142,-40}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3VSD(V_b=23000)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII Motor3VSD(V_b=23000)
         annotation (Placement(transformation(extent={{82,-10},{62,10}})));
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(
+        V_b=23000,
+        v_0=1,
+        m0=v_start)
+        annotation (Placement(transformation(extent={{30,-10},{50,10}})));
       Modelica.Blocks.Sources.RealExpression TorqueEquation(y=Torq)
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
       Modelica.Blocks.Sources.RealExpression SVR(y=v_start)
@@ -1105,7 +1116,7 @@ Check equation section.")}),     Documentation(info="<html>
 </html>"));
     end VariableVoltageFrequencyMotorTypeIII;
 
-    model VariableVoltageFrequencyMotorTypeV
+    model VariableVoltageFrequencyMotorTypeV "Uncoupled voltage and frequency example for motor type V"
       extends BaseClasses.ValidationPartial2;
       parameter Real v_start = 0.1;
       parameter Real f_start = 0.1;
@@ -1120,10 +1131,14 @@ Check equation section.")}),     Documentation(info="<html>
             origin={132,0})));
       Modelica.Mechanics.Rotational.Sources.Torque torque1
         annotation (Placement(transformation(extent={{122,-60},{142,-40}})));
-      MultiDomainModels.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5VSD(V_b=23000)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeV Motor5VSD(V_b=23000)
         annotation (Placement(transformation(extent={{82,-10},{62,10}})));
-      Controls.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC AC2DC_and_DC2AC(V_b=23000,
-          v_0=1) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+      Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
+        AC2DC_and_DC2AC(
+        V_b=23000,
+        v_0=1,
+        m0=v_start)
+        annotation (Placement(transformation(extent={{30,-10},{50,10}})));
       Modelica.Blocks.Sources.RealExpression TorqueEquation(y=-(0.1*(15/100)*(
             Motor5VSD.s) + 0.5*(15/100)*(1 - Motor5VSD.s)^2)*Motor5VSD.T_b)
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));

@@ -1,5 +1,5 @@
 within OpenIMDML.NonMultiDomain.Motors.ThreePhase;
-package BaseClasses "Non MultiDomain Induction Motors Base Class Package."
+package BaseClasses "Non multidomain three-phase induction motor base class package"
   extends Modelica.Icons.BasesPackage;
 
 end BaseClasses;

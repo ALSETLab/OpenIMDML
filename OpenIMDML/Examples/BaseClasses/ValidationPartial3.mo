@@ -1,5 +1,5 @@
 within OpenIMDML.Examples.BaseClasses;
-model ValidationPartial3 "Partial model 2 for validation purposes"
+model ValidationPartial3 "Partial model 3 for validation purposes"
   extends Modelica.Icons.Example;
   OpenIPSL.Electrical.Machines.PSSE.GENCLS inf1(
     V_b=16000,

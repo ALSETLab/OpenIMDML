@@ -1,19 +1,18 @@
 within ;
 package OpenIMDML "Open Instance Multi-Domain Machine
 Library using Modelica"
-
 annotation (preferredView = "info",uses(
     Modelica(version="4.0.0"),
     OpenIPSL(version="3.1.0-dev"),
     Complex(version="4.0.0"),
     DymolaModels(version="1.5.0")), Icon(graphics={
       Rectangle(
-        extent={{-100,100},{100,-100}},
-        lineColor={238,46,47},
-        fillPattern=FillPattern.Solid,
-        radius=25,
-        fillColor={215,215,215},
-        lineThickness=1),
+          lineColor={200,200,200},
+          fillColor={248,248,248},
+          fillPattern=FillPattern.HorizontalCylinder,
+          extent={{-100,-100},{100,100}},
+          radius=25.0,
+          lineThickness=0.5),
         Polygon(
           origin={5.821,39},
           fillPattern=FillPattern.Solid,
@@ -24,7 +23,7 @@ annotation (preferredView = "info",uses(
         Rectangle(
           origin={-0.62821,16.3307},
           fillColor={238,46,47},
-          fillPattern=FillPattern.HorizontalCylinder,
+          fillPattern=FillPattern.VerticalCylinder,
           extent={{-51.5508,-55.3307},{62.6282,55.6693}},
         lineColor={255,0,0}),
         Rectangle(
@@ -36,7 +35,7 @@ annotation (preferredView = "info",uses(
           origin={1.821,17},
           lineColor={95,95,95},
           fillColor={95,95,95},
-          fillPattern=FillPattern.Solid,
+          fillPattern=FillPattern.HorizontalCylinder,
           extent={{-60,50},{20,70}}),
         Rectangle(
           origin={1.821,15},
@@ -44,7 +43,7 @@ annotation (preferredView = "info",uses(
           fillPattern=FillPattern.HorizontalCylinder,
           extent={{60,-10},{80,10}}),
       Text(
-        extent={{-96,-66},{86,-94}},
+        extent={{-102,-62},{102,-98}},
         textColor={238,46,47},
         textStyle={TextStyle.Italic},
           textString="OpenIMDML")}),

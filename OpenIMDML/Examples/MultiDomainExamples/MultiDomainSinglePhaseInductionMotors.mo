@@ -6,7 +6,7 @@ package MultiDomainSinglePhaseInductionMotors
   model MultiDomainSPIM "Multi-Domain validation example for the single-phase induction motor (SPIM) model"
     extends Modelica.Icons.Example;
     extends OpenIMDML.Examples.BaseClasses.ValidationPartial4;
-    OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_SPIM SPIM(
+    OpenIMDML.MultiDomain.Motors.SinglePhase.MD_SPIM SPIM(
       M_b(displayUnit="V.A") = 3500,
       V_b=230,
       P_0=1000,
@@ -19,8 +19,7 @@ package MultiDomainSinglePhaseInductionMotors
       R2=0.05,
       X1=0.01,
       X2=0.01,
-      Xm=0.1)
-           annotation (Placement(transformation(extent={{20,-10},{0,10}})));
+      Xm=0.1) annotation (Placement(transformation(extent={{20,-10},{0,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor
       annotation (Placement(transformation(extent={{30,-10},{50,10}})));
     Modelica.Mechanics.Rotational.Components.Inertia load_inertia(J=0.1)
@@ -75,7 +74,7 @@ package MultiDomainSinglePhaseInductionMotors
   model MultiDomainDPIM "Multi-Domain validation example for the dual-phase induction motor (DPIM) model"
     extends Modelica.Icons.Example;
     extends OpenIMDML.Examples.BaseClasses.ValidationPartial4;
-    OpenIMDML.MultiDomainModels.Motors.SinglePhase.MD_DPIM DPIM(
+    OpenIMDML.MultiDomain.Motors.SinglePhase.MD_DPIM_v1 DPIM(
       M_b(displayUnit="V.A") = 3500,
       V_b=230,
       P_0=1000,
@@ -84,7 +83,7 @@ package MultiDomainSinglePhaseInductionMotors
       angle_0=0,
       N=1,
       H=0.1,
-      init=2,
+      init=1,
       Sup=true,
       switch_open_speed=0.1,
       Lmainr=0.000588,

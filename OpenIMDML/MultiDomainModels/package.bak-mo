@@ -1,5 +1,5 @@
 within OpenIMDML;
-package NonMultiDomain "Non multi-domain motor models"
+package MultiDomainModels "Multi-domain motor models"
   annotation (Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
@@ -7,9 +7,9 @@ package NonMultiDomain "Non multi-domain motor models"
           fillPattern=FillPattern.HorizontalCylinder,
           extent={{-100,-100},{100,100}},
           radius=25.0,
-          lineThickness=5), Text(
+          lineThickness=0.5), Text(
           extent={{-84,44},{84,-48}},
           textColor={238,46,47},
           textStyle={TextStyle.Bold,TextStyle.Italic},
-          textString="NMD")}));
-end NonMultiDomain;
+          textString="MD")}));
+end MultiDomainModels;

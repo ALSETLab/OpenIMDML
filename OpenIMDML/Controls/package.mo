@@ -1,12 +1,13 @@
 within OpenIMDML;
-package Controls
+package Controls "Control models"
   annotation (Icon(graphics={
         Rectangle(
-          lineColor={0,140,72},
-          fillColor={170,255,85},
-          fillPattern=FillPattern.Sphere,
+          lineColor={200,200,200},
+          fillColor={248,248,248},
+          fillPattern=FillPattern.HorizontalCylinder,
           extent={{-100,-100},{100,100}},
-          radius=25),
+          radius=25.0,
+          lineThickness=0.5),
         Rectangle(
           lineColor={128,128,128},
           extent={{-100,-100},{100,100}},
@@ -15,36 +16,36 @@ package Controls
         origin={0,35.149},
         fillColor={255,255,255},
         extent={{-30.0,-20.1488},{30.0,20.1488}},
-          lineColor={255,255,255},
+          lineColor={238,46,47},
           lineThickness=1),
       Rectangle(
         origin={0,-34.851},
         fillColor={255,255,255},
         extent={{-30.0,-20.1488},{30.0,20.1488}},
-          lineColor={255,255,255},
+          lineColor={238,46,47},
           lineThickness=1),
       Line(
-        origin={-51.25,-2},
+        origin={-51.25,0},
         points={{21.25,-35.0},{-13.75,-35.0},{-13.75,35.0},{6.25,35.0}},
-          color={255,255,255},
+          color={238,46,47},
           thickness=1),
       Polygon(
         origin={-40,35},
         pattern=LinePattern.None,
         points={{10.0,0.0},{-5.0,5.0},{-5.0,-5.0}},
-          lineColor={255,255,255},
-          fillColor={255,255,255},
+          lineColor={0,0,0},
+          fillColor={238,46,47},
           fillPattern=FillPattern.Solid),
       Line(
         origin={51.25,0},
         points={{-21.25,35.0},{13.75,35.0},{13.75,-35.0},{-6.25,-35.0}},
-          color={255,255,255},
+          color={238,46,47},
           thickness=1),
       Polygon(
         origin={40,-35},
         pattern=LinePattern.None,
         points={{-10.0,0.0},{5.0,5.0},{5.0,-5.0}},
           lineColor={255,255,255},
-          fillColor={255,255,255},
+          fillColor={238,46,47},
           fillPattern=FillPattern.Solid)}));
 end Controls;
