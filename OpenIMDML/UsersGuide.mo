@@ -3,7 +3,9 @@ package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
   model Overview "Overview"
     extends Modelica.Icons.Information;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+
+  annotation(preferredView = "info",
+                Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p>The OpenIMDML Library has five packages: Examples, NonMultiDomain, MultiDomain, Controls, and Functions. They are briefly described below: </p>
@@ -20,6 +22,7 @@ package UsersGuide "User's Guide"
     extends Modelica.Icons.ReleaseNotes;
     class v100 "Version 1.0.0 (2023-08-21)"
        extends Modelica.Icons.ReleaseNotes;
+
       annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
             coordinateSystem(preserveAspectRatio=false)),
         Documentation(info="<html>
@@ -32,16 +35,19 @@ package UsersGuide "User's Guide"
 <li>Example cases to simulate different fidelity level multi-domain motors.</li>
 <li>Example cases to simulate the motor operation with variable speed drive.</li>
 <li>Simple example of a multi-domain motor filling up a reservoir with water. </li>
-</html>"));
+</html>"),     preferredView = "info");
     end v100;
+
     annotation (Documentation(info="<html>
 <p>List of releases of the library.</p>
-</html>"));
+</html>"),   preferredView = "info");
   end ReleaseNotes;
 
   model References "References"
     extends Modelica.Icons.References;
-    annotation (Documentation(info="<html>
+
+  annotation(preferredView = "info",
+                Documentation(info="<html>
 <dl>
 <dt>[Baudette2018]</dt>
 <dd>M.Baudette, et al , OpenIPSL: Open-instance power system li-
@@ -118,4 +124,5 @@ SoftwareX 5 (2016) 84–88.
 </dl>
 </html>"));
   end References;
+annotation(preferredView = "info");
 end UsersGuide;
