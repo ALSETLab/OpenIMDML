@@ -3,7 +3,7 @@ package OpenIMDML "Open Instance Multi-Domain Machine
 Library using Modelica"
 annotation (preferredView = "info",uses(
     Modelica(version="4.0.0"),
-    OpenIPSL(version="3.1.0-dev"),
+    OpenIPSL(version="3.0.1"),
     Complex(version="4.0.0")),
      Icon(graphics={
       Rectangle(
