@@ -5,4 +5,5 @@ package ParameterEstimation "Function that takes in induction motor nameplate in
 
 
 
+  annotation(preferredView = "info");
 end ParameterEstimation;

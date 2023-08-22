@@ -6,6 +6,6 @@ package Examples "Package with set of basic systems designed for testing the var
 
 
 
-  annotation (
+  annotation (preferredView="info",
     Documentation);
 end Examples;

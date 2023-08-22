@@ -107,7 +107,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
     connect(fault.p, tf1_mt1.n) annotation (Line(points={{-81.6667,-40},{-90,
             -40},{-90,0},{-89,0}},
                               color={0,0,255}));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,
+    annotation (preferredView="info", Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,
               -100},{160,80}})),                                   Diagram(
           coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,
               80}})),
@@ -130,4 +130,6 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
 </ul>
 </html>"));
   end TankExample;
+    annotation (preferredView="info",
+    Documentation);
 end MultiDomainApplications;

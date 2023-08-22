@@ -586,7 +586,7 @@ package MultiDomain "Multi-domain motor models"
         end BaseMultiDomainSinglePhase;
 
       end BaseClasses;
-      annotation (Icon(graphics={
+      annotation (preferredView = "info", Icon(graphics={
             Rectangle(
               lineColor={200,200,200},
               fillColor={248,248,248},
@@ -797,6 +797,21 @@ package MultiDomain "Multi-domain motor models"
 
             annotation (preferredView = "info",Dialog(group="Machine parameters"));
         end MD_CIM;
+
+        annotation(preferredView = "info", Icon(graphics={
+              Rectangle(
+                lineColor={200,200,200},
+                fillColor={248,248,248},
+                fillPattern=FillPattern.HorizontalCylinder,
+                extent={{-100,-100},{100,100}},
+                radius=25.0,
+                lineThickness=0.5),
+                                  Text(
+                extent={{-100,100},{100,-100}},
+                textColor={238,46,47},
+                textStyle={TextStyle.Bold,TextStyle.Italic},
+                textString="MD
+PSSE")}));
       end PSSE;
 
       package PSAT "Three-phase induction motor models from PSAT software"
@@ -962,6 +977,21 @@ package MultiDomain "Multi-domain motor models"
 
           annotation(preferredView = "info");
         end MD_MotorTypeV;
+
+        annotation(preferredView = "info", Icon(graphics={
+              Rectangle(
+                lineColor={200,200,200},
+                fillColor={248,248,248},
+                fillPattern=FillPattern.HorizontalCylinder,
+                extent={{-100,-100},{100,100}},
+                radius=25.0,
+                lineThickness=0.5),
+                                  Text(
+                extent={{-100,100},{100,-100}},
+                textColor={238,46,47},
+                textStyle={TextStyle.Bold,TextStyle.Italic},
+                textString="MD
+PSAT")}));
       end PSAT;
 
       package BaseClasses "Multidomain partial models for three-phase motors"
@@ -1152,9 +1182,9 @@ package MultiDomain "Multi-domain motor models"
                   textColor={0,140,72},
                   textString="MD")}),    Diagram(coordinateSystem(preserveAspectRatio=false)));
         end BaseMultiDomainThreePhase;
-
+      annotation(preferredView = "info");
       end BaseClasses;
-      annotation (Icon(graphics={
+      annotation (preferredView = "info", Icon(graphics={
             Rectangle(
               lineColor={200,200,200},
               fillColor={248,248,248},
@@ -1215,7 +1245,7 @@ package MultiDomain "Multi-domain motor models"
               fillColor={238,46,47},
               fillPattern=FillPattern.Solid)}));
     end ThreePhase;
-    annotation (Icon(graphics={
+    annotation (preferredView = "info", Icon(graphics={
           Rectangle(
             lineColor={0,0,0},
             fillColor={215,215,215},
@@ -1233,7 +1263,7 @@ package MultiDomain "Multi-domain motor models"
             fillColor={95,95,95},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{64,22},{84,2}},
+            extent={{64,22},{88,2}},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={95,95,95}),
           Polygon(
@@ -1246,11 +1276,11 @@ package MultiDomain "Multi-domain motor models"
             fillColor={0,128,255}),
           Text(
             extent={{-52,46},{56,-22}},
-            textColor={255,255,255},
+            textColor={238,46,47},
             textStyle={TextStyle.Bold,TextStyle.Italic},
             textString="MD")}));
   end Motors;
-  annotation (Icon(graphics={
+  annotation (preferredView = "info", Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
           fillColor={248,248,248},

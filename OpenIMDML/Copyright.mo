@@ -5,8 +5,8 @@ class Copyright "DISCLAIMER<html>
 Copyright &copy; 2021 - 2023
 </p>
 <ul>
-<li>Prof. <a href=\"https://github.com/lvanfretti\">Luigi Vanfretti</a>, <a href=\"https://alsetlab.github.io/\">AlsetLab</a>, Troy, NY </li>
 <li><a href=\"https://github.com/fachif\">Fernando Fachini</a>, <a href=\"https://alsetlab.github.io/\">AlsetLab</a>, Troy, NY </li>
+<li>Prof. <a href=\"https://github.com/lvanfretti\">Luigi Vanfretti</a>, <a href=\"https://alsetlab.github.io/\">AlsetLab</a>, Troy, NY </li>
 </ul>
 <p>This Source Code Form is subject to the terms of the 3-Clause BSD license.</p>
 <p>A <a href=\"https://github.com/ALSETLab/OpenIMDML/blob/main/LICENSE\">copy of the license</a> is available in the library repository.</p>

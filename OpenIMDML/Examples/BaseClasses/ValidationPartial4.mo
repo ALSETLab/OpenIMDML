@@ -23,10 +23,10 @@ equation
     annotation (Line(points={{-41,0},{-20,0}},               color={0,0,255}));
   connect(inf_bus.p,Line. p) annotation (Line(points={{-80,0},{-59,0}},
                     color={0,0,255}));
-  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},
+  annotation (preferredView = "info", Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},
             {120,100}})),                                        Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     Documentation(info="<html>
-<p>Validation Partial System 1. </p>
+<p>Validation Partial System 4. </p>
 </html>"));
 end ValidationPartial4;

@@ -97,5 +97,5 @@ algorithm
     PAG,
     Qin,
     NEMADesign);
-
+annotation(preferredView = "info");
 end RUNInductionMotorParameterEstimation;

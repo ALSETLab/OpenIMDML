@@ -199,14 +199,14 @@ Control")}),                                                       Diagram(
             {-56,-6}}, color={0,0,127}));
     connect(PI_convert.y, Wref)
       annotation (Line(points={{77,0},{110,0}}, color={0,0,127}));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
             Text(
             extent={{-78,30},{80,-20}},
             lineColor={0,0,0},
             textString="%name")}), Diagram(coordinateSystem(preserveAspectRatio=false)));
   end PIcontroller4pumpexample;
-  annotation (Icon(graphics={
+  annotation (preferredView = "info", Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
           fillColor={248,248,248},

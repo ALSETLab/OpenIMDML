@@ -1,5 +1,5 @@
 within OpenIMDML.Functions.ParameterEstimation.MotorParameterEstimationAuxiliaryFunctions;
-function NEMALetterCode
+function NEMALetterCode "NEMA letter code table range"
 
   input String NemaCode;
   output Modelica.Units.SI.ReactivePower SLR "Locked Rotor Reactive Power";
@@ -35,4 +35,6 @@ SLR := if NemaCode == "A" then A elseif NemaCode == "B" then B elseif NemaCode =
    elseif NemaCode == "N" then N elseif NemaCode == "O" then O elseif NemaCode == "P" then P
    elseif NemaCode == "R" then R elseif NemaCode == "S" then S elseif NemaCode == "T" then T
    else U;
+
+annotation(preferredView = "info");
 end NEMALetterCode;

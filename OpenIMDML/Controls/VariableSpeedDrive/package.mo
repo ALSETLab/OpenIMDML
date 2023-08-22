@@ -3,7 +3,7 @@ package VariableSpeedDrive "Variable speed drive control strategies and converte
 
 
 
-  annotation (Icon(graphics={
+  annotation (preferredView = "info",Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
           fillColor={248,248,248},

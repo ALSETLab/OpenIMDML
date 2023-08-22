@@ -147,4 +147,6 @@ package MultiDomainSinglePhaseInductionMotors
 </ul>
 </html>"));
   end MultiDomainDPIM;
+    annotation (preferredView="info",
+    Documentation);
 end MultiDomainSinglePhaseInductionMotors;

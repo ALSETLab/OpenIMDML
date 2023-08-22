@@ -1,7 +1,7 @@
 within OpenIMDML.NonMultiDomain;
 package Motors "Single phase and three phase non-multidomain motor models"
 
-  annotation (Icon(graphics={
+  annotation (preferredView = "info", Icon(graphics={
         Rectangle(
           lineColor={0,0,0},
           fillColor={215,215,215},
@@ -18,10 +18,6 @@ package Motors "Single phase and three phase non-multidomain motor models"
           lineColor={95,95,95},
           fillColor={95,95,95},
           fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{64,22},{84,2}},
-          fillPattern=FillPattern.HorizontalCylinder,
-          fillColor={95,95,95}),
         Polygon(
           points={{-66,-78},{-56,-78},{-26,-8},{24,-8},{54,-78},{64,-78},{64,
               -88},{-66,-88},{-66,-78}},
@@ -32,7 +28,7 @@ package Motors "Single phase and three phase non-multidomain motor models"
           fillColor={0,128,255}),
         Text(
           extent={{-52,46},{56,-22}},
-          textColor={255,255,255},
+          textColor={0,0,127},
           textStyle={TextStyle.Bold,TextStyle.Italic},
           textString="NMD")}));
 end Motors;

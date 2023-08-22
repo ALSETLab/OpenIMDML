@@ -91,4 +91,5 @@ package NonMultiDomainSinglePhaseInductionMotors "Simple systems to test out the
 </ul>
 </html>"));
   end NonMultiDomainDPIM;
+  annotation(preferredView="info");
 end NonMultiDomainSinglePhaseInductionMotors;

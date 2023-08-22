@@ -145,7 +145,7 @@ package PowerElectronics "Variable speed drive power electronics model"
                        color={0,0,255}));
     connect(Capacitor_Voltage.y, Vc) annotation (Line(points={{-63,-74},{-50,-74},
             {-50,-110}}, color={0,0,127}));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+    annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {120,100}}),
           graphics={Rectangle(
             extent={{-100,100},{120,-100}},
@@ -182,7 +182,7 @@ package PowerElectronics "Variable speed drive power electronics model"
             pattern=LinePattern.Dash,
             textString="DC Link Variables")}));
   end AC2DCandDC2AC;
-  annotation (Icon(graphics={
+  annotation (preferredView = "info", Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
           fillColor={248,248,248},

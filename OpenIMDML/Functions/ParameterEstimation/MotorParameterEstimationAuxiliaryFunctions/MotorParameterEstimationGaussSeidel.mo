@@ -1,5 +1,5 @@
 within OpenIMDML.Functions.ParameterEstimation.MotorParameterEstimationAuxiliaryFunctions;
-function MotorParameterEstimationGaussSeidel
+function MotorParameterEstimationGaussSeidel "Function that generates the parameter estimation calculation"
 
   import Modelica.Units.SI;
   import Modelica.Units.NonSI;
@@ -88,5 +88,5 @@ R2_final := R2[n];
 XM_final := XM[n];
 
 Modelica.Utilities.Streams.print("Estimated Parameter R1, R2, X1, X2, and Xm [ohm].");
-
+annotation(preferredView = "info");
 end MotorParameterEstimationGaussSeidel;

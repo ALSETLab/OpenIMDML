@@ -54,7 +54,7 @@ package MultiDomainThreePhaseInductionMotors
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>The example MultiDomainTypeI contains a multi-domain three-phase type I induction motor model which drives a mechanical load. 
-The three-phase induction motor type I is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010. </i><\\p>
+The three-phase induction motor type I is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010.</i></p>
 <p>In order to validate the multi-domain model, this validation example reproduces Example 11.7 Motor Startup from <i>Chow, Joe H., and Juan J. Sanchez-Gasca. Power system modeling, computation, and control. John Wiley & Sons, 2020.</i> </p>
 <p>The startup example from the book utilizes a <strong>three-phase type III induction motor </strong>. In this particular Modelica validation example, the idea is to test the more simple model type I to compare results.</p>
 <p>Simulate the system for 10 seconds. Variables of interest are:</p>
@@ -116,7 +116,7 @@ The three-phase induction motor type I is based on the non multi-domain model fr
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>The example MultiDomainTypeIII contains a multi-domain three-phase type III induction motor model which drives a mechanical load.
-The three-phase induction motor type III is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010.<\\p>
+The three-phase induction motor type III is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010.</i></p>
 <p>In order to validate the multi-domain model, this validation example reproduces Example 11.7 Motor Startup from <i>Chow, Joe H., and Juan J. Sanchez-Gasca. Power system modeling, computation, and control. John Wiley & Sons, 2020.</i></p>
 <p>The startup example from the book utilizes a <strong>three-phase type III induction motor </strong>. In this particular Modelica validation example, the idea is to test the model type III to compare results.</p>
 <p>Simulate the system for 10 seconds. Variables of interest are:</p>
@@ -177,8 +177,8 @@ The three-phase induction motor type III is based on the non multi-domain model 
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>The example MultiDomainTypeV contains a multi-domain three-phase type V induction motor model which drives a mechanical load.
-The three-phase induction motor type V is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010.<\\p>
-<p>In order to validate the multi-domain model, this validation example reproduces Example 11.7 Motor Startup from <i>Chow, Joe H., and Juan J. Sanchez-Gasca. Power system modeling, computation, and control. John Wiley & Sons, 2020.</i>  </p>
+The three-phase induction motor type V is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010.</i></p>
+<p>In order to validate the multi-domain model, this validation example reproduces Example 11.7 Motor Startup from <i>Chow, Joe H., and Juan J. Sanchez-Gasca. Power system modeling, computation, and control. John Wiley & Sons, 2020.</i> </p>
 <p>The startup example from the book utilizes a <strong>three-phase type III induction motor </strong>. In this particular Modelica validation example, the idea is to test the more detailed model type V to compare results.</p>
 <p>Simulate the system for 10 seconds. Variables of interest are:</p>
 <ul>
@@ -237,7 +237,7 @@ The three-phase induction motor type V is based on the non multi-domain model fr
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>The example MultiDomainCIM5andCIM6 contains a multi-domain three-phase of the PSSE CIM family of induction motor models, which drives a mechanical load.
-The three-phase induction motor CIM5orCIM6 is based on the non multi-domain model from <i>Siemens PTI, PSS®e 34.2.0 model library, Siemens Power Technologies International, Schenectady, NY (2017). </i>.<\\p>
+The three-phase induction motor CIM5orCIM6 is based on the non multi-domain model from <i>Siemens PTI, PSS®e 34.2.0 model library, Siemens Power Technologies International, Schenectady, NY (2017). </i></p>
 <p>In order to validate the multi-domain model, this validation example reproduces Example 11.7 Motor Startup from <i>Chow, Joe H., and Juan J. Sanchez-Gasca. Power system modeling, computation, and control. John Wiley & Sons, 2020.</i>  </p>
 <p>The startup example from the book utilizes a <strong>three-phase type III induction motor </strong>. In this particular Modelica validation example, the idea is to test the more detailed model induction motor from the CIM family to compare results.</p>
 <p>Simulate the system for 10 seconds. Variables of interest are:</p>
@@ -272,7 +272,9 @@ The three-phase induction motor CIM5orCIM6 is based on the non multi-domain mode
         annotation (Placement(transformation(extent={{72,-50},{92,-30}})));
       Modelica.Blocks.Sources.RealExpression Synchronous_Speed(y=sync_speed)
         annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
-      MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motor(M_b=15000000,
+      MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motor(
+        M_b=15000000,
+        Sup=false,
           redeclare
           OpenIMDML.MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII motor)
         annotation (Placement(transformation(extent={{48,-10},{68,10}})));
@@ -306,7 +308,7 @@ The three-phase induction motor CIM5orCIM6 is based on the non multi-domain mode
           __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>The example MultiDomainMotor contains an <strong>ALL-IN-ONE</strong> multi-domain three-phase that allows the user to select any three-phase multi-domain motor from the library.
-The all-in-one induction motor model contains a replaceable model, which is the BaseMultiDOmainThreePhase base class .<\\p>
+The all-in-one induction motor model contains a replaceable model, which is the BaseMultiDOmainThreePhase base class .</i></p>
 <p>In order to validate the multi-domain model, this validation example reproduces Example 11.7 Motor Startup from <i>Chow, Joe H., and Juan J. Sanchez-Gasca. Power system modeling, computation, and control. John Wiley & Sons, 2020.</i>  </p>
 <p>The startup example from the book utilizes a <strong>three-phase type III induction motor </strong>. In this particular Modelica validation example, the idea is to test the generic motor model and its object-oriented modularity.</p>
 <p>Simulate the system for 10 seconds. Variables of interest are:</p>
@@ -319,6 +321,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
 </ul>
 </html>"));
     end MultiDomainMotor;
+
+      annotation (preferredView="info",
+      Documentation);
   end MultiDomainThreePhaseMotorValidation;
 
   package MultiDomainThreePhaseMotorVSDStartup
@@ -342,13 +347,16 @@ The all-in-one induction motor model contains a replaceable model, which is the 
           =true)
         annotation (Placement(transformation(extent={{80,40},{60,60}})));
       Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
-        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        AC2DC_and_DC2AC(
+        V_b=23000,                 v_0=1,
+        m0=0.1)
         annotation (Placement(transformation(extent={{28,40},{48,60}})));
       Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
         VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
+        m0=0.1,
         Kp=1,
         Ki=1) annotation (Placement(transformation(extent={{28,-10},{46,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
@@ -687,13 +695,16 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3;
       parameter Real Ro = 0.1;
       Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
-        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        AC2DC_and_DC2AC(
+        V_b=23000,                 v_0=1,
+        m0=0.1)
         annotation (Placement(transformation(extent={{28,40},{48,60}})));
       Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
         VfController(
         V_b=23000,
         f_max=60,
         f_min=0,
+        m0=0.1,
         Kp=0.1,
         Ki=0.01)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
@@ -717,7 +728,7 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
       Modelica.Mechanics.Rotational.Sources.Torque torque1
-        annotation (Placement(transformation(extent={{120,-100},{140,-80}})));
+        annotation (Placement(transformation(extent={{120,-98},{140,-78}})));
       Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=1)
         annotation (Placement(transformation(
             extent={{-10,-10},{10,10}},
@@ -725,9 +736,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
             origin={130,-50})));
       Modelica.Blocks.Sources.RealExpression Torque_Equation(y=-(0.1*(15/100)*(CIM.s)
              + 0.5*(15/100)*(1 - CIM.s)^2)*CIM.T_b)
-        annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
+        annotation (Placement(transformation(extent={{80,-98},{100,-78}})));
       Modelica.Blocks.Sources.RealExpression SS3(y=2*Modelica.Constants.pi*(SysData.fn))
-                    annotation (Placement(transformation(extent={{20,-86},{40,-66}})));
+                    annotation (Placement(transformation(extent={{20,-84},{40,-64}})));
       MultiDomain.Motors.ThreePhase.PSSE.MD_CIM CIMVSD(
         V_b=23000,
         Mtype=2,
@@ -761,10 +772,10 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
         annotation (Line(points={{110,-50},{120,-50}},
                                                    color={0,0,0}));
-      connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{140,-90},
-              {150,-90},{150,-50},{140,-50}},  color={0,0,0}));
+      connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{140,-88},
+              {150,-88},{150,-50},{140,-50}},  color={0,0,0}));
       connect(Torque_Equation.y, torque1.tau)
-        annotation (Line(points={{101,-90},{118,-90}}, color={0,0,127}));
+        annotation (Line(points={{101,-88},{118,-88}}, color={0,0,127}));
       connect(AC2DC_and_DC2AC.n, CIMVSD.p)
         annotation (Line(points={{48,50},{60,50}}, color={0,0,255}));
       connect(CIMVSD.flange, torqueSensor3.flange_a)
@@ -778,9 +789,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       connect(bus4_mt2.p, CIM.p)
         annotation (Line(points={{20,-50},{60,-50}}, color={0,0,255}));
       connect(CIM.mech_torque, torqueSensor1.tau) annotation (Line(points={{76,-62},
-              {76,-68},{92,-68},{92,-61}}, color={0,0,127}));
+              {76,-66},{92,-66},{92,-61}}, color={0,0,127}));
       connect(SS3.y, CIM.we)
-        annotation (Line(points={{41,-76},{70,-76},{70,-62}}, color={0,0,127}));
+        annotation (Line(points={{41,-74},{70,-74},{70,-62}}, color={0,0,127}));
       connect(CIM.flange, torqueSensor1.flange_a)
         annotation (Line(points={{80,-50},{90,-50}}, color={0,0,0}));
       annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-120},
@@ -811,7 +822,7 @@ The all-in-one induction motor model contains a replaceable model, which is the 
     end MultiDomainMotorCIMStartUpComparison;
 
     model MultiDomainMotorStartUpComparison
-      "Validation example for the variable speed drive driven CIM motor"
+      "Validation example for the variable speed drive driven ALL-IN-ONE motor"
       extends Modelica.Icons.Example;
       extends OpenIMDML.Examples.BaseClasses.ValidationPartial3(inf2(X_d=0), inf1(
             X_d=0));
@@ -821,13 +832,16 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       OpenIPSL.Types.PerUnit Torq;
       Modelica.Units.SI.AngularVelocity sync_speed;
       Controls.VariableSpeedDrive.PowerElectronics.AC2DCandDC2AC
-        AC2DC_and_DC2AC(V_b=23000, v_0=1)
+        AC2DC_and_DC2AC(
+        V_b=23000,                 v_0=1,
+        m0=0.1)
         annotation (Placement(transformation(extent={{28,40},{48,60}})));
       Controls.VariableSpeedDrive.ControllerLogic.VoltsHertzController
         VfController(
         V_b=23000,
         f_max=60,
-        f_min=0)
+        f_min=0,
+        m0=0.1)
         annotation (Placement(transformation(extent={{28,-10},{46,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
         annotation (Placement(transformation(extent={{92,40},{112,60}})));
@@ -841,9 +855,9 @@ The all-in-one induction motor model contains a replaceable model, which is the 
       Modelica.Blocks.Sources.RealExpression TorqueEquation1(y=TorqVSD)
         annotation (Placement(transformation(extent={{80,-10},{100,10}})));
       Modelica.Blocks.Sources.Ramp Sync_Speed(
-        height=0*(2*Modelica.Constants.pi*SysData.fn),
+        height=0.9*(2*Modelica.Constants.pi*SysData.fn),
         duration=5,
-        offset=1*(2*Modelica.Constants.pi*SysData.fn))
+        offset=0.1*(2*Modelica.Constants.pi*SysData.fn))
         annotation (Placement(transformation(extent={{-6,-10},{14,10}})));
       Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor2
         annotation (Placement(transformation(extent={{90,-60},{110,-40}})));
@@ -934,8 +948,8 @@ The all-in-one induction motor model contains a replaceable model, which is the 
 </ul>
 </html>"));
     end MultiDomainMotorStartUpComparison;
-    annotation (Documentation(info="<html>
-</html>"));
+      annotation (preferredView="info",
+      Documentation);
   end MultiDomainThreePhaseMotorVSDStartup;
 
   package MultiDomainControllableMotor "Simple systems to test out uncoupled voltage and frequency control of the variable speed drive model"
@@ -1198,5 +1212,10 @@ Check equation section.")}),     Documentation(info="<html>
 </ul>
 </html>"));
     end VariableVoltageFrequencyMotorTypeV;
+
+      annotation (preferredView="info",
+      Documentation);
   end MultiDomainControllableMotor;
+    annotation (preferredView="info",
+    Documentation);
 end MultiDomainThreePhaseInductionMotors;

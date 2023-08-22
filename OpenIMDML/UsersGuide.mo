@@ -23,7 +23,7 @@ package UsersGuide "User's Guide"
     class v100 "Version 1.0.0 (2023-08-21)"
        extends Modelica.Icons.ReleaseNotes;
 
-      annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+      annotation (preferredView="info",Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
             coordinateSystem(preserveAspectRatio=false)),
         Documentation(info="<html>
 <h4>What&apos;s Changed</h4>
@@ -124,5 +124,24 @@ SoftwareX 5 (2016) 84–88.
 </dl>
 </html>"));
   end References;
-annotation(preferredView = "info");
+annotation(preferredView = "info", Documentation(info="<html>
+<p>
+The <strong>Open-Instance MultiDomain Motor Library - <code>OpenIMDML</code></strong>
+contains many single-phase and three-phase induction motor models written in <a href=\"http://modelica.org\">Modelica</a>
+language that are meant to be used with the <strong>Open-Instance Power System Library - <code>OpenIPSL</code></strong>.
+</p>
+<p>
+<strong><code>OpenIPSL</code></strong>, which is the foundation library to <strong><code>OpenIMDML</code></strong>, contains non-multi-domain induction
+motor models that were implemented based on <a href=\"http://faraday1.ucd.ie/psat.html\">PSAT</a>. <strong><code>OpenIMDML</code></strong>, on the other hand, was implemented to add multi-domain capability to the foundation library by means
+of multi-domain motor and variable speed drive models.
+</p>
+<p>
+This is a very short <strong>User's Guide</strong> that will try to help users to get familiar
+with the library providing general information about the <strong><code>OpenIMDML</code></strong>.
+</p>
+<p>
+More information about the library can be found on this <a href=\"https://github.com/ALSETLab/OpenIMDML\">openimdml.org</a>
+dedicated to the <strong><code>OpenIMDML</code></strong> organization.
+</p>
+</html>"));
 end UsersGuide;

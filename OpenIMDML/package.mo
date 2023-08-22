@@ -4,8 +4,8 @@ Library using Modelica"
 annotation (preferredView = "info",uses(
     Modelica(version="4.0.0"),
     OpenIPSL(version="3.1.0-dev"),
-    Complex(version="4.0.0"),
-    DymolaModels(version="1.5.0")), Icon(graphics={
+    Complex(version="4.0.0")),
+     Icon(graphics={
       Rectangle(
           lineColor={200,200,200},
           fillColor={248,248,248},
@@ -49,4 +49,5 @@ annotation (preferredView = "info",uses(
           textString="OpenIMDML")}),
   version="1",
   conversion(noneFromVersion=""));
+    //DymolaModels(version="1.5.0")),
 end OpenIMDML;
