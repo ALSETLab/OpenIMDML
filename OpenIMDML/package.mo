@@ -1,6 +1,7 @@
 within ;
 package OpenIMDML "Open Instance Multi-Domain Machine
 Library using Modelica"
+    //DymolaModels(version="1.5.0")),
 annotation (preferredView = "info",uses(
     Modelica(version="4.0.0"),
     OpenIPSL(version="3.0.1"),
@@ -49,5 +50,4 @@ annotation (preferredView = "info",uses(
           textString="OpenIMDML")}),
   version="1",
   conversion(noneFromVersion=""));
-    //DymolaModels(version="1.5.0")),
 end OpenIMDML;

@@ -28,7 +28,7 @@ package Motors "Single phase and three phase non-multidomain motor models"
           fillColor={0,128,255}),
         Text(
           extent={{-52,46},{56,-22}},
-          textColor={0,0,127},
+          textColor={102,44,145},
           textStyle={TextStyle.Bold,TextStyle.Italic},
           textString="NMD")}));
 end Motors;

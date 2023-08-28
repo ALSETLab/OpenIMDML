@@ -26,8 +26,7 @@ package MultiDomainThreePhaseInductionMotors
       Modelica.Blocks.Sources.RealExpression SS1(y=2*Modelica.Constants.pi*(
             SysData.fn))
                     annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
-      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1(V_b=23000, Sup=
-            false)
+      MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeI Motor1(V_b=23000, Sup=true)
         annotation (Placement(transformation(extent={{68,-10},{48,10}})));
     equation
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
@@ -48,10 +47,7 @@ package MultiDomainThreePhaseInductionMotors
                 -100},{160,100}})),
                               Diagram(coordinateSystem(preserveAspectRatio=false,
               extent={{-160,-100},{160,100}})),
-        experiment(
-          StopTime=5,
-          __Dymola_NumberOfIntervals=5000,
-          __Dymola_Algorithm="Dassl"),
+        experiment(StopTime=5, __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>The example MultiDomainTypeI contains a multi-domain three-phase type I induction motor model which drives a mechanical load. 
 The three-phase induction motor type I is based on the non multi-domain model from <i>Milano, Federico. Power system modelling and scripting. Springer Science & Business Media, 2010.</i></p>
@@ -992,9 +988,6 @@ The all-in-one induction motor model contains a replaceable model, which is the 
 
       Torq = -0.4*Motor1VSD.wr^2;
       //Torq = -(0.1*(15/100)*(Motor1VSD.s) + 0.5*(15/100)*(1 - Motor1VSD.s)^2)*Motor1VSD.T_b;
-
-
-
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
         annotation (Line(points={{114,0},{122,0}},   color={0,0,0}));
       connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{142,-50},
@@ -1081,9 +1074,6 @@ Check equation section.")}),
 
       Torq = -0.4*Motor3VSD.wr^2;
       //Torq = -(0.1*(15/100)*(Motor3VSD.s) + 0.5*(15/100)*(1 - Motor3VSD.s)^2)*Motor3VSD.T_b;
-
-
-
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
         annotation (Line(points={{114,0},{122,0}},   color={0,0,0}));
       connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{142,-50},
@@ -1166,7 +1156,6 @@ Check equation section.")}),     Documentation(info="<html>
 
       Torq = -0.4*Motor5VSD.wr^2;
       //Torq = -(0.1*(15/100)*(Motor5VSD.s) + 0.5*(15/100)*(1 - Motor5VSD.s)^2)*Motor5VSD.T_b;
-
       connect(torqueSensor1.flange_b,load_inertia1. flange_a)
         annotation (Line(points={{114,0},{122,0}},   color={0,0,0}));
       connect(torque1.flange,load_inertia1. flange_b) annotation (Line(points={{142,-50},
