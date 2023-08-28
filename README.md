@@ -1,5 +1,7 @@
-OpenIMDML - Open Instance Multi-Domain Motor Library
-=========================================
+# OpenIMDML - Open Instance Multi-Domain Motor Library
+## Scope
+The OpenIMDML is an open-source Modelica-based library that is focused on modeling and simulation of induction motor models in the phasor domain. It was built using the Modelica language, leveraging the Modelica Standard Library, and functions in conjunction with [OpenIPSL](https://github.com/OpenIPSL/OpenIPSL).
+## OpenIMDML Library Structure
+The library is structured into five sub-packages (illustrated in Figure shown below): Examples, NonMultiDomain, MultiDomain, Controls, and Functions.
 
 
-The Open Instance Multi-Domain Motor Library (OpenIMDML) was developed in order to couple the traditional power system representation of the grid with other physical domains, allowing a holistic modeling of the motor and its driven load.
