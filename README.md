@@ -35,8 +35,8 @@ Search for OpenIPSL and click ok
 ### Step 3. Loading OpenIPSL and OpenIMDML
 Now you should load OpenIPSL by going to *File>System Libraries>OpenIPSL>3.0.1*
 ![Load OpenIPSL](docs/Figures/LoadingOpenIPSL.png "Loading OpenIPSL")
-In order to load OpenIMDML, you have to know the folder where you downloaded the library. You should go to *File>Load Library* and search for the folder where you downloaded OpenIMDML. Once you have found the folder, you must load the **package.mo** file.
-![Load OpenIMDML](docs/Figures/LoadOpenIMDML.png "Loading OpenIMDML")
+In order to load OpenIMDML, you have to know the folder where you downloaded the library. You should go to *File>Open Model/Library File(s)* and search for the folder where you downloaded OpenIMDML. Once you have found the folder, you must load the **package.mo** file.
+![Load OpenIMDML](docs/Figures/OpenIMDMLLOADING.png "Loading OpenIMDML")
 ![Load OpenIMDML2](docs/Figures/OpenIMDMLpackage.png "Open OpenIMDML")
 
 ## Copyright and License Information
