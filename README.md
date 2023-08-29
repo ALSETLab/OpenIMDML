@@ -39,9 +39,14 @@ In order to load OpenIMDML, you have to know the folder where you downloaded the
 ![Load OpenIMDML](docs/Figures/OpenIMDMLLOADING.png "Loading OpenIMDML")
 ![Load OpenIMDML2](docs/Figures/OpenIMDMLpackage.png "Open OpenIMDML")
 
+### Step 4. Running an Example
+Now that you have loaded both OpenIPSL and OpenIMDML, we can start running some examples.
+Under Libraries Browser, click on *OpenIMDML>Examples>MultiDomainExamples>MultiDomainThreePhaseInductionMotors>MultiDomainThreePhaseMotorValidation>MultiDomainTypeI*. You should expect to see the screen below.
+![Example](docs/Figures/ExampleScreenshot.png "Example")
+
 ## Copyright and License Information
 
-**OpenIMDML:** Copyright August 2023 - current [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Troy, NY (Formely SmarTS Lab, Stockholm, Sweden).
+**OpenIMDML:** Copyright August 2023 - current [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Troy, NY (Formerly SmarTS Lab, Stockholm, Sweden).
 
 The authors can be contacted by email: <a href="mailto:emaildofachini@gmail.com?subject=OpenIMDML_License">emaildofachini@gmail.com</a>.
 
