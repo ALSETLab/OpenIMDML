@@ -20,6 +20,8 @@ The library is structured into five sub-packages (illustrated in Figure shown be
 -  **Controls:** contains power electronics and controller logic models for the variable speed drive model.
 -  **Functions:** contains one function that implements an iterative method for estimating the induction motor equivalent circuit parameters using only the motor nameplate data.
 
+## How to run an example in OpenModelica?##
+
 
 ## Copyright and License Information
 
