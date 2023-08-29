@@ -42,7 +42,7 @@ In order to load OpenIMDML, you have to know the folder where you downloaded the
 ### Step 4. Running an Example
 Now that you have loaded both OpenIPSL and OpenIMDML, we can start running some examples.
 Under Libraries Browser, click on *OpenIMDML>Examples>MultiDomainExamples>MultiDomainThreePhaseInductionMotors>MultiDomainThreePhaseMotorValidation>MultiDomainTypeI*. You should expect to see the screen below.
-![Example](docs/Figures/ExamplesScreenshot.png "Example")
+![Example](docs/Figures/ExampleScreenshot.png "Example")
 
 ## Copyright and License Information
 
