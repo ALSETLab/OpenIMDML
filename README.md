@@ -27,7 +27,7 @@ OpenModelica is an open-source and free Modelica-based modeling and simulation e
 
 ### Step 2. Install the OpenIPSL Library
 Once you have OpenModelica open in your computer, click on File:
-![OpenModelica Home Screen](docs/Figures/OpenModelicaScreenshot.png "OpenModelica Home Screen")
+![OpenModelica Home Screen](docs/Figures/OpenModelicaHome.png "OpenModelica Home Screen")
 
 ## Copyright and License Information
 
