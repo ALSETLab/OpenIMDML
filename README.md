@@ -45,6 +45,12 @@ Under Libraries Browser, click on *OpenIMDML>Examples>MultiDomainExamples>MultiD
 ![Example](docs/Figures/ExampleScreenshot.png "Example")
 Next step is to click on *Simulate*.
 ![Simulate](docs/Figures/Simulate.png "Simulate")
+To display the simulation results, you must type the name of the variable you wish to plot. Use the names of the variables of interest from the Documentation Browser to select a variable to plot.
+For instance, type in Variables Browser the variable **Motor1.s** and then select the variable. The plot displayed is the motor slip value.
+![Plot](docs/Figures/Plot.png "Plot")
+
+
+
 ## Copyright and License Information
 
 **OpenIMDML:** Copyright August 2023 - current [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Troy, NY (Formerly SmarTS Lab, Stockholm, Sweden).
