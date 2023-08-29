@@ -25,12 +25,16 @@ The library is structured into five sub-packages (illustrated in Figure shown be
 ### **Step 1.** Download and Install OpenModelica 
 OpenModelica is an open-source and free Modelica-based modeling and simulation environment intended for industrial and academic usage. To download the latest version of the software, click on: [Windows Version](https://openmodelica.org/download/download-windows/) or [Linux Version](https://openmodelica.org/download/download-linux/).
 
-### Step 2. Install the OpenIPSL Library
+### Step 2. Installing OpenIPSL
 Once you have OpenModelica open in your computer, click on *File>Manage Libraries>Install Library*
 ![OpenModelica Home Screen](docs/Figures/OpenModelicaHome.png "OpenModelica Home Screen")
 <br/>
 Search for OpenIPSL and click ok
 ![OpenModelica Search](docs/Figures/SearchOpenIPSL.png "Searching OpenIPSL")
+
+### Step 3. Loading OpenIPSL and OpenIMDML
+Now you should load OpenIPSL by going to *File>System Libraries>OpenIPSL>3.0.1*
+![Load OpenIPSL](docs/Figures/LoadingOpenIPSL.png "Loading OpenIPSL")
 
 ## Copyright and License Information
 
