@@ -22,7 +22,8 @@ The library is structured into five sub-packages (illustrated in Figure shown be
 
 ## How to run an example in OpenModelica?
 
-### **Step 1.** Install OpenModelica  
+### **Step 1.** Download and Install OpenModelica 
+OpenModelica is an open-source and free Modelica-based modeling and simulation environment intended for industrial and academic usage. To download the latest version of the software, click on the [Windows](https://openmodelica.org/download/download-windows/) or [Linux](https://openmodelica.org/download/download-linux/).
 
 
 ## Copyright and License Information
