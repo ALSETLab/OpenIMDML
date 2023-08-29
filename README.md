@@ -34,7 +34,7 @@ Search for OpenIPSL and click ok
 
 ### Step 3. Loading OpenIPSL and OpenIMDML
 Now you should load OpenIPSL by going to *File>System Libraries>OpenIPSL>3.0.1*
-![Load OpenIPSL](docs/Figures/LoadinghOpenIPSL.png "Loading OpenIPSL")
+![Load OpenIPSL](docs/Figures/LoadingOpenIPSL.png "Loading OpenIPSL")
 
 ## Copyright and License Information
 
