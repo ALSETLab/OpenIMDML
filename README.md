@@ -53,7 +53,7 @@ For instance, type in Variables Browser the variable **Motor1.s** and then selec
 
 ## Copyright and License Information
 
-**OpenIMDML:** Copyright August 2023 - current [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Troy, NY (Formerly SmarTS Lab, Stockholm, Sweden).
+**OpenIMDML:** Copyright August 2023 - current, [Fernando Fachini](https://github.com/fachif) and [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Rensselaer Polytechnic Institute, Troy, NY.
 
 The authors can be contacted by email: <a href="mailto:emaildofachini@gmail.com?subject=OpenIMDML_License">emaildofachini@gmail.com</a>.
 
