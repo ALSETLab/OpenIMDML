@@ -14,7 +14,7 @@ Previous work leading to the library has been published and can also be cited as
 ## OpenIMDML Library Structure
 The library is structured into five sub-packages (illustrated in Figure shown below): Examples, NonMultiDomain, MultiDomain, Controls, and Functions.\
 ![Library Structure](docs/Figures/Library_structure.png "Library Structure")
-- **Examples:** contains Modelica model examples of all the components and models developed in the OpenIMDML Library.
+- **Examples:** contains Modelica model examples of all the components and models developed in the OpenIMDML Library. The **Examples** package contains three sub-packages, namely **MultiDomainExamples**, **NonMultiDomainExamples**, and **BaseClasses**. The **MultiDomainExamples** sub-package presents examples of the single-phase and three-phase multi-domain motor developed in the library, including motor validation examples, examples including a variable speed drive and its controls, and a simple example of a multi-domain motor interacting with a pump that fills up a reservoir. The **NonMultiDomainExamples** sub-package contains examples of single-phase and three-phase non multi-domain motor models from the library, including examples that incorporate the variable speed drive. The difference between multi-domain and non multi-domain is linked to the driven load representation. Lastly, the **BaseClasses** sub-package contains partial models that are re-utilized in several of the examples from the package.
 - **NonMultiDomain:** contains single-phase and three-phase non multi-domain induction motor models.
 -  **MultiDomain:**  contains single-phase and three-phase multi-domain induction motor models.
 -  **Controls:** contains power electronics and controller logic models for the variable speed drive model.
@@ -45,9 +45,15 @@ Under Libraries Browser, click on *OpenIMDML>Examples>MultiDomainExamples>MultiD
 ![Example](docs/Figures/ExampleScreenshot.png "Example")
 Next step is to click on *Simulate*.
 ![Simulate](docs/Figures/Simulate.png "Simulate")
+To display the simulation results, you must type the name of the variable you wish to plot. Use the names of the variables of interest from the Documentation Browser to select a variable to plot.
+For instance, type in Variables Browser the variable **Motor1.s** and then select the variable. The plot displayed is the motor slip value.
+![Plot](docs/Figures/Plot.png "Plot")
+
+
+
 ## Copyright and License Information
 
-**OpenIMDML:** Copyright August 2023 - current [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Troy, NY (Formerly SmarTS Lab, Stockholm, Sweden).
+**OpenIMDML:** Copyright August 2023 - current, [Fernando Fachini](https://github.com/fachif) and [Luigi Vanfretti](https://github.com/lvanfretti), [ALSETLab](https://github.com/ALSETLab), Rensselaer Polytechnic Institute, Troy, NY.
 
 The authors can be contacted by email: <a href="mailto:emaildofachini@gmail.com?subject=OpenIMDML_License">emaildofachini@gmail.com</a>.
 
