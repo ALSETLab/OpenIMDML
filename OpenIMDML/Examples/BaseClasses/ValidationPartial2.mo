@@ -16,7 +16,7 @@ model ValidationPartial2 "Partial model 2 for validation purposes"
     R=0,
     X=0.02,
     G=0,
-    B=0) annotation (Placement(transformation(extent={{-72,-14},{-44,14}})));
+    B=0) annotation (Placement(visible = true, transformation(origin = {8, 0}, extent = {{-72, -14}, {-44, 14}}, rotation = 0)));
   OpenIPSL.Electrical.Buses.Bus bus3_mt1(V_b=230000)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   OpenIPSL.Electrical.Buses.Bus bus4_mt1(V_b=23000)
@@ -31,7 +31,7 @@ model ValidationPartial2 "Partial model 2 for validation purposes"
     V_b=230000,
     Vn=230000,
     rT=0,
-    xT=0.15) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    xT=0.14) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   OpenIPSL.Electrical.Loads.PSAT.PQ Load1(V_b=230000, P_0=500000000)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000, fn=60)
@@ -40,11 +40,9 @@ equation
   connect(inf1.p,bus1_mt1. p)
     annotation (Line(points={{-134,0},{-120,0}},   color={0,0,255}));
   connect(bus2_mt1.p,line_mt1. p)
-    annotation (Line(points={{-80,0},{-70.6,1.77636e-15}},
-                                                   color={0,0,255}));
+    annotation (Line(points={{-80,0},{-62.6,0}},   color={0,0,255}));
   connect(line_mt1.n,bus3_mt1. p)
-    annotation (Line(points={{-45.4,1.77636e-15},{-28,1.77636e-15},{-28,0},{-20,
-          0}},                                   color={0,0,255}));
+    annotation (Line(points={{-37.4,0},{-20,0}}, color={0,0,255}));
   connect(bus1_mt1.p,tf1_mt1. p)
     annotation (Line(points={{-120,0},{-111,0}},  color={0,0,255}));
   connect(tf1_mt1.n,bus2_mt1. p)
