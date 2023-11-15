@@ -879,7 +879,7 @@ PSSE")}));
             der(epr) = Modelica.Constants.eps;
 
           else
-            der(epm) = 0;
+            epm = 0;
 
           end if;
 
