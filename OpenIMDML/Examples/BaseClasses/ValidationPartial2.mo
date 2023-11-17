@@ -35,7 +35,7 @@ model ValidationPartial2 "Partial model 2 for validation purposes"
   OpenIPSL.Electrical.Loads.PSAT.PQ Load1(V_b=230000, P_0=500000000)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000, fn=60)
-    annotation (Placement(transformation(extent={{-140,40},{-100,60}})));
+    annotation (Placement(transformation(extent={{-140,30},{-100,50}})));
 equation
   connect(inf1.p,bus1_mt1. p)
     annotation (Line(points={{-134,0},{-120,0}},   color={0,0,255}));
@@ -54,9 +54,10 @@ equation
     annotation (Line(points={{11,0},{20,0}},   color={0,0,255}));
   connect(Load1.p, bus3_mt1.p) annotation (Line(points={{-30,-20},{-30,
           1.77636e-15},{-28,1.77636e-15},{-28,0},{-20,0}}, color={0,0,255}));
-  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},
-            {160,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-100},{160,100}})),
+  annotation (preferredView = "info",Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,
+            -60},{160,60}})),
+                          Diagram(coordinateSystem(preserveAspectRatio=false,
+          extent={{-160,-60},{160,60}})),
     Documentation(info="<html>
 <p>Validation Partial System 2. </p>
 </html>"));
