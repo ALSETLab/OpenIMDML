@@ -52,8 +52,8 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       Sup=true,
       Ctrl=false,
       H=0.4,
-      redeclare OpenIMDML.MultiDomain.Motors.ThreePhase.PSAT.MD_MotorTypeIII
-        motor) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+      redeclare OpenIMDML.MultiDomain.Motors.ThreePhase.PSSE.MD_CIM motor)
+               annotation (Placement(transformation(extent={{30,-10},{50,10}})));
     Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor1
       annotation (Placement(transformation(extent={{56,-10},{76,10}})));
     Modelica.Mechanics.Rotational.Components.Inertia load_inertia1(J=0.5)
@@ -64,8 +64,8 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
     inner Modelica.Fluid.System system(
       T_ambient=323.15,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      m_flow_start=0)                annotation (Placement(transformation(extent={{-88,40},
-              {-68,60}})));
+      m_flow_start=0)                annotation (Placement(transformation(extent={{-88,30},
+              {-68,50}})));
     Modelica.Blocks.Sources.Ramp valveClosing(
       height=-0.9,
       duration=1,

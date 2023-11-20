@@ -110,10 +110,13 @@ a different load torque profile because the mechanical torque equations do not m
 
     model NonMultiDomainCIM5 "Non Multi-Domain validation example for the CIM5 motor model"
       extends Modelica.Icons.Example;
-      extends OpenIMDML.Examples.BaseClasses.ValidationPartial2(bus2_mt1(v_0 = 1.031491, angle_0 = -0.11763519158442), bus3_mt1(v_0 = 1.026884, angle_0 = -0.21022037054666), Load1(v_0 = 1.026884, angle_0 = -0.21022037054666), bus4_mt1(v_0 = 1.026884, angle_0 = -0.21022037054666));
+      extends OpenIMDML.Examples.BaseClasses.ValidationPartial2(bus2_mt1(v_0 = 1.031491, angle_0 = -0.11763519158442), bus3_mt1(v_0 = 1.026884, angle_0 = -0.21022037054666), Load1(v_0 = 1.026884, angle_0 = -0.21022037054666), bus4_mt1(v_0 = 1.026884, angle_0 = -0.21022037054666),
+        tf2_mt1(xT=0.015));
       Modelica.Blocks.Sources.RealExpression SSCIM5(y = 2*Modelica.Constants.pi*(SysData.fn)) annotation (
         Placement(transformation(extent = {{40, -46}, {60, -26}})));
-      NonMultiDomain.Motors.ThreePhase.PSSE.NMD_CIM5 CIM5(Mtype = 1, Sup = true, T_nom = 0.5,
+      NonMultiDomain.Motors.ThreePhase.PSSE.NMD_CIM5 CIM5(
+        Mtype=1,                                                     Sup = true,
+        T_nom=0.534,
         V_b=23000)                                                                                         annotation (
         Placement(transformation(extent = {{100, -10}, {80, 10}})));
     equation
