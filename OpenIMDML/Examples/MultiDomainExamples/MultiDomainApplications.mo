@@ -7,13 +7,11 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
     Modelica.Fluid.Sources.FixedBoundary SOURCE(
       p=system.p_ambient,
       T=303.15,
-      redeclare package Medium =
-          Modelica.Media.Water.ConstantPropertyLiquidWater,
+      redeclare package Medium = Modelica.Media.Water.WaterIF97OnePhase_ph,
       nPorts=1)
       annotation (Placement(transformation(extent={{28,-50},{48,-30}})));
     Modelica.Fluid.Machines.Pump pump(
-      redeclare package Medium =
-          Modelica.Media.Water.ConstantPropertyLiquidWater,
+      redeclare package Medium = Modelica.Media.Water.WaterIF97OnePhase_ph,
       redeclare function flowCharacteristic =
           Modelica.Fluid.Machines.BaseClasses.PumpCharacteristics.linearFlow (
             V_flow_nominal={0,0.1}, head_nominal={10,0}),
@@ -29,8 +27,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       length=500,
       height_ab=0,
       diameter=1,
-      redeclare package Medium =
-          Modelica.Media.Water.ConstantPropertyLiquidWater)
+      redeclare package Medium = Modelica.Media.Water.WaterIF97OnePhase_ph)
       annotation (Placement(transformation(
           origin={121,-40},
           extent={{-9,-10},{11,10}},
@@ -43,8 +40,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       height=5,
       portsData={Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter=
           0.1)},
-      redeclare package Medium =
-          Modelica.Media.Water.ConstantPropertyLiquidWater,
+      redeclare package Medium = Modelica.Media.Water.WaterIF97OnePhase_ph,
       nPorts=1)
       annotation (Placement(transformation(extent={{120,0},{152,32}})));
     MultiDomain.Motors.MD_All_In_One_ThreePhaseMotor motor(
@@ -73,8 +69,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       offset=1)
       annotation (Placement(transformation(extent={{60,-90},{80,-70}})));
     Modelica.Fluid.Valves.ValveIncompressible clogged_pipe(
-      redeclare package Medium =
-          Modelica.Media.Water.ConstantPropertyLiquidWater,
+      redeclare package Medium = Modelica.Media.Water.WaterIF97OnePhase_ph,
       dp_nominal=10000,
       m_flow_nominal=243.912)
       annotation (Placement(transformation(extent={{86,-30},{106,-50}})));
@@ -104,8 +99,7 @@ package MultiDomainApplications "Coupling OpenIMDML + other library examples"
       annotation (Line(points={{80,-40},{86,-40}}, color={0,127,255}));
     connect(valveClosing.y, clogged_pipe.opening)
       annotation (Line(points={{81,-80},{96,-80},{96,-48}}, color={0,0,127}));
-    connect(fault.p, tf1_mt1.n) annotation (Line(points={{-81.6667,-40},{-90,
-            -40},{-90,0},{-89,0}},
+    connect(fault.p, tf1_mt1.n) annotation (Line(points={{-81.6667,-40},{-90,-40},{-90,0},{-89,0}},
                               color={0,0,255}));
     annotation (preferredView="info", Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,
               -100},{160,80}})),                                   Diagram(
