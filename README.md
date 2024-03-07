@@ -4,11 +4,9 @@ The OpenIMDML is an open-source Modelica-based library that is focused on modeli
 ### Citing OpenIMDML in Publications
 If you use OpenIMDML in your work or research, all we ask in exchange is that you cite the reference publications according to your use. Preferably, please cite this repository by using our preferred reference, as seen on the GitHub GUI.
 
-We have submitted a paper to the SoftwareX journal, which we would welcome you to cite as:
+If you use our library, please reference our work:
 
 > Fachini, Fernando, et al. "OpenIMDML: Open Instance Multi-Domain Motor Library utilizing the Modelica Modeling Language." SoftwareX (2023)
-
-Previous work leading to the library has been published and can also be cited as:
 > Fachini, Fernando, et al. "Multi-domain power and thermo-fluid system stability modeling using modelica and openipsl." 2022 IEEE Power & Energy Society General Meeting (PESGM). IEEE, 2022.
 
 ## OpenIMDML Library Structure
