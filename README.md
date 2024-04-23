@@ -6,8 +6,17 @@ If you use OpenIMDML in your work or research, all we ask in exchange is that yo
 
 If you use our library, please reference our work:
 
-> Fachini, Fernando, et al. "OpenIMDML: Open Instance Multi-Domain Motor Library utilizing the Modelica Modeling Language." SoftwareX (2023)
-> Fachini, Fernando, et al. "Multi-domain power and thermo-fluid system stability modeling using modelica and openipsl." 2022 IEEE Power & Energy Society General Meeting (PESGM). IEEE, 2022.
+- Fachini, Fernando, et al, "Modeling of Induction Motors and Variable Speed Drives for Multi-Domain System Simulations Using Modelica and the OpenIPSL Library." Electronics 2024, 13, 1614. [https://doi.org/10.3390/electronics13091614](https://doi.org/10.3390/electronics13091614)
+- Fachini, Fernando, et al, "Modeling of Induction Motors and Variable Speed Drives for Multi-Domain System Simulations Using Modelica and the OpenIPSL Library." Electronics 2024, 13, 1614. [https://doi.org/10.3390/electronics13091614](https://doi.org/10.3390/electronics13091614)
+- Fachini, Fernando, et al, "Multi-Domain Power and Thermo-Fluid System Stability Modeling using Modelica and OpenIPSL," 2022 IEEE Power & Energy Society General Meeting (PESGM), Denver, CO, USA, 2022, pp. 1-5, doi: 10.1109/PESGM48719.2022.9917073.
+
+## Documentation
+### Theory and Implementation
+Theory and implementation of the models in this library is presented in the following open-access paper"
+- Fachini, Fernando, et al, "Modeling of Induction Motors and Variable Speed Drives for Multi-Domain System Simulations Using Modelica and the OpenIPSL Library." Electronics 2024, 13, 1614. [https://doi.org/10.3390/electronics13091614](https://doi.org/10.3390/electronics13091614)
+
+### Built-in Documentation
+The information/documentation view of each model provides abridged documentation of the models, you can access them from the information/documentation tab of your Modelica tool of choice.
 
 ## OpenIMDML Library Structure
 The library is structured into five sub-packages (illustrated in Figure shown below): Examples, NonMultiDomain, MultiDomain, Controls, and Functions.\
