@@ -48,6 +48,7 @@ annotation (preferredView = "info",uses(
         textColor={238,46,47},
         textStyle={TextStyle.Italic},
           textString="OpenIMDML")}),
-  version="1",
-  conversion(noneFromVersion=""));
+  version="1.1.0",
+  versionDate="2026-11-12",
+  conversion(noneFromVersion="1", noneFromVersion="1.0.0"));
 end OpenIMDML;
