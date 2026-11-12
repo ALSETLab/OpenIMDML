@@ -1,5 +1,0 @@
-within OpenIMDML.Examples.MultiDomainExamples;
-package SinglePhaseInductionMotors "Simple systems to test out the multi-domain single and dual phase motor models"
-  extends Modelica.Icons.ExamplesPackage;
-
-end SinglePhaseInductionMotors;

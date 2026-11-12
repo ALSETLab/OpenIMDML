@@ -1,5 +1,0 @@
-within OpenIMDML.Examples;
-package SinglePhaseInductionMotors
-  extends Modelica.Icons.ExamplesPackage;
-
-end SinglePhaseInductionMotors;
