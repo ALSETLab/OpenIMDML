@@ -40,7 +40,7 @@ Search for OpenIPSL and click ok
 ![OpenModelica Search](docs/Figures/SearchOpenIPSL.png "Searching OpenIPSL")
 
 ### Step 3. Loading OpenIPSL and OpenIMDML
-Now you should load OpenIPSL by going to *File>System Libraries>OpenIPSL>3.1.0*. OpenIMDML is tested with OpenModelica 1.27.1 and Dymola 2026x Refresh 1 on Windows against OpenIPSL 3.1.0 and the Modelica Standard Library 4.1.0 with Complex 4.1.0, the versions declared in `OpenIMDML/package.mo`. The figure below still shows the 3.0.1 entry of an older OpenModelica installation.
+Now you should load OpenIPSL by going to *File>System Libraries>OpenIPSL>3.1.0*. OpenIMDML is tested with OpenModelica 1.27.1 and Dymola 2026x Refresh 1 on Windows against OpenIPSL 3.1.0 and the Modelica Standard Library 4.1.0 with Complex 4.1.0, the versions declared in `OpenIMDML/package.mo`.
 ![Load OpenIPSL](docs/Figures/LoadingOpenIPSL.png "Loading OpenIPSL")
 In order to load OpenIMDML, you have to know the folder where you downloaded the library. You should go to *File>Open Model/Library File(s)* and search for the folder where you downloaded OpenIMDML. Once you have found the folder, you must load the **package.mo** file.
 ![Load OpenIMDML](docs/Figures/OpenIMDMLLOADING.png "Loading OpenIMDML")
